@@ -1,0 +1,635 @@
+---
+swagger: "2.0"
+info:
+  description: "Simple api for polimi hypermedia project for september 2019"
+  version: "1.0.0"
+  title: "Summer festival API"
+host: "localhost:8080"
+basePath: "/v2"
+tags:
+- name: "event"
+  description: "Information about festival events"
+- name: "seminar"
+  description: "Information about seminars, that discuss about recent events"
+- name: "performer"
+  description: "Information about performers that partecipate in the festival events"
+- name: "user"
+  description: "Information about users"
+schemes:
+- "http"
+paths:
+  /users:
+    get:
+      tags:
+      - "user"
+      summary: "Gets some users"
+      description: "Returns a list containing all users."
+      operationId: "usersGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "size"
+        in: "query"
+        description: "Number of items returned in a page, default is 10"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "Users list"
+          schema:
+            $ref: "#/definitions/Users"
+        404:
+          description: "Unexpected error."
+      x-swagger-router-controller: "User"
+  /users/{email}:
+    get:
+      tags:
+      - "user"
+      summary: "Gets a single user"
+      description: "Returns a single user for its email"
+      operationId: "usersEmailGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "email"
+        in: "path"
+        description: "The user's email"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "A user"
+          schema:
+            $ref: "#/definitions/User"
+        404:
+          description: "Invalid user email"
+      x-swagger-router-controller: "User"
+  /users/login:
+    post:
+      tags:
+      - "user"
+      summary: "Login"
+      description: "Login into the store"
+      operationId: "usersLoginPOST"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "login"
+        required: true
+        schema:
+          $ref: "#/definitions/login"
+      responses:
+        200:
+          description: "Successful login"
+        404:
+          description: "Non authorized."
+      x-swagger-router-controller: "User"
+  /users/register:
+    post:
+      tags:
+      - "user"
+      summary: "Register"
+      description: "Register into the store"
+      operationId: "userRegisterPOST"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "Successful registration"
+        404:
+          description: "Registration error"
+      x-swagger-router-controller: "User"
+  /events:
+    get:
+      tags:
+      - "event"
+      summary: "Get events list"
+      description: "Returns list of events"
+      operationId: "eventsGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "size"
+        in: "query"
+        description: "Number of items returned in a page, default is 10"
+        required: false
+        type: "integer"
+      - name: "page"
+        in: "query"
+        description: "Selected page to return, default is 0"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "List of events"
+          schema:
+            $ref: "#/definitions/Events"
+        404:
+          description: "Can't find events"
+      x-swagger-router-controller: "Event"
+  /events/{id}:
+    get:
+      tags:
+      - "event"
+      summary: "Get a single event"
+      description: "Returns an event for its id"
+      operationId: "eventsIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Event for id"
+          schema:
+            $ref: "#/definitions/Event"
+        404:
+          description: "Invalid event id"
+      x-swagger-router-controller: "Event"
+  /events/date/{date}:
+    get:
+      tags:
+      - "event"
+      summary: "Get events performed on given date"
+      description: "Returns a list of events that are performed on selected date"
+      operationId: "eventsDateDateGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "date"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Event for date"
+          schema:
+            $ref: "#/definitions/Events"
+        404:
+          description: "Invalid date"
+      x-swagger-router-controller: "Event"
+  /events/location/{location}:
+    get:
+      tags:
+      - "event"
+      summary: "Get events in given location"
+      description: "Returns a list of events that are performed at selected location"
+      operationId: "eventsLocationLocationGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "location"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Event for location"
+          schema:
+            $ref: "#/definitions/Events"
+        404:
+          description: "Invalid location"
+      x-swagger-router-controller: "Event"
+  /events/type/{performance type}:
+    get:
+      tags:
+      - "event"
+      summary: "Get events of given type"
+      description: "Returns a list of events that match selected performance type"
+      operationId: "eventsTypePerformanceTypeGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "performance type"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Event for type"
+          schema:
+            $ref: "#/definitions/Events"
+        404:
+          description: "Invalid performance type"
+      x-swagger-router-controller: "Event"
+  /events/seminar/{seminar id}:
+    get:
+      tags:
+      - "event"
+      summary: "Get events discussed in selected seminar"
+      description: "Returns a list of events that are discussed in given seminar id"
+      operationId: "eventsSeminarIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "seminar id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Events discussed in seminar"
+          schema:
+            $ref: "#/definitions/Events"
+        404:
+          description: "Invalid seminar id"
+      x-swagger-router-controller: "Event"
+  /seminars:
+    get:
+      tags:
+      - "seminar"
+      summary: "Get seminars list"
+      description: "Returns list of seminars"
+      operationId: "seminarsGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "size"
+        in: "query"
+        description: "Number of items returned in a page, default is 10"
+        required: false
+        type: "integer"
+      - name: "page"
+        in: "query"
+        description: "Selected page to return, default is 0"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "List of seminars"
+          schema:
+            $ref: "#/definitions/Seminars"
+        404:
+          description: "Can't find seminars"
+      x-swagger-router-controller: "Seminar"
+  /seminars/{id}:
+    get:
+      tags:
+      - "seminar"
+      summary: "Get a single seminar"
+      description: "Returns a seminar for its id"
+      operationId: "seminarsIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Seminar for id"
+          schema:
+            $ref: "#/definitions/Seminar"
+        404:
+          description: "Invalid seminar id"
+      x-swagger-router-controller: "Seminar"
+  /seminars/date/{date}:
+    get:
+      tags:
+      - "seminar"
+      summary: "Get a list of seminars on given date"
+      description: "Returns a list of seminars that will take place on a given date"
+      operationId: "seminarsDateDateGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "date"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Seminars for date"
+          schema:
+            $ref: "#/definitions/Seminars"
+        404:
+          description: "Invalid date"
+      x-swagger-router-controller: "Seminar"
+  /seminars/location/{location}:
+    get:
+      tags:
+      - "seminar"
+      summary: "Get a list of seminars in given location"
+      description: "Returns a list of seminars that will take place in a given location"
+      operationId: "seminarsLocationLocationGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "location"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Seminars for location"
+          schema:
+            $ref: "#/definitions/Seminars"
+        404:
+          description: "Invalid location"
+      x-swagger-router-controller: "Seminar"
+  /artists:
+    get:
+      tags:
+      - "performer"
+      summary: "Get artists list"
+      description: "Returns list of artists"
+      operationId: "artistsGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "size"
+        in: "query"
+        description: "Number of items returned in a page, default is 10"
+        required: false
+        type: "integer"
+      - name: "page"
+        in: "query"
+        description: "Selected page to return, default is 0"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "List of artists"
+          schema:
+            $ref: "#/definitions/Artists"
+        404:
+          description: "Can't find artists"
+      x-swagger-router-controller: "Artist"
+  /artists/{id}:
+    get:
+      tags:
+      - "performer"
+      summary: "Get a single artist"
+      description: "Returns an artist for its id"
+      operationId: "artistIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Artist for id"
+          schema:
+            $ref: "#/definitions/Artist"
+        404:
+          description: "Invalid artist id"
+      x-swagger-router-controller: "Artist"
+  /artists/company/{company id}:
+    get:
+      tags:
+      - "performer"
+      summary: "Get artists affiliated to a company"
+      description: "Returns all artists affiliated to company with given id"
+      operationId: "artistCompanyIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "company id"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Artists affiliated to company"
+          schema:
+            $ref: "#/definitions/Artists"
+        404:
+          description: "Invalid company id"
+      x-swagger-router-controller: "Artist"
+  /companies:
+    get:
+      tags:
+      - "performer"
+      summary: "Get companies list"
+      description: "Returns list of companies"
+      operationId: "companiesGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "size"
+        in: "query"
+        description: "Number of items returned in a page, default is 10"
+        required: false
+        type: "integer"
+      - name: "page"
+        in: "query"
+        description: "Selected page to return, default is 0"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "List of companies"
+          schema:
+            $ref: "#/definitions/Companies"
+        404:
+          description: "Can't find companies"
+      x-swagger-router-controller: "Company"
+  /companies/{id}:
+    get:
+      tags:
+      - "performer"
+      summary: "Get a single company"
+      description: "Returns a company for its id"
+      operationId: "companyIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Company for id"
+          schema:
+            $ref: "#/definitions/Company"
+        404:
+          description: "Invalid company id"
+      x-swagger-router-controller: "Company"
+definitions:
+  User:
+    required:
+    - "email"
+    properties:
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+    example:
+      email: "asd@gmail.com"
+      password: "admin123"
+      firstName: "Johnny"
+      lastName: "De Gennaro"
+  Users:
+    type: "array"
+    items:
+      $ref: "#/definitions/User"
+  Event:
+    required:
+    - "id"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      location:
+        type: "string"
+      date:
+        type: "string"
+        format: "date"
+      desc:
+        type: "string"
+      fact sheet:
+        type: "string"
+      performance type:
+        type: "string"
+        description: "describe the type of the event"
+        enum:
+        - "music"
+        - "theater"
+        - "opera"
+        - "dance"
+      seminar id:
+        type: "integer"
+    example:
+      id: 0
+      name: "Event 0"
+      location: "Milan"
+      date: "03-08-2019"
+      desc: "short description about event 0"
+      fact sheet: "• Free coffee   • Theater performance   • Fireworks"
+      performance type: "theater"
+  Events:
+    type: "array"
+    items:
+      $ref: "#/definitions/Event"
+  Seminar:
+    required:
+    - "id"
+    properties:
+      id:
+        type: "integer"
+      title:
+        type: "string"
+      date:
+        type: "string"
+      location:
+        type: "string"
+      desc:
+        type: "string"
+    example:
+      id: 0
+      title: "Let's talk about 'Event 0'"
+      date: "04-08-2019"
+      location: "Milan"
+      desc: "Seminar held by our most renowned theater experts"
+  Seminars:
+    type: "array"
+    items:
+      $ref: "#/definitions/Seminar"
+  Artist:
+    required:
+    - "id"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      surname:
+        type: "string"
+      achievements:
+        type: "string"
+      profession:
+        type: "string"
+        description: "type of artist"
+        enum:
+        - "musician"
+        - "dancer"
+        - "actor"
+        - "singer"
+      company:
+        type: "integer"
+    example:
+      id: 0
+      name: "John"
+      surname: "Padella"
+      achievements: "• 2015 artist awards   • Time people list of 2016"
+      profession: "musician"
+  Artists:
+    type: "array"
+    items:
+      $ref: "#/definitions/Artist"
+  Company:
+    required:
+    - "id"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      group type:
+        type: "string"
+        enum:
+        - "music ensemble"
+        - "theatre company"
+        - "dance company"
+      foundation date:
+        type: "string"
+        format: "date"
+      desc:
+        type: "string"
+    example:
+      id: 0
+      name: "The Jojos"
+      group type: "music ensemble"
+      foundation date: "03-06-1997"
+      desc: "Description about this invented group"
+  Companies:
+    type: "array"
+    items:
+      $ref: "#/definitions/Company"
+  login:
+    type: "object"
+    required:
+    - "email"
+    - "password"
+    properties:
+      email:
+        type: "string"
+      password:
+        type: "string"
+parameters:
+  size:
+    name: "size"
+    in: "query"
+    description: "Number of items returned in a page, default is 10"
+    required: false
+    type: "integer"
+  page:
+    name: "page"
+    in: "query"
+    description: "Selected page to return, default is 0"
+    required: false
+    type: "integer"
