@@ -7,32 +7,32 @@ info:
 host: "localhost:8080"
 basePath: "/v2"
 tags:
-- name: "event"
-  description: "Information about festival events"
-- name: "seminar"
-  description: "Information about seminars, that discuss about recent events"
-- name: "performer"
-  description: "Information about performers that partecipate in the festival events"
-- name: "user"
-  description: "Information about users"
+  - name: "event"
+    description: "Information about festival events"
+  - name: "seminar"
+    description: "Information about seminars, that discuss about recent events"
+  - name: "performer"
+    description: "Information about performers that partecipate in the festival events"
+  - name: "user"
+    description: "Information about users"
 schemes:
-- "http"
+  - "http"
 paths:
   /users:
     get:
       tags:
-      - "user"
+        - "user"
       summary: "Gets some users"
       description: "Returns a list containing all users."
       operationId: "usersGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "size"
-        in: "query"
-        description: "Number of items returned in a page, default is 10"
-        required: false
-        type: "integer"
+        - name: "size"
+          in: "query"
+          description: "Number of items returned in a page, default is 10"
+          required: false
+          type: "integer"
       responses:
         200:
           description: "Users list"
@@ -44,18 +44,18 @@ paths:
   /users/{email}:
     get:
       tags:
-      - "user"
+        - "user"
       summary: "Gets a single user"
       description: "Returns a single user for its email"
       operationId: "usersEmailGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "email"
-        in: "path"
-        description: "The user's email"
-        required: true
-        type: "string"
+        - name: "email"
+          in: "path"
+          description: "The user's email"
+          required: true
+          type: "string"
       responses:
         200:
           description: "A user"
@@ -67,20 +67,20 @@ paths:
   /users/login:
     post:
       tags:
-      - "user"
+        - "user"
       summary: "Login"
       description: "Login into the store"
       operationId: "usersLoginPOST"
       consumes:
-      - "application/json"
+        - "application/json"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - in: "body"
-        name: "login"
-        required: true
-        schema:
-          $ref: "#/definitions/login"
+        - in: "body"
+          name: "login"
+          required: true
+          schema:
+            $ref: "#/definitions/login"
       responses:
         200:
           description: "Successful login"
@@ -90,20 +90,20 @@ paths:
   /users/register:
     post:
       tags:
-      - "user"
+        - "user"
       summary: "Register"
       description: "Register into the store"
       operationId: "userRegisterPOST"
       consumes:
-      - "application/json"
+        - "application/json"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        required: true
-        schema:
-          $ref: "#/definitions/User"
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/User"
       responses:
         200:
           description: "Successful registration"
@@ -113,23 +113,23 @@ paths:
   /events:
     get:
       tags:
-      - "event"
+        - "event"
       summary: "Get events list"
       description: "Returns list of events"
       operationId: "eventsGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "size"
-        in: "query"
-        description: "Number of items returned in a page, default is 10"
-        required: false
-        type: "integer"
-      - name: "page"
-        in: "query"
-        description: "Selected page to return, default is 0"
-        required: false
-        type: "integer"
+        - name: "size"
+          in: "query"
+          description: "Number of items returned in a page, default is 10"
+          required: false
+          type: "integer"
+        - name: "page"
+          in: "query"
+          description: "Selected page to return, default is 0"
+          required: false
+          type: "integer"
       responses:
         200:
           description: "List of events"
@@ -141,17 +141,17 @@ paths:
   /events/{id}:
     get:
       tags:
-      - "event"
+        - "event"
       summary: "Get a single event"
       description: "Returns an event for its id"
       operationId: "eventsIdGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "id"
-        in: "path"
-        required: true
-        type: "integer"
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
       responses:
         200:
           description: "Event for id"
@@ -163,17 +163,17 @@ paths:
   /events/date/{date}:
     get:
       tags:
-      - "event"
+        - "event"
       summary: "Get events performed on given date"
       description: "Returns a list of events that are performed on selected date"
       operationId: "eventsDateDateGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "date"
-        in: "path"
-        required: true
-        type: "string"
+        - name: "date"
+          in: "path"
+          required: true
+          type: "string"
       responses:
         200:
           description: "Event for date"
@@ -185,17 +185,17 @@ paths:
   /events/location/{location}:
     get:
       tags:
-      - "event"
+        - "event"
       summary: "Get events in given location"
       description: "Returns a list of events that are performed at selected location"
       operationId: "eventsLocationLocationGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "location"
-        in: "path"
-        required: true
-        type: "string"
+        - name: "location"
+          in: "path"
+          required: true
+          type: "string"
       responses:
         200:
           description: "Event for location"
@@ -204,20 +204,20 @@ paths:
         404:
           description: "Invalid location"
       x-swagger-router-controller: "Event"
-  /events/type/{performance type}:
+  /events/type/{performance_type}:
     get:
       tags:
-      - "event"
+        - "event"
       summary: "Get events of given type"
       description: "Returns a list of events that match selected performance type"
       operationId: "eventsTypePerformanceTypeGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "performance type"
-        in: "path"
-        required: true
-        type: "string"
+        - name: "performance_type"
+          in: "path"
+          required: true
+          type: "string"
       responses:
         200:
           description: "Event for type"
@@ -226,20 +226,20 @@ paths:
         404:
           description: "Invalid performance type"
       x-swagger-router-controller: "Event"
-  /events/seminar/{seminar id}:
+  /events/seminar/{seminar_id}:
     get:
       tags:
-      - "event"
+        - "event"
       summary: "Get events discussed in selected seminar"
       description: "Returns a list of events that are discussed in given seminar id"
       operationId: "eventsSeminarIdGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "seminar id"
-        in: "path"
-        required: true
-        type: "string"
+        - name: "seminar_id"
+          in: "path"
+          required: true
+          type: "string"
       responses:
         200:
           description: "Events discussed in seminar"
@@ -251,23 +251,23 @@ paths:
   /seminars:
     get:
       tags:
-      - "seminar"
+        - "seminar"
       summary: "Get seminars list"
       description: "Returns list of seminars"
       operationId: "seminarsGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "size"
-        in: "query"
-        description: "Number of items returned in a page, default is 10"
-        required: false
-        type: "integer"
-      - name: "page"
-        in: "query"
-        description: "Selected page to return, default is 0"
-        required: false
-        type: "integer"
+        - name: "size"
+          in: "query"
+          description: "Number of items returned in a page, default is 10"
+          required: false
+          type: "integer"
+        - name: "page"
+          in: "query"
+          description: "Selected page to return, default is 0"
+          required: false
+          type: "integer"
       responses:
         200:
           description: "List of seminars"
@@ -279,17 +279,17 @@ paths:
   /seminars/{id}:
     get:
       tags:
-      - "seminar"
+        - "seminar"
       summary: "Get a single seminar"
       description: "Returns a seminar for its id"
       operationId: "seminarsIdGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "id"
-        in: "path"
-        required: true
-        type: "integer"
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
       responses:
         200:
           description: "Seminar for id"
@@ -301,17 +301,17 @@ paths:
   /seminars/date/{date}:
     get:
       tags:
-      - "seminar"
+        - "seminar"
       summary: "Get a list of seminars on given date"
       description: "Returns a list of seminars that will take place on a given date"
       operationId: "seminarsDateDateGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "date"
-        in: "path"
-        required: true
-        type: "string"
+        - name: "date"
+          in: "path"
+          required: true
+          type: "string"
       responses:
         200:
           description: "Seminars for date"
@@ -323,17 +323,17 @@ paths:
   /seminars/location/{location}:
     get:
       tags:
-      - "seminar"
+        - "seminar"
       summary: "Get a list of seminars in given location"
       description: "Returns a list of seminars that will take place in a given location"
       operationId: "seminarsLocationLocationGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "location"
-        in: "path"
-        required: true
-        type: "string"
+        - name: "location"
+          in: "path"
+          required: true
+          type: "string"
       responses:
         200:
           description: "Seminars for location"
@@ -345,23 +345,23 @@ paths:
   /artists:
     get:
       tags:
-      - "performer"
+        - "performer"
       summary: "Get artists list"
       description: "Returns list of artists"
       operationId: "artistsGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "size"
-        in: "query"
-        description: "Number of items returned in a page, default is 10"
-        required: false
-        type: "integer"
-      - name: "page"
-        in: "query"
-        description: "Selected page to return, default is 0"
-        required: false
-        type: "integer"
+        - name: "size"
+          in: "query"
+          description: "Number of items returned in a page, default is 10"
+          required: false
+          type: "integer"
+        - name: "page"
+          in: "query"
+          description: "Selected page to return, default is 0"
+          required: false
+          type: "integer"
       responses:
         200:
           description: "List of artists"
@@ -373,17 +373,17 @@ paths:
   /artists/{id}:
     get:
       tags:
-      - "performer"
+        - "performer"
       summary: "Get a single artist"
       description: "Returns an artist for its id"
       operationId: "artistIdGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "id"
-        in: "path"
-        required: true
-        type: "integer"
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
       responses:
         200:
           description: "Artist for id"
@@ -392,20 +392,20 @@ paths:
         404:
           description: "Invalid artist id"
       x-swagger-router-controller: "Artist"
-  /artists/company/{company id}:
+  /artists/company/{company_id}:
     get:
       tags:
-      - "performer"
+        - "performer"
       summary: "Get artists affiliated to a company"
       description: "Returns all artists affiliated to company with given id"
       operationId: "artistCompanyIdGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "company id"
-        in: "path"
-        required: true
-        type: "integer"
+        - name: "company_id"
+          in: "path"
+          required: true
+          type: "integer"
       responses:
         200:
           description: "Artists affiliated to company"
@@ -417,23 +417,23 @@ paths:
   /companies:
     get:
       tags:
-      - "performer"
+        - "performer"
       summary: "Get companies list"
       description: "Returns list of companies"
       operationId: "companiesGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "size"
-        in: "query"
-        description: "Number of items returned in a page, default is 10"
-        required: false
-        type: "integer"
-      - name: "page"
-        in: "query"
-        description: "Selected page to return, default is 0"
-        required: false
-        type: "integer"
+        - name: "size"
+          in: "query"
+          description: "Number of items returned in a page, default is 10"
+          required: false
+          type: "integer"
+        - name: "page"
+          in: "query"
+          description: "Selected page to return, default is 0"
+          required: false
+          type: "integer"
       responses:
         200:
           description: "List of companies"
@@ -445,17 +445,17 @@ paths:
   /companies/{id}:
     get:
       tags:
-      - "performer"
+        - "performer"
       summary: "Get a single company"
       description: "Returns a company for its id"
       operationId: "companyIdGET"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "id"
-        in: "path"
-        required: true
-        type: "integer"
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
       responses:
         200:
           description: "Company for id"
@@ -467,7 +467,7 @@ paths:
 definitions:
   User:
     required:
-    - "email"
+      - "email"
     properties:
       firstName:
         type: "string"
@@ -488,7 +488,7 @@ definitions:
       $ref: "#/definitions/User"
   Event:
     required:
-    - "id"
+      - "id"
     properties:
       id:
         type: "integer"
@@ -501,16 +501,16 @@ definitions:
         format: "date"
       desc:
         type: "string"
-      fact sheet:
+      fact_sheet:
         type: "string"
-      performance type:
+      performance_type:
         type: "string"
         description: "describe the type of the event"
         enum:
-        - "music"
-        - "theater"
-        - "opera"
-        - "dance"
+          - "music"
+          - "theater"
+          - "opera"
+          - "dance"
       seminar id:
         type: "integer"
     example:
@@ -519,15 +519,15 @@ definitions:
       location: "Milan"
       date: "03-08-2019"
       desc: "short description about event 0"
-      fact sheet: "• Free coffee   • Theater performance   • Fireworks"
-      performance type: "theater"
+      fact_sheet: "• Free coffee   • Theater performance   • Fireworks"
+      performance_type: "theater"
   Events:
     type: "array"
     items:
       $ref: "#/definitions/Event"
   Seminar:
     required:
-    - "id"
+      - "id"
     properties:
       id:
         type: "integer"
@@ -551,7 +551,7 @@ definitions:
       $ref: "#/definitions/Seminar"
   Artist:
     required:
-    - "id"
+      - "id"
     properties:
       id:
         type: "integer"
@@ -565,10 +565,10 @@ definitions:
         type: "string"
         description: "type of artist"
         enum:
-        - "musician"
-        - "dancer"
-        - "actor"
-        - "singer"
+          - "musician"
+          - "dancer"
+          - "actor"
+          - "singer"
       company:
         type: "integer"
     example:
@@ -583,19 +583,19 @@ definitions:
       $ref: "#/definitions/Artist"
   Company:
     required:
-    - "id"
+      - "id"
     properties:
       id:
         type: "integer"
       name:
         type: "string"
-      group type:
+      group_type:
         type: "string"
         enum:
-        - "music ensemble"
-        - "theatre company"
-        - "dance company"
-      foundation date:
+          - "music ensemble"
+          - "theatre company"
+          - "dance company"
+      foundation_date:
         type: "string"
         format: "date"
       desc:
@@ -603,8 +603,8 @@ definitions:
     example:
       id: 0
       name: "The Jojos"
-      group type: "music ensemble"
-      foundation date: "03-06-1997"
+      group_type: "music ensemble"
+      foundation_date: "03-06-1997"
       desc: "Description about this invented group"
   Companies:
     type: "array"
@@ -613,8 +613,8 @@ definitions:
   login:
     type: "object"
     required:
-    - "email"
-    - "password"
+      - "email"
+      - "password"
     properties:
       email:
         type: "string"

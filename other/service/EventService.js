@@ -97,7 +97,7 @@ exports.eventsLocationLocationGET = function(location) {
  * seminar id String 
  * returns Events
  **/
-exports.eventsSeminarIdGET = function(seminar id) {
+exports.eventsSeminarIdGET = function(seminar_id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = "";
@@ -117,7 +117,7 @@ exports.eventsSeminarIdGET = function(seminar id) {
  * performance type String 
  * returns Events
  **/
-exports.eventsTypePerformanceTypeGET = function(performance type) {
+exports.eventsTypePerformanceTypeGET = function(performance_type) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = "";

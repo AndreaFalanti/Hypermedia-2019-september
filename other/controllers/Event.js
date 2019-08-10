@@ -49,8 +49,8 @@ module.exports.eventsLocationLocationGET = function eventsLocationLocationGET (r
 };
 
 module.exports.eventsSeminarIdGET = function eventsSeminarIdGET (req, res, next) {
-  var seminar id = req.swagger.params['seminar id'].value;
-  Event.eventsSeminarIdGET(seminar id)
+  var seminar_id = req.swagger.params['seminar id'].value;
+  Event.eventsSeminarIdGET(seminar_id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -60,8 +60,8 @@ module.exports.eventsSeminarIdGET = function eventsSeminarIdGET (req, res, next)
 };
 
 module.exports.eventsTypePerformanceTypeGET = function eventsTypePerformanceTypeGET (req, res, next) {
-  var performance type = req.swagger.params['performance type'].value;
-  Event.eventsTypePerformanceTypeGET(performance type)
+  var performance_type = req.swagger.params['performance type'].value;
+  Event.eventsTypePerformanceTypeGET(performance_type)
     .then(function (response) {
       utils.writeJson(res, response);
     })

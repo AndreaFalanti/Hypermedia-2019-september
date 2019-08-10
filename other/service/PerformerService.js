@@ -8,7 +8,7 @@
  * company id Integer 
  * returns Artists
  **/
-exports.artistCompanyIdGET = function(company id) {
+exports.artistCompanyIdGET = function(company_id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = "";
