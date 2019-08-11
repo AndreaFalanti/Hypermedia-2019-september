@@ -1,5 +1,7 @@
 'use strict';
 
+let {setupDataLayer} = require("./other/service/DataLayer");
+
 var fs = require('fs'),
     path = require('path'),
     http = require('http');
@@ -8,7 +10,7 @@ var app = require('connect')();
 var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
 var serverPort = process.env.PORT || 8080;
-let dirToOther = path.join(__dirname, 'other');
+let dirToOther = path.join(__dirname, 'other');     // points Other folder
 let cookieSession = require("cookie-session");
 let cookieParser = require("cookie-parser");
 let serveStatic = require("serve-static");
@@ -46,9 +48,10 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   app.use(serveStatic(path.join(__dirname, "public")));
 
   // Start the server
-  http.createServer(app).listen(serverPort, function () {
-    console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
-    console.log('Swagger-ui is available on http://localhost:%d/docs', serverPort);
-  });
-
+  setupDataLayer().then(
+      http.createServer(app).listen(serverPort, function () {
+        console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
+        console.log('Swagger-ui is available on http://localhost:%d/docs', serverPort);
+      })
+  );
 });

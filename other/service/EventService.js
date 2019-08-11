@@ -1,5 +1,48 @@
 'use strict';
 
+let sqlDb;
+
+exports.eventDbSetup = function(database) {
+  // set local reference to database
+  sqlDb = database;
+  return database.schema.hasTable("event").then(exists => {
+    if (!exists) {
+      return database.schema.createTable("event", table => {
+        table.increments("id").primary();
+        table.text("name");
+        table.text("location");
+        table.date("date");
+        table.text("desc");
+        table.text("fact_sheet");
+        table.enum("type", ["music", "theater", "opera", "dance"]);
+        table.integer("seminar_id").index().references("id").inTable("seminar").nullable();
+        console.log("Event database created");
+      });
+    }
+    else {
+      console.log("Event database already existing");
+    }
+  });
+};
+
+exports.reservationDbSetup = function(database) {
+  // set local reference to database
+  sqlDb = database;
+  return database.schema.hasTable("reservation").then(exists => {
+    if (!exists) {
+      return database.schema.createTable("reservation", table => {
+        table.integer("event_id").index().references("id").inTable("event");
+        table.text("user_email").index().references("email").inTable("usr");
+        table.primary(["event_id", "user_email"]);
+        console.log("Reservation database created");
+      });
+    }
+    else {
+      console.log("Reservation database already existing");
+    }
+  });
+};
+
 
 /**
  * Get events performed on given date

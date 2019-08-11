@@ -1,5 +1,25 @@
 'use strict';
 
+let sqlDb;
+
+exports.userDbSetup = function(database) {
+  // set local reference to database
+  sqlDb = database;
+  return database.schema.hasTable("usr").then(exists => {
+    if (!exists) {
+      return database.schema.createTable("usr", table => {
+        table.text("email").primary();
+        table.text("name");
+        table.text("surname");
+        table.text("password");
+        console.log("User database created");
+      });
+    }
+    else {
+      console.log("User database already existing");
+    }
+  });
+};
 
 /**
  * Register

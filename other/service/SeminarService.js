@@ -1,5 +1,26 @@
 'use strict';
 
+let sqlDb;
+
+exports.seminarDbSetup = function(database) {
+  // set local reference to database
+  sqlDb = database;
+  return database.schema.hasTable("seminar").then(exists => {
+    if (!exists) {
+      return database.schema.createTable("seminar", table => {
+        table.increments("id").primary();
+        table.text("title");
+        table.text("location");
+        table.date("date");
+        table.text("desc");
+        console.log("Seminar database created");
+      });
+    }
+    else {
+      console.log("Seminar database already existing");
+    }
+  });
+};
 
 /**
  * Get a list of seminars on given date
