@@ -73,7 +73,7 @@ exports.eventsDateDateGET = function(date) {
  * returns Events
  **/
 exports.eventsGET = function(size,page) {
-  return new Promise(function(resolve, reject) {
+  /*return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
@@ -81,8 +81,22 @@ exports.eventsGET = function(size,page) {
     } else {
       resolve();
     }
+  });*/
+  return new Promise(function(resolve, reject) {
+    let result;
+    try {
+      result = sqlDb("event")
+          .select("*")
+          .limit(size)
+          .timeout(1000, {cancel: true});
+
+      resolve(result);
+    }
+    catch (e) {
+      reject(e);
+    }
   });
-}
+};
 
 
 /**
