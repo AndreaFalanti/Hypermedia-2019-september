@@ -89,15 +89,20 @@ exports.performedByCompanyDbSetup = function(database) {
  **/
 exports.artistCompanyIdGET = function(company_id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+    let result;
+    try {
+      result = sqlDb("artist")
+          .select()
+          .where("affiliation", company_id)
+          .timeout(2000, {cancel: true});
+
+      resolve(result);
+    }
+    catch (e) {
+      reject(e);
     }
   });
-}
+};
 
 
 /**
@@ -109,21 +114,20 @@ exports.artistCompanyIdGET = function(company_id) {
  **/
 exports.artistIdGET = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "id" : 0,
-  "name" : "John",
-  "surname" : "Padella",
-  "achievements" : "• 2015 artist awards   • Time people list of 2016",
-  "profession" : "musician"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+    let result;
+    try {
+      result = sqlDb("artist")
+          .select()
+          .where("id", id)
+          .timeout(2000, {cancel: true});
+
+      resolve(result);
+    }
+    catch (e) {
+      reject(e);
     }
   });
-}
+};
 
 
 /**
@@ -136,15 +140,21 @@ exports.artistIdGET = function(id) {
  **/
 exports.artistsGET = function(size,page) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+    let result;
+    try {
+      result = sqlDb("artist")
+          .innerJoin("company", "artist.affiliation", "company.id")
+          .select()
+          .limit(size)
+          .timeout(2000, {cancel: true});
+
+      resolve(result);
+    }
+    catch (e) {
+      reject(e);
     }
   });
-}
+};
 
 
 /**
@@ -157,15 +167,20 @@ exports.artistsGET = function(size,page) {
  **/
 exports.companiesGET = function(size,page) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+    let result;
+    try {
+      result = sqlDb("company")
+          .select()
+          .limit(size)
+          .timeout(2000, {cancel: true});
+
+      resolve(result);
+    }
+    catch (e) {
+      reject(e);
     }
   });
-}
+};
 
 
 /**
@@ -177,19 +192,18 @@ exports.companiesGET = function(size,page) {
  **/
 exports.companyIdGET = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "id" : 0,
-  "name" : "The Jojos",
-  "group type" : "music ensemble",
-  "foundation date" : "03-06-1997",
-  "desc" : "Description about this invented group"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+    let result;
+    try {
+      result = sqlDb("company")
+          .select()
+          .where("id", id)
+          .timeout(2000, {cancel: true});
+
+      resolve(result);
+    }
+    catch (e) {
+      reject(e);
     }
   });
-}
+};
 

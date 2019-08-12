@@ -31,15 +31,20 @@ exports.seminarDbSetup = function(database) {
  **/
 exports.seminarsDateDateGET = function(date) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+    let result;
+    try {
+      result = sqlDb("seminar")
+          .select()
+          .where("date", date)
+          .timeout(2000, {cancel: true});
+
+      resolve(result);
+    }
+    catch (e) {
+      reject(e);
     }
   });
-}
+};
 
 
 /**
@@ -52,15 +57,20 @@ exports.seminarsDateDateGET = function(date) {
  **/
 exports.seminarsGET = function(size,page) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+    let result;
+    try {
+      result = sqlDb("seminar")
+          .select()
+          .limit(size)
+          .timeout(2000, {cancel: true});
+
+      resolve(result);
+    }
+    catch (e) {
+      reject(e);
     }
   });
-}
+};
 
 
 /**
@@ -72,21 +82,20 @@ exports.seminarsGET = function(size,page) {
  **/
 exports.seminarsIdGET = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "id" : 0,
-  "title" : "Let's talk about 'Event 0'",
-  "date" : "04-08-2019",
-  "location" : "Milan",
-  "desc" : "Seminar held by our most renowned theater experts"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+    let result;
+    try {
+      result = sqlDb("seminar")
+          .select()
+          .where("id", id)
+          .timeout(2000, {cancel: true});
+
+      resolve(result);
+    }
+    catch (e) {
+      reject(e);
     }
   });
-}
+};
 
 
 /**
@@ -98,13 +107,18 @@ exports.seminarsIdGET = function(id) {
  **/
 exports.seminarsLocationLocationGET = function(location) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+    let result;
+    try {
+      result = sqlDb("seminar")
+          .select()
+          .where("location", location)
+          .timeout(2000, {cancel: true});
+
+      resolve(result);
+    }
+    catch (e) {
+      reject(e);
     }
   });
-}
+};
 

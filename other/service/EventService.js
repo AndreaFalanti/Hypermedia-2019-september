@@ -86,9 +86,11 @@ exports.eventsGET = function(size,page) {
     let result;
     try {
       result = sqlDb("event")
-          .select("*")
+          //bug inner join sovrascrive i campi con lo stesso nome
+          .innerJoin("seminar", "event.seminar_id", "seminar.id")
+          .select()
           .limit(size)
-          .timeout(1000, {cancel: true});
+          .timeout(2000, {cancel: true});
 
       resolve(result);
     }
@@ -107,7 +109,7 @@ exports.eventsGET = function(size,page) {
  * returns Event
  **/
 exports.eventsIdGET = function(id) {
-  return new Promise(function(resolve, reject) {
+  /*return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
   "id" : 0,
@@ -123,8 +125,23 @@ exports.eventsIdGET = function(id) {
     } else {
       resolve();
     }
-  });
-}
+  });*/
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("event")
+                .select()
+                .where("id", id)
+                .timeout(2000, {cancel: true});
+
+            console.log(result);
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
+};
 
 
 /**
@@ -135,16 +152,21 @@ exports.eventsIdGET = function(id) {
  * returns Events
  **/
 exports.eventsLocationLocationGET = function(location) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
-}
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("event")
+                .select()
+                .where("location", location)
+                .timeout(2000, {cancel: true});
+
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
+};
 
 
 /**
@@ -155,16 +177,21 @@ exports.eventsLocationLocationGET = function(location) {
  * returns Events
  **/
 exports.eventsSeminarIdGET = function(seminar_id) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
-}
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("event")
+                .select()
+                .where("seminar_id", seminar_id)
+                .timeout(2000, {cancel: true});
+
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
+};
 
 
 /**
@@ -175,14 +202,19 @@ exports.eventsSeminarIdGET = function(seminar_id) {
  * returns Events
  **/
 exports.eventsTypePerformanceTypeGET = function(performance_type) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
-}
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("event")
+                .select()
+                .where("type", performance_type)
+                .timeout(2000, {cancel: true});
+
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
+};
 

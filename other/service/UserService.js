@@ -30,9 +30,19 @@ exports.userDbSetup = function(database) {
  **/
 exports.userRegisterPOST = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    let result;
+    try {
+      result = sqlDb("usr")
+          .insert(body)
+          .timeout(2000, {cancel: true});
+
+      resolve(result);
+    }
+    catch (e) {
+      reject(e);
+    }
   });
-}
+};
 
 
 /**
@@ -44,20 +54,20 @@ exports.userRegisterPOST = function(body) {
  **/
 exports.usersEmailGET = function(email) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "email" : "asd@gmail.com",
-  "password" : "admin123",
-  "firstName" : "Johnny",
-  "lastName" : "De Gennaro"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+    let result;
+    try {
+      result = sqlDb("usr")
+          .select()
+          .where("email", email)
+          .timeout(2000, {cancel: true});
+
+      resolve(result);
+    }
+    catch (e) {
+      reject(e);
     }
   });
-}
+};
 
 
 /**
@@ -69,15 +79,20 @@ exports.usersEmailGET = function(email) {
  **/
 exports.usersGET = function(size) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
+    let result;
+    try {
+      result = sqlDb("usr")
+          .select()
+          .limit(size)
+          .timeout(2000, {cancel: true});
+
+      resolve(result);
+    }
+    catch (e) {
+      reject(e);
     }
   });
-}
+};
 
 
 /**
@@ -91,5 +106,5 @@ exports.usersLoginPOST = function(login) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
-}
+};
 
