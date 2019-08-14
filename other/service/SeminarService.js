@@ -61,7 +61,7 @@ exports.seminarsGET = function(size,page) {
     try {
       result = sqlDb("seminar")
           .select()
-          .limit(size)
+          .limit(size || 10)
           .timeout(2000, {cancel: true});
 
       resolve(result);

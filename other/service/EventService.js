@@ -52,16 +52,23 @@ exports.reservationDbSetup = function(database) {
  * returns Events
  **/
 exports.eventsDateDateGET = function(date) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
-}
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("event")
+            //bug inner join sovrascrive i campi con lo stesso nome
+                .innerJoin("seminar", "event.seminar_id", "seminar.id")
+                .select()
+                .where("date", date)
+                .timeout(2000, {cancel: true});
+
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
+};
 
 
 /**
@@ -86,10 +93,8 @@ exports.eventsGET = function(size,page) {
     let result;
     try {
       result = sqlDb("event")
-          //bug inner join sovrascrive i campi con lo stesso nome
-          .innerJoin("seminar", "event.seminar_id", "seminar.id")
           .select()
-          .limit(size)
+          .limit(size || 10)
           .timeout(2000, {cancel: true});
 
       resolve(result);

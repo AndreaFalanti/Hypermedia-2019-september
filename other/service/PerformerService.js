@@ -143,9 +143,9 @@ exports.artistsGET = function(size,page) {
     let result;
     try {
       result = sqlDb("artist")
-          .innerJoin("company", "artist.affiliation", "company.id")
+          //.innerJoin("company", "artist.affiliation", "company.id")
           .select()
-          .limit(size)
+          .limit(size || 10)
           .timeout(2000, {cancel: true});
 
       resolve(result);
@@ -171,7 +171,7 @@ exports.companiesGET = function(size,page) {
     try {
       result = sqlDb("company")
           .select()
-          .limit(size)
+          .limit(size || 10)
           .timeout(2000, {cancel: true});
 
       resolve(result);
