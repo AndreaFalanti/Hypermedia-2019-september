@@ -19,9 +19,11 @@ function register() {
             data: json,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function(data){alert(data + "ok");},
-            failure: function(errMsg) {
-                alert(errMsg + "error");
+            success: function(data){document.location.href = "../index.html";},
+            error: function(errMsg) {
+                $("#emailError").removeClass("hidden");
+                alert(JSON.stringify(errMsg, null, 4));
+                return false;
             }
         });
     }

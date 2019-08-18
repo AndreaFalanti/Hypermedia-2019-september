@@ -39,6 +39,8 @@
                             <label for="inputEmail">Email address</label>
                         </div>
 
+                        <p class="d-block text-center mt-2 small error hidden" id="emailError">Email already registered</p>
+
                         <hr>
 
                         <div class="form-label-group">
@@ -77,5 +79,8 @@
 
 <!-- Optional JavaScript -->
 <script src="../assets/js/registration.js"></script>
+<script>
+    document.addEventListener("submit", e => e.preventDefault())
+</script>
 </body>
 </html>

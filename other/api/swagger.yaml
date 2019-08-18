@@ -80,12 +80,12 @@ paths:
           name: "login"
           required: true
           schema:
-            $ref: "#/definitions/login"
+            $ref: "#/definitions/Login"
       responses:
         200:
           description: "Successful login"
         404:
-          description: "Non authorized."
+          description: "Not authorized."
       x-swagger-router-controller: "User"
   /users/register:
     post:
@@ -482,10 +482,12 @@ definitions:
       password: "admin123"
       firstName: "Johnny"
       lastName: "De Gennaro"
+
   Users:
     type: "array"
     items:
       $ref: "#/definitions/User"
+
   Event:
     required:
       - "id"
@@ -521,10 +523,12 @@ definitions:
       desc: "short description about event 0"
       fact_sheet: "• Free coffee   • Theater performance   • Fireworks"
       performance_type: "theater"
+
   Events:
     type: "array"
     items:
       $ref: "#/definitions/Event"
+
   Seminar:
     required:
       - "id"
@@ -545,10 +549,12 @@ definitions:
       date: "04-08-2019"
       location: "Milan"
       desc: "Seminar held by our most renowned theater experts"
+
   Seminars:
     type: "array"
     items:
       $ref: "#/definitions/Seminar"
+
   Artist:
     required:
       - "id"
@@ -577,10 +583,12 @@ definitions:
       surname: "Padella"
       achievements: "• 2015 artist awards   • Time people list of 2016"
       profession: "musician"
+
   Artists:
     type: "array"
     items:
       $ref: "#/definitions/Artist"
+
   Company:
     required:
       - "id"
@@ -606,11 +614,13 @@ definitions:
       group_type: "music ensemble"
       foundation_date: "03-06-1997"
       desc: "Description about this invented group"
+
   Companies:
     type: "array"
     items:
       $ref: "#/definitions/Company"
-  login:
+
+  Login:
     type: "object"
     required:
       - "email"
