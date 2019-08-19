@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <link href="../assets/css/general.css" rel="stylesheet" type="text/css">
     <link href="../assets/css/login.css" rel="stylesheet" type="text/css">
 
     <title>Login</title>
@@ -20,7 +21,7 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Sign In</h5>
-                    <form class="form-signin">
+                    <form class="form-signin" onsubmit="login()">
                         <div class="form-label-group">
                             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                             <label for="inputEmail">Email address</label>
@@ -30,6 +31,8 @@
                             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                             <label for="inputPassword">Password</label>
                         </div>
+
+                        <p class="d-block text-center mt-2 small error hidden" id="loginError">Invalid login</p>
 
                         <!--<div class="custom-control custom-checkbox mb-3">
                             <input type="checkbox" class="custom-control-input" id="customCheck1">
@@ -60,6 +63,9 @@
         crossorigin="anonymous"></script>
 
 <!-- Optional JavaScript -->
-
+<script src="../assets/js/login.js"></script>
+<script>
+    document.addEventListener("submit", e => e.preventDefault())
+</script>
 </body>
 </html>

@@ -84,8 +84,23 @@ paths:
       responses:
         200:
           description: "Successful login"
+        400:
+          description: "Invalid login"
+      x-swagger-router-controller: "User"
+  /users/logout:
+    post:
+      tags:
+        - "user"
+      summary: "Logout"
+      description: "Logout user"
+      operationId: "usersLogoutPOST"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Successful logout"
         404:
-          description: "Not authorized."
+          description: "Trying logout when not logged"
       x-swagger-router-controller: "User"
   /users/register:
     post:
@@ -464,6 +479,7 @@ paths:
         404:
           description: "Invalid company id"
       x-swagger-router-controller: "Company"
+
 definitions:
   User:
     required:
@@ -621,7 +637,6 @@ definitions:
       $ref: "#/definitions/Company"
 
   Login:
-    type: "object"
     required:
       - "email"
       - "password"
@@ -630,6 +645,7 @@ definitions:
         type: "string"
       password:
         type: "string"
+
 parameters:
   size:
     name: "size"
@@ -637,6 +653,7 @@ parameters:
     description: "Number of items returned in a page, default is 10"
     required: false
     type: "integer"
+
   page:
     name: "page"
     in: "query"

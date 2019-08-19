@@ -40,9 +40,26 @@ module.exports.usersLoginPOST = function usersLoginPOST (req, res, next) {
   var login = req.swagger.params['login'].value;
   User.usersLoginPOST(login)
     .then(function (response) {
+      console.log("It's actually resolved");
+      if(!req.session.loggedin) {
+        req.session.loggedin = true;
+      }
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      utils.writeJson(res, response, 400);
     });
+};
+
+module.exports.usersLogoutPOST = function usersLoginPOST (req, res, next) {
+  User.usersLogoutPOST()
+      .then(function (response) {
+        if(req.session.loggedin) {
+          req.session.loggedin = false;
+        }
+        utils.writeJson(res, response);
+      })
+      .catch(function (response) {
+        utils.writeJson(res, response);
+      });
 };

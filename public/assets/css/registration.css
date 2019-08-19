@@ -116,11 +116,3 @@ body {
     color: white;
     background-color: #3b5998;
 }
-
-.error {
-    color: red;
-}
-
-.hidden {
-    visibility: hidden;
-}

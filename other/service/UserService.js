@@ -114,6 +114,35 @@ exports.usersGET = function(size) {
  **/
 exports.usersLoginPOST = function(login) {
     return new Promise(function(resolve, reject) {
+        try {
+            return sqlDb("usr")
+                .select()
+                .where("email", login.email)
+                .where("password", login.password)
+                .first()
+                .timeout(2000, {cancel: true})
+                .then(user => {
+                    if (user) {
+                        resolve(user);
+                    } else {
+                        reject("Invalid login");
+                    }
+                });
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
+};
+
+/**
+ * Logout
+ * Logout user
+ *
+ * no response value expected for this operation
+ **/
+exports.usersLogoutPOST = function() {
+    return new Promise(function(resolve, reject) {
         resolve();
     });
 };
