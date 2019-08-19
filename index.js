@@ -22,6 +22,12 @@ var options = {
   useStubs: process.env.NODE_ENV === 'development' // Conditionally turn on stubs (mock mode)
 };
 
+// override default swagger UI options
+var uiOptions = {
+    apiDocs: "/backend/spec.yaml",
+    swaggerUi: "/backend/swaggerui"
+};
+
 // The Swagger document (require it, build it programmatically, fetch it from a URL, ...)
 var spec = fs.readFileSync(path.join(dirToOther,'api/swagger.yaml'), 'utf8');
 var swaggerDoc = jsyaml.safeLoad(spec);
@@ -43,7 +49,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   app.use(middleware.swaggerRouter(options));
 
   // Serve the Swagger documents and Swagger UI
-  app.use(middleware.swaggerUi());
+  app.use(middleware.swaggerUi(uiOptions));
 
   app.use(serveStatic(path.join(__dirname, "public")));
 
@@ -51,7 +57,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   setupDataLayer().then(
       http.createServer(app).listen(serverPort, function () {
         console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
-        console.log('Swagger-ui is available on http://localhost:%d/docs', serverPort);
+        console.log('Swagger-ui is available on http://localhost:%d/backend/swaggerui', serverPort);
       })
   );
 });

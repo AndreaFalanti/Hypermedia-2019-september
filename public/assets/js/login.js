@@ -12,7 +12,10 @@ function login() {
         data: json,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function(data){document.location.href = "../index.html";},
+        success: function(data){
+            document.location.href = "../index.html";
+            sessionStorage.setItem("loginUsername", data.username);
+            },
         error: function(errMsg) {
             $("#loginError").removeClass("hidden");
             alert(JSON.stringify(errMsg, null, 4));
