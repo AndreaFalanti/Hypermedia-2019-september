@@ -1,3 +1,7 @@
+footer {
+    border-top: 3px solid #000000;
+}
+
 .error {
     color: red;
 }
@@ -8,8 +12,4 @@
 
 .navbar {
     border-bottom: 3px solid #000000;
-}
-
-.footer {
-    border-top: 3px solid #000000;
 }
