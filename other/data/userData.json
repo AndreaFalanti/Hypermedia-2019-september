@@ -1,0 +1,20 @@
+[
+  {
+    "email": "fala@asd.com",
+    "firstname": "Andrea",
+    "lastname": "Falanti",
+    "password": "qwerty123"
+  },
+  {
+    "email": "smania@asd.com",
+    "firstname": "Andrea",
+    "lastname": "Smania",
+    "password": "qwerty456"
+  },
+  {
+    "email": "admin@asd.com",
+    "firstname": "administrator",
+    "lastname": "one",
+    "password": "admin"
+  }
+]

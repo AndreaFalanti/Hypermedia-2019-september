@@ -1,22 +1,31 @@
 'use strict';
 
+let userJson = require("../data/userData.json");
+
 let sqlDb;
 
 exports.userDbSetup = function(database) {
     // set local reference to database
     sqlDb = database;
-    return database.schema.hasTable("usr").then(exists => {
+    let tableName = "usr";
+    return database.schema.hasTable(tableName).then(exists => {
         if (!exists) {
-            return database.schema.createTable("usr", table => {
+            return database.schema.createTable(tableName, table => {
                 table.text("email").primary();
                 table.text("name");
                 table.text("surname");
                 table.text("password");
-                console.log("User database created");
+                console.log(`${tableName} database created`);
+            }).then(() => {
+                return Promise.all(
+                    userJson.map(e => {
+                        return sqlDb(tableName).insert(e);
+                    })
+                );
             });
         }
         else {
-            console.log("User database already existing");
+            console.log(`${tableName} database already existing`);
         }
     });
 };
@@ -69,6 +78,24 @@ exports.usersEmailGET = function(email) {
             result = sqlDb("usr")
                 .select()
                 .where("email", email)
+                .timeout(2000, {cancel: true});
+
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
+};
+
+exports.usersEmailReservationsGET = function(email) {
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("reservation")
+                .select()
+                .where("user_email", email)
+                .innerJoin("event", "event.id", "reservation.event_id")
                 .timeout(2000, {cancel: true});
 
             resolve(result);

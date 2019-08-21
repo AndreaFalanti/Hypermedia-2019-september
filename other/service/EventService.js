@@ -1,13 +1,17 @@
 'use strict';
 
+let eventJson = require("../data/eventData.json");
+let reservationJson = require("../data/reservationData.json");
+
 let sqlDb;
 
 exports.eventDbSetup = function(database) {
   // set local reference to database
   sqlDb = database;
-  return database.schema.hasTable("event").then(exists => {
+  let tableName = "event";
+  return database.schema.hasTable(tableName).then(exists => {
     if (!exists) {
-      return database.schema.createTable("event", table => {
+      return database.schema.createTable(tableName, table => {
         table.increments("id").primary();
         table.text("name");
         table.text("location");
@@ -16,11 +20,17 @@ exports.eventDbSetup = function(database) {
         table.text("fact_sheet");
         table.enum("type", ["music", "theater", "opera", "dance"]);
         table.integer("seminar_id").index().references("id").inTable("seminar").nullable();
-        console.log("Event database created");
+        console.log(`${tableName} database created`);
+      }).then(() => {
+          return Promise.all(
+              eventJson.map(e => {
+                  return sqlDb(tableName).insert(e);
+              })
+          );
       });
     }
     else {
-      console.log("Event database already existing");
+      console.log(`${tableName} database already existing`);
     }
   });
 };
@@ -28,17 +38,24 @@ exports.eventDbSetup = function(database) {
 exports.reservationDbSetup = function(database) {
   // set local reference to database
   sqlDb = database;
-  return database.schema.hasTable("reservation").then(exists => {
+    let tableName = "reservation";
+    return database.schema.hasTable(tableName).then(exists => {
     if (!exists) {
-      return database.schema.createTable("reservation", table => {
+      return database.schema.createTable(tableName, table => {
         table.integer("event_id").index().references("id").inTable("event");
         table.text("user_email").index().references("email").inTable("usr");
         table.primary(["event_id", "user_email"]);
-        console.log("Reservation database created");
+        console.log(`${tableName} database created`);
+      }).then(() => {
+          return Promise.all(
+              reservationJson.map(e => {
+                  return sqlDb(tableName).insert(e);
+              })
+          );
       });
     }
     else {
-      console.log("Reservation database already existing");
+        console.log(`${tableName} database already existing`);
     }
   });
 };
@@ -56,8 +73,6 @@ exports.eventsDateDateGET = function(date) {
         let result;
         try {
             result = sqlDb("event")
-            //bug inner join sovrascrive i campi con lo stesso nome
-                .innerJoin("seminar", "event.seminar_id", "seminar.id")
                 .select()
                 .where("date", date)
                 .timeout(2000, {cancel: true});
@@ -80,15 +95,6 @@ exports.eventsDateDateGET = function(date) {
  * returns Events
  **/
 exports.eventsGET = function(size,page) {
-  /*return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });*/
   return new Promise(function(resolve, reject) {
     let result;
     try {
@@ -114,23 +120,6 @@ exports.eventsGET = function(size,page) {
  * returns Event
  **/
 exports.eventsIdGET = function(id) {
-  /*return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "id" : 0,
-  "name" : "Event 0",
-  "location" : "Milan",
-  "date" : "03-08-2019",
-  "desc" : "short description about event 0",
-  "fact sheet" : "• Free coffee   • Theater performance   • Fireworks",
-  "performance type" : "theater"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });*/
     return new Promise(function(resolve, reject) {
         let result;
         try {

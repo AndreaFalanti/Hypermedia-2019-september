@@ -12,7 +12,7 @@ tags:
   - name: "seminar"
     description: "Information about seminars, that discuss about recent events"
   - name: "performer"
-    description: "Information about performers that partecipate in the festival events"
+    description: "Information about performers that participate in the festival events"
   - name: "user"
     description: "Information about users"
 schemes:
@@ -61,6 +61,34 @@ paths:
           description: "A user"
           schema:
             $ref: "#/definitions/User"
+        404:
+          description: "Invalid user email"
+      x-swagger-router-controller: "User"
+  /users/{email}/reservations:
+    get:
+      tags:
+        - "user"
+      summary: "Gets a single user reservations"
+      description: "Returns reservations of a single user, identified by its email"
+      operationId: "usersEmailReservationsGET"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "email"
+          in: "path"
+          description: "The user's email"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "User reservations"
+          schema:
+            properties:
+              event:
+                $ref: "#/definitions/Event"
+              reserved_seats:
+                description: "Number of seats reserved"
+                type: "integer"
         404:
           description: "Invalid user email"
       x-swagger-router-controller: "User"

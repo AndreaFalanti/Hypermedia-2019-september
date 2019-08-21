@@ -1,0 +1,14 @@
+[
+  {
+    "event_id": 0,
+    "user_email": "Fala@asd.com"
+  },
+  {
+    "event_id": 1,
+    "user_email": "Smania@asd.com"
+  },
+  {
+    "event_id": 1,
+    "user_email": "Fala@asd.com"
+  }
+]

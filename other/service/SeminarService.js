@@ -1,49 +1,58 @@
 'use strict';
 
+let seminarJson = require("../data/seminarData.json");
+
 let sqlDb;
 
 exports.seminarDbSetup = function(database) {
-  // set local reference to database
-  sqlDb = database;
-  return database.schema.hasTable("seminar").then(exists => {
-    if (!exists) {
-      return database.schema.createTable("seminar", table => {
-        table.increments("id").primary();
-        table.text("title");
-        table.text("location");
-        table.date("date");
-        table.text("desc");
-        console.log("Seminar database created");
-      });
-    }
-    else {
-      console.log("Seminar database already existing");
-    }
-  });
+    // set local reference to database
+    sqlDb = database;
+    let tableName = "seminar";
+    return database.schema.hasTable(tableName).then(exists => {
+        if (!exists) {
+            return database.schema.createTable(tableName, table => {
+                table.increments("id").primary();
+                table.text("title");
+                table.text("location");
+                table.date("date");
+                table.text("desc");
+                console.log(`${tableName} database created`);
+            }).then(() => {
+                return Promise.all(
+                    seminarJson.map(e => {
+                        return sqlDb(tableName).insert(e);
+                    })
+                );
+            });
+        }
+        else {
+            console.log(`${tableName} database already existing`);
+        }
+    });
 };
 
 /**
  * Get a list of seminars on given date
  * Returns a list of seminars that will take place on a given date
  *
- * date String 
+ * date String
  * returns Seminars
  **/
 exports.seminarsDateDateGET = function(date) {
-  return new Promise(function(resolve, reject) {
-    let result;
-    try {
-      result = sqlDb("seminar")
-          .select()
-          .where("date", date)
-          .timeout(2000, {cancel: true});
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("seminar")
+                .select()
+                .where("date", date)
+                .timeout(2000, {cancel: true});
 
-      resolve(result);
-    }
-    catch (e) {
-      reject(e);
-    }
-  });
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
 };
 
 
@@ -56,20 +65,20 @@ exports.seminarsDateDateGET = function(date) {
  * returns Seminars
  **/
 exports.seminarsGET = function(size,page) {
-  return new Promise(function(resolve, reject) {
-    let result;
-    try {
-      result = sqlDb("seminar")
-          .select()
-          .limit(size || 10)
-          .timeout(2000, {cancel: true});
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("seminar")
+                .select()
+                .limit(size || 10)
+                .timeout(2000, {cancel: true});
 
-      resolve(result);
-    }
-    catch (e) {
-      reject(e);
-    }
-  });
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
 };
 
 
@@ -77,24 +86,24 @@ exports.seminarsGET = function(size,page) {
  * Get a single seminar
  * Returns a seminar for its id
  *
- * id Integer 
+ * id Integer
  * returns Seminar
  **/
 exports.seminarsIdGET = function(id) {
-  return new Promise(function(resolve, reject) {
-    let result;
-    try {
-      result = sqlDb("seminar")
-          .select()
-          .where("id", id)
-          .timeout(2000, {cancel: true});
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("seminar")
+                .select()
+                .where("id", id)
+                .timeout(2000, {cancel: true});
 
-      resolve(result);
-    }
-    catch (e) {
-      reject(e);
-    }
-  });
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
 };
 
 
@@ -102,23 +111,23 @@ exports.seminarsIdGET = function(id) {
  * Get a list of seminars in given location
  * Returns a list of seminars that will take place in a given location
  *
- * location String 
+ * location String
  * returns Seminars
  **/
 exports.seminarsLocationLocationGET = function(location) {
-  return new Promise(function(resolve, reject) {
-    let result;
-    try {
-      result = sqlDb("seminar")
-          .select()
-          .where("location", location)
-          .timeout(2000, {cancel: true});
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("seminar")
+                .select()
+                .where("location", location)
+                .timeout(2000, {cancel: true});
 
-      resolve(result);
-    }
-    catch (e) {
-      reject(e);
-    }
-  });
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
 };
 

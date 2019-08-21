@@ -25,6 +25,17 @@ module.exports.usersEmailGET = function usersEmailGET (req, res, next) {
     });
 };
 
+module.exports.usersEmailReservationsGET = function usersEmailReservationsGET (req, res, next) {
+    var email = req.swagger.params['email'].value;
+    User.usersEmailReservationsGET(email)
+        .then(function (response) {
+            utils.writeJson(res, response);
+        })
+        .catch(function (response) {
+            utils.writeJson(res, response);
+        });
+};
+
 module.exports.usersGET = function usersGET (req, res, next) {
   var size = req.swagger.params['size'].value;
   User.usersGET(size)
