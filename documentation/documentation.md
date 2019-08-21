@@ -2,8 +2,7 @@
 | Member n. | Role | First name | Last Name | Matricola | Email address |
 |-----------|---------------|------------|-----------|-----------|-----------------|
 | 1 | administrator | Andrea | Falanti | 869429 | 10568850@polimi.it |
-| 2 | member | Andrea | Smania | ? | ?@polimi.it |
-| 3 | member | Andrea | Huang | ? | ?@polimi.it |
+| 2 | member | Andrea | Smania | 869573 | 10568809@polimi.it |
 
 ## Links to other deliverables
 - Deliverable D0: the web application is accessible at [this
@@ -29,6 +28,14 @@ layer, data layer or presentation layer. How did you ensure that HTML is
 not rendered server side?
 
 ![Web diagram](images/web_architecture.png)
+--The principal components of our website are an application server and
+a database, that can be interrogated by clients with any browser application.
+The application layer is composed by the application server, that use
+Node.js to serve static files and provide API interface for client devices.
+The data layer is composed by the database, running PostgreSQL, it's main role
+is providing data requested by clients with API calls. Data layer and Application
+layer are hosted on heroku, while presentation layer runs on client devices,
+displaying assets with a browser. 
 
 ### API
 
