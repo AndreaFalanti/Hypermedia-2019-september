@@ -1,7 +1,3 @@
-footer {
-    border-top: 3px solid #000000;
-}
-
 .error {
     color: red;
 }
@@ -12,4 +8,25 @@ footer {
 
 .navbar {
     border-bottom: 3px solid #000000;
+}
+
+.div-orange {
+    border-color: #ff6600;
+}
+
+.div-dark {
+    border-color: #000000;
+}
+
+.div-light {
+    border-color: #ffffff;
+}
+
+.btn-circled {
+    padding: 0.5em 1em;
+    border-radius: 2em;
+}
+
+.btn-purple {
+    background-color: #9400D3;
 }
