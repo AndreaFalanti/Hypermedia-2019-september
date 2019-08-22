@@ -21,65 +21,92 @@
 
         <!--Space on top of page-->
         <div class="start"></div>
-    
-        <div class="wrapper h-100">
+        
+        <div class="h-100">
 
-            <!--Sidebar-->
-            <ul class="navbar-nav sidebar bg-custom w-25">
-
-                <!--Title-->
-                <li class="nav-item pt-4">
-                    <h3 class="text-center mt-2">Search events by:</h3>
-                </li>
-
-                <hr class="div-dark">
-
-                <!--Type checkbox group-->
-                <li class="nav-item py-4">
-                    <h5 class="text-left px-4 pb-3">Type:</h5>
-                    <div class="form-check form-check-group">
-                        <input id="checkbox1" type="checkbox">
-                        <label for="checkbox1">All</label>
-                    </div>
-                    <div class="form-check form-check-group">
-                        <input id="checkbox2" type="checkbox">
-                        <label for="checkbox2">Music</label>
-                    </div>
-                    <div class="form-check form-check-group">
-                        <input id="checkbox3" type="checkbox">
-                        <label for="checkbox3">Theatre</label>
-                    </div>
-                    <div class="form-check form-check-group">
-                        <input id="checkbox4" type="checkbox">
-                        <label for="checkbox4">Dance</label>
-                    </div>
-                    <div class="form-check form-check-group">
-                        <input id="checkbox5" type="checkbox">
-                        <label for="checkbox5">Opera</label>
-                    </div>
-                </li>
-
-                <!--Divider-->
-                <hr class="div-orange my-2">
-
-                <!--Date checkbox group-->
-                <li class="nav-item py-4">
-                    <div class="form-check">
-                        <input id="checkbox1" type="checkbox">
-                        <label for="checkbox1">Example checkbox</label>
-                    </div>
-                </li>
+            <!--Title-->
+            <div class="events container text-uppercase text-center">
+                <h3 class="mb-0">Events</h3>
+                <hr class="custom-div">
+                <i class="fas fa-star"></i>
+                <hr class="custom-div">
             </div>
 
-            <!--Page Content-->
-            <div class="content">
-                <div class="container-fluid h-100">
-                    <div class="row">
-                        <div class="col-sm-12">
+            <!--Dropdowns-->
+            <div class="d-flex container justify-content-center mb-4">
+                <div class="dropdown mx-auto">
+                    <div class="btn btn-circled btn-dark dropdown-toggle" id="eventTypeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose by type:</div>
+                    <div class="dropdown-menu" aria-labelledby="eventTypeDropdown">
+                        <button class="dropdown-item" type="button">All</button>
+                        <button class="dropdown-item" type="button"><i class="fas fa-headphones"></i> Music</button>
+                        <button class="dropdown-item" type="button"><i class="fas fa-theater-masks"></i> Theatre</button>
+                        <button class="dropdown-item" type="button"><i class="fas fa-shoe-prints"></i> Dance</button>
+                        <button class="dropdown-item" type="button"><i class="fas fa-music"></i> Opera</button>
+                    </div>
+                </div>
+                <div class="dropdown mx-auto">
+                    <div class="btn btn-circled btn-dark dropdown-toggle" id="eventDateDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose by date:</div>
+                    <div class="dropdown-menu" aria-labelledby="eventDateDropdown">
+                        <button class="dropdown-item" type="button">1</button>
+                        <button class="dropdown-item" type="button">2</button>
+                        <button class="dropdown-item" type="button">3</button>
+                        <button class="dropdown-item" type="button">4</button>
+                        <button class="dropdown-item" type="button">5</button>
+                        <button class="dropdown-item" type="button">6</button>
+                        <button class="dropdown-item" type="button">7</button>
+                        <button class="dropdown-item" type="button">8</button>
+                        <button class="dropdown-item" type="button">9</button>
+                        <button class="dropdown-item" type="button">10</button>
+                        <button class="dropdown-item" type="button">11</button>
+                        <button class="dropdown-item" type="button">12</button>
+                        <button class="dropdown-item" type="button">13</button>
+                        <button class="dropdown-item" type="button">14</button>
+                        <button class="dropdown-item" type="button">15</button>
+                        <button class="dropdown-item" type="button">16</button>
+                        <button class="dropdown-item" type="button">17</button>
+                        <button class="dropdown-item" type="button">18</button>
+                        <button class="dropdown-item" type="button">19</button>
+                        <button class="dropdown-item" type="button">20</button>
+                        <button class="dropdown-item" type="button">21</button>
+                        <button class="dropdown-item" type="button">22</button>
+                        <button class="dropdown-item" type="button">23</button>
+                        <button class="dropdown-item" type="button">24</button>
+                        <button class="dropdown-item" type="button">25</button>
+                        <button class="dropdown-item" type="button">26</button>
+                        <button class="dropdown-item" type="button">27</button>
+                        <button class="dropdown-item" type="button">28</button>
+                        <button class="dropdown-item" type="button">29</button>
+                        <button class="dropdown-item" type="button">30</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--Example of event/seminar card-->
+            <div class=" d-flex container justify-content-center mb-4">
+                <div class="card event-card rounded-0" style="border: 2px solid #000000;">
+                    <div class="row h-100 mx-3">
+                        <div class="col-sm-4">
+                            <img src="../assets/img/imagine_dragons.jpg" alt="..." class="img-fluid my-4 mx-auto">
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Imagine Dragons's Tour</h5>
+                                <hr class="div-dark my-3">
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card-body">
+                                <p class="card-text"><strong><i class="fas fa-headphones"></i> Music</strong></p>
+                                <p class="card-text"><strong>22 August 2019</strong></p>
+                                <p class="card-text"><strong>FakeLocation St.</strong></p>
+                                <a href="#" class="btn btn-primary btn-circled">Find out more</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <div id="footer"></div>
