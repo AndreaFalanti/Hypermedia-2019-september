@@ -10,5 +10,9 @@
   {
     "event_id": 1,
     "user_email": "fala@asd.com"
+  },
+  {
+    "event_id": 2,
+    "user_email": "admin@asd.com"
   }
 ]

@@ -17,6 +17,36 @@
     "desc": "Tel chi el telùn (which in Milanese means \" Eccolo qui il telone \") is a theatrical performance by the comic trio Aldo, Giovanni and Giacomo of 1999, directed by Arturo Brachetti.\n\nThe representation, also marketed in DVD version, has seen protagonists in addition to the trio members (Aldo Baglio, Giovanni Storti and Giacomo Poretti) also Marina Massironi, the Italian-American swing band \" The Good Fellas \" the Fichi d'India , Corrado Guzzanti, Antonio Cornacchione, Paolo Hendel, Raul Cremona and some foreign actors / magicians / acrobats.\n\nThe title (in Milanese \" eccolo qui il telone \") is a play on words with the phrase \" tel chi el terùn \" (\" eccolo qui il terrone \"), which ironizes on the characterization of the characters (the trio it is in fact composed of two northern and one southern actors, and their comedy often relies on their different accents).",
     "fact_sheet": "• 21:00 performance start",
     "type": "theater",
-    "seminar_id": "0"
+    "seminar_id": null
+  },
+  {
+    "id": 2,
+    "name": "Othello",
+    "location": "Milano",
+    "date": "2019-08-27",
+    "desc": "Othello (The Tragedy of Othello, the Moor of Venice) is a tragedy by William Shakespeare, believed to have been written in 1603. It is based on the story Un Capitano Moro (\"A Moorish Captain\") by Cinthio, a disciple of Boccaccio, first published in 1565. The story revolves around its two central characters: Othello, a Moorish general in the Venetian army and his treacherous ensign, Iago. Given its varied and enduring themes of racism, love, jealousy, betrayal, revenge and repentance, Othello is still often performed in professional and community theatre alike, and has been the source for numerous operatic, film, and literary adaptations.",
+    "fact_sheet": "• 18:00 performance start",
+    "type": "opera",
+    "seminar_id": 1
+  },
+  {
+    "id": 3,
+    "name": "Don Quixote",
+    "location": "Roma",
+    "date": "2019-08-29",
+    "desc": "Don Quixote is a ballet in four acts and eight scenes, based on episodes taken from the famous novel Don Quixote de la Mancha by Miguel de Cervantes. It was originally choreographed by Marius Petipa to the music of Ludwig Minkus and first presented by the Ballet of the Imperial Bolshoi Theatre of Moscow, Russia on 26 December [O.S. 14 December] 1869. Petipa and Minkus revised the ballet into a far more expanded and elaborated edition in five acts and eleven scenes for the Imperial Ballet, first presented on 21 November [O.S. 9 November] 1871 at the Imperial Bolshoi Kamenny Theatre of St. Petersburg.\n\nAll modern productions of the Petipa/Minkus ballet are derived from the version staged by Alexander Gorsky for the Bolshoi Theatre of Moscow in 1900, a production the ballet master staged for the Imperial Ballet of St. Petersburg in 1902.",
+    "fact_sheet": "• 16:00 performance start",
+    "type": "dance",
+    "seminar_id": null
+  },
+  {
+    "id": 4,
+    "name": "Rigoletto",
+    "location": "Venezia",
+    "date": "2019-08-30",
+    "desc": "Rigoletto (pronounced [riɡoˈletto]) is an opera in three acts by Giuseppe Verdi. The Italian libretto was written by Francesco Maria Piave based on the play Le roi s'amuse by Victor Hugo. Despite serious initial problems with the Austrian censors who had control over northern Italian theatres at the time, the opera had a triumphant premiere at La Fenice in Venice on 11 March 1851.\n\nIt is widely considered to be the first of the operatic masterpieces of Verdi's middle-to-late career. Its tragic story revolves around the licentious Duke of Mantua, his hunch-backed court jester Rigoletto, and Rigoletto's beautiful daughter Gilda. The opera's original title, La maledizione (The Curse), refers to a curse placed on both the Duke and Rigoletto by a courtier whose daughter the Duke has seduced with Rigoletto's encouragement. The curse comes to fruition when Gilda falls in love with the Duke and sacrifices her life to save him from the assassin hired by her father.",
+    "fact_sheet": "• 19:00 performance start",
+    "type": "opera",
+    "seminar_id": 1
   }
 ]

@@ -2,5 +2,17 @@
   {
     "event_id": 0,
     "artist_id": 3
+  },
+  {
+    "event_id": 2,
+    "artist_id": 4
+  },
+  {
+    "event_id": 2,
+    "artist_id": 6
+  },
+  {
+    "event_id": 4,
+    "artist_id": 5
   }
 ]

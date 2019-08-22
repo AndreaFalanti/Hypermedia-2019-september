@@ -5,5 +5,12 @@
     "location": "Rimini",
     "date": "2019-08-14",
     "desc": "Seminar about latest Jova events"
+  },
+  {
+    "id": 1,
+    "title": "Opera moments",
+    "location": "Milano",
+    "date": "2019-09-01",
+    "desc": "Seminar about latest opera events"
   }
 ]

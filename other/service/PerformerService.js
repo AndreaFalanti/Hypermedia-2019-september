@@ -17,7 +17,7 @@ exports.companyDbSetup = function(database) {
                 table.increments("id").primary();
                 table.text("name");
                 table.enum("type", ["music ensemble", "theater company", "dance company"]);
-                table.date("foundation_date");
+                table.integer("foundation_year");
                 table.text("desc");
                 console.log(`${tableName} database created`);
             }).then(() => {

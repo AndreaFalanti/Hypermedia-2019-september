@@ -2,5 +2,9 @@
   {
     "event_id": 1,
     "company_id": 0
+  },
+  {
+    "event_id": 3,
+    "company_id": 1
   }
 ]
