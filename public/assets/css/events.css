@@ -1,12 +1,8 @@
-html, body {
-    height: 100%;
-}
-
 h3 {
     font-size: 3em;
 }
 
-.custom-div {
+.event-div {
     width: 100%;
     height: 0.25em;
     border-radius: 1rem;
@@ -19,8 +15,4 @@ h3 {
 
 .event-card {
     box-shadow: 7px 7px 10px gray;
-}
-
-.start {
-    height: 4.5em;
 }

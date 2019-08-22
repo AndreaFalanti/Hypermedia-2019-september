@@ -1,9 +1,17 @@
+html, body {
+    height: 100%;
+}
+
 #footer {
     background-image: url("../img/footer.jpg");
 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .error {
@@ -12,6 +20,14 @@
 
 .hidden {
     visibility: hidden;
+}
+
+.main-container {
+    min-height: 100vh;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 100px;
 }
 
 .navbar {
@@ -37,4 +53,8 @@
 
 .btn-purple {
     background-color: #9400D3;
+}
+
+.start {
+    height: 4.5em;
 }
