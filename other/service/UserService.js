@@ -12,8 +12,8 @@ exports.userDbSetup = function(database) {
         if (!exists) {
             return database.schema.createTable(tableName, table => {
                 table.text("email").primary();
-                table.text("name");
-                table.text("surname");
+                table.text("firstname");
+                table.text("lastname");
                 table.text("password");
                 console.log(`${tableName} database created`);
             }).then(() => {

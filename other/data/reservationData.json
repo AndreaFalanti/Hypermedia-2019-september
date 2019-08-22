@@ -1,14 +1,14 @@
 [
   {
     "event_id": 0,
-    "user_email": "Fala@asd.com"
+    "user_email": "fala@asd.com"
   },
   {
     "event_id": 1,
-    "user_email": "Smania@asd.com"
+    "user_email": "smania@asd.com"
   },
   {
     "event_id": 1,
-    "user_email": "Fala@asd.com"
+    "user_email": "fala@asd.com"
   }
 ]
