@@ -54,3 +54,13 @@ html, body {
 .start {
     height: 4.5em;
 }
+
+.site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.site-content {
+    flex: 1;
+}
