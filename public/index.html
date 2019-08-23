@@ -117,25 +117,6 @@
 
         <!-- Optional JavaScript -->
         <script>
-            fetch('v2/events').then(r => r.json())
-                .then(function(json) {
-                    for(let i = 0; i< json.length; i++) {
-                        let listItem = document.createElement("li");
-                        let { id, name, location, date, desc, fact_sheet, type, seminar_id } = json[i];
-                        listItem.innerHTML = `${id} - ${name} - ${location} - ${date} - ${desc} - ${fact_sheet}
-                                - ${type} - ${seminar_id}`;
-                        document.querySelector("#test").append(listItem);
-                        fetch('v2/seminars/' + seminar_id).then(r => r.json())
-                            .then(json => {
-                                listItem = document.createElement("li");
-                                let { id, title, location, date, desc} = json[0];
-                                listItem.innerHTML = `${id} - ${title} - ${location} - ${date} - ${desc}`;
-                                document.querySelector("#test").append(listItem);
-                            })
-                    }
-                });
-        </script>
-        <script>
             $(function(){
                 $("#header").load("pages/header.html");
                 $("#footer").load("pages/footer.html");

@@ -64,3 +64,7 @@ html, body {
 .site-content {
     flex: 1;
 }
+
+.flm:first-letter {
+    text-transform:capitalize;
+}

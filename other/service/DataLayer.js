@@ -21,14 +21,14 @@ let sqlDb = sqlDbFactory({
 //function used to setup all database tables required
 async function setupDataLayer() {
     console.log("Setting up data layer...");
-    return await seminarDbSetup(sqlDb) &&
-        await companyDbSetup(sqlDb) &&
-        await artistDbSetup(sqlDb) &&
-        await eventDbSetup(sqlDb) &&
-        await userDbSetup(sqlDb) &&
-        await reservationDbSetup(sqlDb) &&
-        await performedByArtistDbSetup(sqlDb) &&
-        await performedByCompanyDbSetup(sqlDb);
+    await seminarDbSetup(sqlDb);
+    await companyDbSetup(sqlDb);
+    await artistDbSetup(sqlDb);
+    await eventDbSetup(sqlDb);
+    await userDbSetup(sqlDb);
+    await reservationDbSetup(sqlDb);
+    await performedByArtistDbSetup(sqlDb);
+    await performedByCompanyDbSetup(sqlDb);
 }
 
 module.exports = { database: sqlDb, setupDataLayer };
