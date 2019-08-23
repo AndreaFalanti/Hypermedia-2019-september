@@ -1,8 +1,11 @@
 function createEventCards () {
+    addFormatters();
     fetch('/v2/events').then(r => r.json())
         .then(events => {
             events.map(e => {
+                // Capitalize first letter
                 e.type = e.type.charAt(0).toUpperCase() + e.type.slice(1);
+                // More readable date format
                 e.date = new Date(e.date).toDateString();
             });
             $("#events-container").loadTemplate($("#eventCardTemplate"), events, {
@@ -33,4 +36,16 @@ function setTypeIcons () {
                 break;
         }
     })
+}
+
+function addFormatters() {
+    $.addTemplateFormatter("eventHrefFormatter",
+        function(value, template) {
+            return "/pages/event.html?id=" + value;
+        });
+    // Return first 'x' words as a text, 'x' value is provided by template variable
+    $.addTemplateFormatter("firstWordsFormatter",
+        function(value, template) {
+            return value.split(/\s+/).slice(0, template).join(" ") + "...";
+        });
 }

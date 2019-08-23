@@ -142,7 +142,7 @@
 
     <script type="text/html" id="eventCardTemplate">
         <div class=" d-flex container justify-content-center mb-4">
-            <div class="card event-card rounded-0" style="border: 2px solid #000000;">
+            <div class="card shadow-gray rounded-0" style="border: 2px solid #000000;">
                 <div class="row h-100 mx-3">
                     <div class="col-sm-4">
                         <img src="../assets/img/imagine_dragons.jpg" alt="..." class="img-fluid my-4 mx-auto">
@@ -151,7 +151,7 @@
                         <div class="card-body">
                             <h5 class="card-title" data-content="name"></h5>
                             <hr class="div-dark my-3">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text" data-content="desc" data-format="firstWordsFormatter" data-format-options="25"></p>
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -159,7 +159,7 @@
                             <p class="card-text"><i class="type-icon fas"></i> <strong data-content="type"></strong></p>
                             <p class="card-text"><strong data-content="date"></strong></p>
                             <p class="card-text"><strong data-content="location"></strong></p>
-                            <a href="#" class="btn btn-primary btn-circled">Find out more</a>
+                            <a href="#" class="btn btn-primary btn-circled" data-href="id" data-format="eventHrefFormatter" data-format-target="href">Find out more</a>
                         </div>
                     </div>
                 </div>
