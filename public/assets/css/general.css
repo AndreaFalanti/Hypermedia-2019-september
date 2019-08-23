@@ -40,7 +40,11 @@ html, body {
 }
 
 .btn-purple {
-    background-color: #9400D3;
+    background-color: #843e96;
+}
+
+.btn-lilac {
+    background-color: #ac68cc;
 }
 
 .shadow-black {
