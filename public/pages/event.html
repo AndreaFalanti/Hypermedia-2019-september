@@ -17,10 +17,9 @@
         <title>Festival - Event details</title>
     </head>
     <body>
-        <div class="main-container">
+        <div id="header"></div>
 
-            <div id="header"></div>
-
+        <div class="main-container" id="container">
             <!--Space on top of page-->
             <div class="start"></div>
 
@@ -42,8 +41,8 @@
                             <div class="card-body py-4 px-4">
                                 <h2 class="card-title">Description</h2>
                                 <hr class="div-dark my-4">
-                                <p class="card-text text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Nostrum inventore magnam accusamus soluta, cum ipsum alias, necessitatibus architecto eius aliquid voluptate ex nulla amet ea praesentium voluptatibus labore, 
+                                <p class="card-text text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Nostrum inventore magnam accusamus soluta, cum ipsum alias, necessitatibus architecto eius aliquid voluptate ex nulla amet ea praesentium voluptatibus labore,
                                     ratione harum.</p>
                             </div>
                         </div>
@@ -81,7 +80,7 @@
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
                                 </a>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -111,12 +110,12 @@
                                 <div class="card-body py-4 px-4">
                                     <h2 class="card-title">Fact Sheet</h2>
                                     <hr class="div-dark my-4">
-                                    <p class="card-text text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Nostrum inventore magnam accusamus soluta, cum ipsum alias, necessitatibus architecto eius aliquid voluptate ex nulla amet ea praesentium voluptatibus labore, 
+                                    <p class="card-text text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Nostrum inventore magnam accusamus soluta, cum ipsum alias, necessitatibus architecto eius aliquid voluptate ex nulla amet ea praesentium voluptatibus labore,
                                         ratione harum.</p>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
 
                     </div>
                     <div class="row mt-5">
@@ -136,21 +135,21 @@
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
                                 </a>
-                            
+
                                 <!--Indicators-->
                                 <ol class="carousel-indicators">
                                 <li data-target="#eventPerformers" data-slide-to="0" class="active"></li>
                                 <li data-target="#eventPerformers" data-slide-to="1"></li>
                                 <li data-target="#eventPerformers" data-slide-to="2"></li>
                                 </ol>
-                            
+
                                 <!--Slides-->
                                 <div class="carousel-inner" role="listbox">
-                            
+
                                 <div class="carousel-item active">
                                     <div class="container">
                                         <div class="row my-3">
-                            
+
                                             <div class="col-sm-4">
                                                 <div class="card mb-2">
                                                     <img class="card-img-top"
@@ -161,7 +160,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                    
+
                                             <div class="col-sm-4">
                                                 <div class="card mb-2">
                                                     <img class="card-img-top"
@@ -172,7 +171,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                    
+
                                             <div class="col-sm-4">
                                                 <div class="card mb-2">
                                                     <img class="card-img-top"
@@ -187,11 +186,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            
+
                                 <div class="carousel-item">
                                     <div class="container">
                                         <div class="row my-3">
-                            
+
                                             <div class="col-sm-4">
                                                 <div class="card mb-2">
                                                     <img class="card-img-top"
@@ -202,7 +201,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                    
+
                                             <div class="col-sm-4">
                                                 <div class="card mb-2">
                                                     <img class="card-img-top"
@@ -213,7 +212,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                    
+
                                             <div class="col-sm-4">
                                                 <div class="card mb-2">
                                                     <img class="card-img-top"
@@ -228,12 +227,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            
+
                                 <!--Third slide-->
                                 <div class="carousel-item">
                                     <div class="container">
                                         <div class="row my-3">
-                            
+
                                             <div class="col-md-4">
                                                 <div class="card mb-2">
                                                     <img class="card-img-top"
@@ -244,7 +243,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                    
+
                                             <div class="col-md-4">
                                                 <div class="card mb-2">
                                                     <img class="card-img-top"
@@ -255,7 +254,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                    
+
                                             <div class="col-md-4">
                                                 <div class="card mb-2">
                                                     <img class="card-img-top"
@@ -277,9 +276,8 @@
             </div>
         </div>
 
-            <div id="footer"></div>
+        <div id="footer"></div>
 
-        </div>
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -296,6 +294,9 @@
                 crossorigin="anonymous"></script>
 
         <!-- Optional JavaScript -->
+        <script src="../assets/js/utils.js"></script>
+        <script src="../assets/js/templateFormatters.js"></script>
+        <script src="../assets/js/event.js"></script>
         <script>
             $(function(){
                 $("#header").load("header.html");
