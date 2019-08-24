@@ -150,6 +150,7 @@ exports.artistIdGET = function(id) {
         try {
             result = sqlDb("artist")
                 .select()
+                .first()
                 .where("id", id)
                 .timeout(2000, {cancel: true});
 
@@ -228,6 +229,7 @@ exports.companyIdGET = function(id) {
         try {
             result = sqlDb("company")
                 .select()
+                .first()
                 .where("id", id)
                 .timeout(2000, {cancel: true});
 

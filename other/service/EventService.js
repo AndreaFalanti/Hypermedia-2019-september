@@ -125,6 +125,7 @@ exports.eventsIdGET = function(id) {
         try {
             result = sqlDb("event")
                 .select()
+                .first()
                 .where("id", id)
                 .timeout(2000, {cancel: true});
 

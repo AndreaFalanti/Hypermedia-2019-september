@@ -1,16 +1,17 @@
 // Set correct icon class based on event type value to <i> tag element
 function setEventIcon(i, type) {
+    type = type.toLowerCase();
     switch (type) {
-        case "Music":
+        case "music":
             i.classList.add("fa-headphones");
             break;
-        case "Theater":
+        case "theater":
             i.classList.add("fa-theater-masks");
             break;
-        case "Opera":
+        case "opera":
             i.classList.add("fa-music");
             break;
-        case "Dance":
+        case "dance":
             i.classList.add("fa-shoe-prints");
             break;
         default:

@@ -77,6 +77,7 @@ exports.usersEmailGET = function(email) {
         try {
             result = sqlDb("usr")
                 .select()
+                .first()
                 .where("email", email)
                 .timeout(2000, {cancel: true});
 
