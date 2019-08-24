@@ -10,6 +10,12 @@ html, body {
     background-size: cover;
 }
 
+.black-div {
+    width: 75%;
+    height: 4px;
+    background-color: #000000;
+}
+
 .calendar-intro {
     background-color: #343a40;
 }
