@@ -120,13 +120,13 @@ exports.performedByCompanyDbSetup = function(database) {
  * company id Integer
  * returns Artists
  **/
-exports.artistCompanyIdGET = function(company_id) {
+exports.companyIdArtistsGET = function(id) {
     return new Promise(function(resolve, reject) {
         let result;
         try {
             result = sqlDb("artist")
                 .select()
-                .where("affiliation", company_id)
+                .where("affiliation", id)
                 .timeout(2000, {cancel: true});
 
             resolve(result);

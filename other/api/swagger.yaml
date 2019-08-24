@@ -412,7 +412,7 @@ paths:
             $ref: "#/definitions/Artists"
         404:
           description: "Can't find artists"
-      x-swagger-router-controller: "Artist"
+      x-swagger-router-controller: "Performer"
   /artists/{id}:
     get:
       tags:
@@ -434,29 +434,7 @@ paths:
             $ref: "#/definitions/Artist"
         404:
           description: "Invalid artist id"
-      x-swagger-router-controller: "Artist"
-  /artists/company/{company_id}:
-    get:
-      tags:
-        - "performer"
-      summary: "Get artists affiliated to a company"
-      description: "Returns all artists affiliated to company with given id"
-      operationId: "artistCompanyIdGET"
-      produces:
-        - "application/json"
-      parameters:
-        - name: "company_id"
-          in: "path"
-          required: true
-          type: "integer"
-      responses:
-        200:
-          description: "Artists affiliated to company"
-          schema:
-            $ref: "#/definitions/Artists"
-        404:
-          description: "Invalid company id"
-      x-swagger-router-controller: "Artist"
+      x-swagger-router-controller: "Performer"
   /companies:
     get:
       tags:
@@ -484,7 +462,7 @@ paths:
             $ref: "#/definitions/Companies"
         404:
           description: "Can't find companies"
-      x-swagger-router-controller: "Company"
+      x-swagger-router-controller: "Performer"
   /companies/{id}:
     get:
       tags:
@@ -506,7 +484,29 @@ paths:
             $ref: "#/definitions/Company"
         404:
           description: "Invalid company id"
-      x-swagger-router-controller: "Company"
+      x-swagger-router-controller: "Performer"
+  /companies/{id}/artists:
+    get:
+      tags:
+        - "performer"
+      summary: "Get artists affiliated to a company"
+      description: "Returns all artists affiliated to company with given id"
+      operationId: "companyIdArtistsGET"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Artists affiliated to company"
+          schema:
+            $ref: "#/definitions/Artists"
+        404:
+          description: "Invalid company id"
+      x-swagger-router-controller: "Performer"
 
 definitions:
   User:

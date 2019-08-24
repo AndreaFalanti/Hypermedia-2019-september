@@ -3,9 +3,9 @@
 var utils = require('../utils/writer.js');
 var Performer = require('../service/PerformerService');
 
-module.exports.artistCompanyIdGET = function artistCompanyIdGET (req, res, next) {
-  var company_id = req.swagger.params['company_id'].value;
-  Performer.artistCompanyIdGET(company_id)
+module.exports.companyIdArtistsGET = function companyIdArtistsGET (req, res, next) {
+  var id = req.swagger.params['id'].value;
+  Performer.companyIdArtistsGET(id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
