@@ -95,6 +95,7 @@ exports.seminarsIdGET = function(id) {
         try {
             result = sqlDb("seminar")
                 .select()
+                .first()
                 .where("id", id)
                 .timeout(2000, {cancel: true});
 

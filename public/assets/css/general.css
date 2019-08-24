@@ -69,6 +69,12 @@ html, body {
     flex: 1;
 }
 
+/* Capitalize first letter */
 .flm:first-letter {
     text-transform:capitalize;
+}
+
+/* Enable \n in strings */
+.nl-enable {
+    white-space: pre-line;
 }
