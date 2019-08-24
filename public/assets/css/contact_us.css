@@ -1,0 +1,38 @@
+.basic-info {
+    font-size: 1.25em;
+    margin-bottom: 20px;
+}
+
+.basic-info i {
+    font-size: 2em;
+    margin-right: 30px;
+}
+
+.bg {
+    background-image: url(../img/purple-bg.jpg);
+    height: 45%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    border-bottom: 5px solid #000000;
+
+    position: relative;
+    text-align: center;
+}
+
+.bg p {
+    font-size: 1.25em;
+}
+.contact-div {
+    width: 75%;
+    height: 4px;
+    background-color: #000000;
+}
+
+.contact-us {
+    position: relative;
+    top: 30%;
+    transform: (-50%, -50%);
+}
