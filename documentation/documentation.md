@@ -69,6 +69,12 @@ resources.
 Describe with an ER diagram the model used in the data layer of your web
 application. How these map to the OpenAPI data model?
 
+![Web diagram](images/database-ER.png)
+The model used in the data layer map the openAPI data model because the data is
+fetched as it is from database and API has a clear definition of each object type in
+its "definitions" tag. Every object have listed all attributes with
+corresponding types and examples.
+
 ## Implementation
 
 ### Tools used
@@ -89,6 +95,14 @@ endpoints against the expected response?
 - Why do you think your web application adheres to common practices to
 partition a REST-based web application (static assets vs.
 application data)
+-- We think that our web application adheres to common practises
+because most of our pages are dynamically generated from data fetched from
+API calls, so that all objects of the same class can be displayed
+using a single page layout and also if data change in future there
+will be no problems with page updates (except if new data attributes
+are necessary). Some pages use static data because are descriptive and
+don't actually need to store data because they are the single topic pages
+and data would not be used in other pages or layouts.
 - Describe synthetically why and how did you manage session state,
 what are the state change triggering actions (e.g., POST to login
 etc..).

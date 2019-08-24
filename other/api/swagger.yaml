@@ -557,7 +557,7 @@ definitions:
           - "theater"
           - "opera"
           - "dance"
-      seminar id:
+      seminar_id:
         type: "integer"
     example:
       id: 0
@@ -567,6 +567,7 @@ definitions:
       desc: "short description about event 0"
       fact_sheet: "• Free coffee   • Theater performance   • Fireworks"
       performance_type: "theater"
+      seminar_id: 0
 
   Events:
     type: "array"
@@ -609,24 +610,28 @@ definitions:
         type: "string"
       surname:
         type: "string"
-      achievements:
+      affiliation:
+        type: "integer"
+      artist_type:
         type: "string"
-      profession:
-        type: "string"
-        description: "type of artist"
         enum:
           - "musician"
           - "dancer"
           - "actor"
           - "singer"
-      company:
-        type: "integer"
+      desc:
+        type: "string"
+      achievements:
+        type: "string"
+
     example:
       id: 0
       name: "John"
-      surname: "Padella"
+      surname: "Nadella"
+      affiliation: 0
+      artist_type: "musician"
+      desc: "short description about the artist"
       achievements: "• 2015 artist awards   • Time people list of 2016"
-      profession: "musician"
 
   Artists:
     type: "array"
@@ -641,23 +646,22 @@ definitions:
         type: "integer"
       name:
         type: "string"
-      group_type:
+      company_type:
         type: "string"
         enum:
           - "music ensemble"
           - "theatre company"
           - "dance company"
-      foundation_date:
-        type: "string"
-        format: "date"
+      foundation_year:
+        type: "integer"
       desc:
         type: "string"
     example:
       id: 0
       name: "The Jojos"
       group_type: "music ensemble"
-      foundation_date: "03-06-1997"
-      desc: "Description about this invented group"
+      foundation_date: "1997"
+      desc: "Description about this group"
 
   Companies:
     type: "array"
@@ -673,6 +677,9 @@ definitions:
         type: "string"
       password:
         type: "string"
+    example:
+      email: "mail@asd.com"
+      password: "admin"
 
 parameters:
   size:

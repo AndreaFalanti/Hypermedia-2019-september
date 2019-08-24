@@ -47,6 +47,7 @@ exports.artistDbSetup = function(database) {
                 table.integer("affiliation").index().references("id").inTable("company").nullable();
                 table.enum("type", ["musician", "dancer", "actor", "singer"]);
                 table.text("desc");
+                table.text("achievements");
                 console.log(`${tableName} database created`);
             }).then(() => {
                 return Promise.all(
