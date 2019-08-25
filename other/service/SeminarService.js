@@ -132,3 +132,28 @@ exports.seminarsLocationLocationGET = function(location) {
     });
 };
 
+
+/**
+ * Get events discussed in selected seminar
+ * Returns a list of events that are discussed in given seminar id
+ *
+ * id String
+ * returns Events
+ **/
+exports.seminarsIdEventsGET = function(id) {
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("event")
+                .select()
+                .where("seminar_id", id)
+                .timeout(2000, {cancel: true});
+
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
+};
+

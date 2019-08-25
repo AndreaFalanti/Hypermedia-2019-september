@@ -47,3 +47,14 @@ module.exports.seminarsLocationLocationGET = function seminarsLocationLocationGE
       utils.writeJson(res, response);
     });
 };
+
+module.exports.seminarsIdEventsGET = function seminarsIdEventsGET (req, res, next) {
+  var id = req.swagger.params['id'].value;
+  Seminar.seminarsIdEventsGET(id)
+      .then(function (response) {
+        utils.writeJson(res, response);
+      })
+      .catch(function (response) {
+        utils.writeJson(res, response);
+      });
+};

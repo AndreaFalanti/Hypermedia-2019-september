@@ -166,31 +166,6 @@ exports.eventsLocationLocationGET = function(location) {
 
 
 /**
- * Get events discussed in selected seminar
- * Returns a list of events that are discussed in given seminar id
- *
- * seminar id String 
- * returns Events
- **/
-exports.eventsSeminarIdGET = function(seminar_id) {
-    return new Promise(function(resolve, reject) {
-        let result;
-        try {
-            result = sqlDb("event")
-                .select()
-                .where("seminar_id", seminar_id)
-                .timeout(2000, {cancel: true});
-
-            resolve(result);
-        }
-        catch (e) {
-            reject(e);
-        }
-    });
-};
-
-
-/**
  * Get events of given type
  * Returns a list of events that match selected performance type
  *

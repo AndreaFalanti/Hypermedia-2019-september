@@ -269,28 +269,6 @@ paths:
         404:
           description: "Invalid performance type"
       x-swagger-router-controller: "Event"
-  /events/seminar/{seminar_id}:
-    get:
-      tags:
-        - "event"
-      summary: "Get events discussed in selected seminar"
-      description: "Returns a list of events that are discussed in given seminar id"
-      operationId: "eventsSeminarIdGET"
-      produces:
-        - "application/json"
-      parameters:
-        - name: "seminar_id"
-          in: "path"
-          required: true
-          type: "string"
-      responses:
-        200:
-          description: "Events discussed in seminar"
-          schema:
-            $ref: "#/definitions/Events"
-        404:
-          description: "Invalid seminar id"
-      x-swagger-router-controller: "Event"
   /seminars:
     get:
       tags:
@@ -338,6 +316,28 @@ paths:
           description: "Seminar for id"
           schema:
             $ref: "#/definitions/Seminar"
+        404:
+          description: "Invalid seminar id"
+      x-swagger-router-controller: "Seminar"
+  /seminars/{id}/events:
+    get:
+      tags:
+        - "seminar"
+      summary: "Get events discussed in selected seminar"
+      description: "Returns a list of events that are discussed in given seminar id"
+      operationId: "seminarsIdEventsGET"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Events discussed in seminar"
+          schema:
+            $ref: "#/definitions/Events"
         404:
           description: "Invalid seminar id"
       x-swagger-router-controller: "Seminar"

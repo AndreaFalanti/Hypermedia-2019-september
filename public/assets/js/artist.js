@@ -15,6 +15,6 @@ function insertData () {
     }
     else {
         console.log("Prototype page, delete this in the future");
-        // Maybe redirect to perfomers page? If id is not set no info can be fetched
+        // Maybe redirect to performers page? If id is not set no info can be fetched
     }
 }
