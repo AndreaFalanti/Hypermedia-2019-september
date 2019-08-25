@@ -19,6 +19,7 @@ exports.companyDbSetup = function(database) {
                 table.enum("type", ["music ensemble", "theater company", "dance company"]);
                 table.integer("foundation_year");
                 table.text("desc");
+                table.specificType("images", "TEXT[]");
                 console.log(`${tableName} database created`);
             }).then(() => {
                 return Promise.all(

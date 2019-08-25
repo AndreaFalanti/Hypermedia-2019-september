@@ -19,6 +19,7 @@ exports.eventDbSetup = function(database) {
         table.text("desc");
         table.text("fact_sheet");
         table.enum("type", ["music", "theater", "opera", "dance"]);
+        table.specificType("images", "TEXT[]");
         table.integer("seminar_id").index().references("id").inTable("seminar").nullable();
         console.log(`${tableName} database created`);
       }).then(() => {
