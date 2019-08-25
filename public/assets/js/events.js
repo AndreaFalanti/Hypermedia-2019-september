@@ -2,6 +2,7 @@ function createEventCards () {
     addFormatters();
     fetch('/v2/events').then(r => r.json())
         .then(events => {
+            console.log(events);
             $("#events-container").loadTemplate($("#eventCardTemplate"), events, {
                 append: true
             });

@@ -34,4 +34,13 @@ function addFormatters() {
         function(value, template) {
             return new Date(value).toDateString();
         });
+    // Take first image path from the array
+    $.addTemplateFormatter("firstImageFormatter",
+        function(value, template) {
+            return value[0];
+        });
+    $.addTemplateFormatter("spacedFormatter",
+        function(value, template) {
+            return " " + value;
+        });
 }

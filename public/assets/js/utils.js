@@ -1,7 +1,6 @@
 // Set correct icon class based on event type value to <i> tag element
 function setEventIcon(i, type) {
     type = type.toLowerCase();
-    console.log(type);
     switch (type) {
         case "music":
         case "music ensemble":
