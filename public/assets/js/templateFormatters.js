@@ -11,6 +11,10 @@ function addFormatters() {
         function(value, template) {
             return "/pages/reservation.html?id=" + value;
         });
+    $.addTemplateFormatter("companyHrefFormatter",
+        function(value, template) {
+            return "/pages/company.html?id=" + value;
+        });
     // Return first 'x' words as a text, 'x' value is provided by template variable
     $.addTemplateFormatter("firstWordsFormatter",
         function(value, template) {
