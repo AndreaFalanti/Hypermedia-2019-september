@@ -10,6 +10,7 @@ function insertData () {
                 console.log(data);
                 $("#container").loadTemplate($("#eventTemplate"), data, {async: false});
                 setEventIcon(document.body.querySelector("#eventIcon"), data.type);
+                populateCarousel(data.images, $("#carousel"), $("#carouselIndicators"));
                 if (data.seminar_id !== null) {
                     fetch('/v2/seminars/' + data.seminar_id).then(r => r.json())
                         .then(seminar => $("#seminarName").html(seminar.title));
