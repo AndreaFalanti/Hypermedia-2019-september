@@ -63,6 +63,12 @@ html, body {
     background-color: #ac68cc;
 }
 
+.reservation-info img {
+    height: 300px;
+    border: 1px solid #000000;
+    box-shadow: 3px 3px 5px #000000;
+}
+
 .shadow-black {
     box-shadow: 7px 7px 10px #000000;
 }
