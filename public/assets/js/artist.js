@@ -8,6 +8,7 @@ function insertData () {
                 console.log(data);
                 $("#cont").loadTemplate($("#artistTemplate"), data, {async: false});
                 $("#artistTitle").html(data.name + " " + data.surname);
+                populateCarousel(data.images, $("#carousel"), $("#carouselIndicators"));
                 fetch('/v2/companies/' + data.affiliation).then(r => r.json())
                     .then(company => $("#companyLink").html(company.name));
             });

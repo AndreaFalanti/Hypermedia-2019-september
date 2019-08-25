@@ -48,6 +48,7 @@ exports.artistDbSetup = function(database) {
                 table.enum("type", ["musician", "dancer", "actor", "singer"]);
                 table.text("desc");
                 table.text("achievements");
+                table.specificType("images", "TEXT[]");
                 console.log(`${tableName} database created`);
             }).then(() => {
                 return Promise.all(
