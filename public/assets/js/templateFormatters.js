@@ -15,6 +15,10 @@ function addFormatters() {
         function(value, template) {
             return "/pages/company.html?id=" + value;
         });
+    $.addTemplateFormatter("artistHrefFormatter",
+        function(value, template) {
+            return "/pages/artist.html?id=" + value;
+        });
     // Return first 'x' words as a text, 'x' value is provided by template variable
     $.addTemplateFormatter("firstWordsFormatter",
         function(value, template) {
