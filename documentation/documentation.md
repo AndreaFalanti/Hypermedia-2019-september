@@ -65,13 +65,19 @@ to fetch the data that clients require to display the pages.
 Describe here synthetically, which models you have introduced for
 resources.
 
+-- The main resources of our web application are images, used as a thumbnail or in photo galleries
+of some detail pages. We decided to use an array of image paths in our database for each object that
+use a photo gallery, so that API calls can return it and from script we could easily set image
+sources in html tags. Other data is only textual, so we used standard JSON format to return it (along
+with the images array mentioned before).
+
 ### Data model
 Describe with an ER diagram the model used in the data layer of your web
 application. How these map to the OpenAPI data model?
 
 ![Web diagram](images/database-ER.png)
-The model used in the data layer map the openAPI data model because the data is
-fetched as it is from database and API has a clear definition of each object type in
+--The model used in the data layer map the openAPI data model because the data is
+fetched as it is from database and API specification file has a clear definition of each object type in
 its "definitions" tag. Every object have listed all attributes with
 corresponding types and examples.
 
@@ -120,6 +126,11 @@ of the group, e.g.:
 > - Foo worked on front end (80%) and OpenAPI Spec (20% of the time)
 > - Bar worked on ....
 
+--
+> - Andrea Falanti worked on back end (40%), database (10%), front end scripting (30%)
+and openAPI spec (10%)
+> - Andrea Smania worked on front end presentation (90%) and database (10%)
+
 ### Analysis of existing API
 Describe here the research of (full or part of) existing APIs that are similar
 in objectives and scope to the one implemented, that have possibly guided
@@ -133,6 +144,22 @@ Or
 > For the part of the API that manages <ABC> we considered/studied <XYZ>(link)
 > because of <REASON> but wasn't completely fitting to our purpose because of
 > <REASON>.
+
+-- We took full inspiration from Spotify API ([link](https://api.apis.guru/v2/specs/spotify.com/v1/swagger.yaml))
+for API general structure and API URL endpoints, as we thought
+it was more clear and easier to maintain and read then other API we search online.
+Using parameters in path and defining clear object definition schemas we achieved
+a similar result even if a lot more simplistic because we don't have in
+our API specification OAuth authorization nor lot of query parameters like
+Spotify ones.
+
+We considered Gettyimages API ([link](https://api.apis.guru/v2/specs/gettyimages.com/3/swagger.yaml))
+for the part that manages photos and we had confirm that using URI for
+accessing images was a good practise, so that could also point to an
+external site if in a professional case we would have used
+a storage service for images. We didn't analyze to much the API because
+was far too complex for our data model, opting for a more
+simplistic approach.
 
 ### Learning outcome
 What was the most important thing all the members have learned while
