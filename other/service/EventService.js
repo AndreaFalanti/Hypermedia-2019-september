@@ -122,16 +122,20 @@ exports.eventsGET = function(size,page) {
  **/
 exports.eventsIdGET = function(id) {
     return new Promise(function(resolve, reject) {
-        let result;
         try {
-            result = sqlDb("event")
+            return sqlDb("event")
                 .select()
                 .first()
                 .where("id", id)
-                .timeout(2000, {cancel: true});
-
-            console.log(result);
-            resolve(result);
+                .timeout(2000, {cancel: true})
+                .then(event => {
+                    if (event) {
+                        resolve(event);
+                    }
+                    else {
+                        reject({error: "Event not found (unknown id)", code: 404});
+                    }
+                });
         }
         catch (e) {
             reject(e);

@@ -91,15 +91,20 @@ exports.seminarsGET = function(size,page) {
  **/
 exports.seminarsIdGET = function(id) {
     return new Promise(function(resolve, reject) {
-        let result;
         try {
-            result = sqlDb("seminar")
+            return sqlDb("seminar")
                 .select()
                 .first()
                 .where("id", id)
-                .timeout(2000, {cancel: true});
-
-            resolve(result);
+                .timeout(2000, {cancel: true})
+                .then(seminar => {
+                    if (seminar) {
+                        resolve(seminar);
+                    }
+                    else {
+                        reject({error: "Seminar not found (unknown id)", code: 404});
+                    }
+                });
         }
         catch (e) {
             reject(e);

@@ -73,15 +73,20 @@ exports.userRegisterPOST = function(body) {
  **/
 exports.usersEmailGET = function(email) {
     return new Promise(function(resolve, reject) {
-        let result;
         try {
-            result = sqlDb("usr")
+            return sqlDb("usr")
                 .select()
                 .first()
                 .where("email", email)
-                .timeout(2000, {cancel: true});
-
-            resolve(result);
+                .timeout(2000, {cancel: true})
+                .then(user => {
+                    if (user) {
+                        resolve(user);
+                    }
+                    else {
+                        reject({error: "User not found (unknown id)", code: 404});
+                    }
+                });
         }
         catch (e) {
             reject(e);

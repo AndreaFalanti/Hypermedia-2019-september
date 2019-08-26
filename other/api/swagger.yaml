@@ -62,7 +62,7 @@ paths:
           schema:
             $ref: "#/definitions/User"
         404:
-          description: "Invalid user email"
+          description: "User not found (unknown email)"
       x-swagger-router-controller: "User"
   /users/{email}/reservations:
     get:
@@ -201,7 +201,7 @@ paths:
           schema:
             $ref: "#/definitions/Event"
         404:
-          description: "Invalid event id"
+          description: "Event not found (unknown id)"
       x-swagger-router-controller: "Event"
   /events/date/{date}:
     get:
@@ -223,7 +223,7 @@ paths:
           schema:
             $ref: "#/definitions/Events"
         404:
-          description: "Invalid date"
+          description: "No events in date"
       x-swagger-router-controller: "Event"
   /events/location/{location}:
     get:
@@ -245,7 +245,7 @@ paths:
           schema:
             $ref: "#/definitions/Events"
         404:
-          description: "Invalid location"
+          description: "No events in location"
       x-swagger-router-controller: "Event"
   /events/type/{performance_type}:
     get:
@@ -267,7 +267,7 @@ paths:
           schema:
             $ref: "#/definitions/Events"
         404:
-          description: "Invalid performance type"
+          description: "No events of this type found"
       x-swagger-router-controller: "Event"
   /seminars:
     get:
@@ -317,7 +317,7 @@ paths:
           schema:
             $ref: "#/definitions/Seminar"
         404:
-          description: "Invalid seminar id"
+          description: "Seminar not found (unknown id)"
       x-swagger-router-controller: "Seminar"
   /seminars/{id}/events:
     get:
@@ -361,7 +361,7 @@ paths:
           schema:
             $ref: "#/definitions/Seminars"
         404:
-          description: "Invalid date"
+          description: "No seminars found in this date"
       x-swagger-router-controller: "Seminar"
   /seminars/location/{location}:
     get:
@@ -383,7 +383,7 @@ paths:
           schema:
             $ref: "#/definitions/Seminars"
         404:
-          description: "Invalid location"
+          description: "No seminars found in this location"
       x-swagger-router-controller: "Seminar"
   /artists:
     get:
@@ -433,7 +433,7 @@ paths:
           schema:
             $ref: "#/definitions/Artist"
         404:
-          description: "Invalid artist id"
+          description: "Artist not found (unknown id)"
       x-swagger-router-controller: "Performer"
   /companies:
     get:
@@ -483,7 +483,7 @@ paths:
           schema:
             $ref: "#/definitions/Company"
         404:
-          description: "Invalid company id"
+          description: "Company not found (unknown id)"
       x-swagger-router-controller: "Performer"
   /companies/{id}/artists:
     get:
@@ -677,7 +677,7 @@ definitions:
       id: 0
       name: "The Jojos"
       type: "music ensemble"
-      foundation_date: "1997"
+      foundation_year: "1997"
       desc: "Description about this group"
       images: ["path/image_1.jpg", "path/image_2.jpg"]
 

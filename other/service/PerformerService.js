@@ -149,15 +149,20 @@ exports.companyIdArtistsGET = function(id) {
  **/
 exports.artistIdGET = function(id) {
     return new Promise(function(resolve, reject) {
-        let result;
         try {
-            result = sqlDb("artist")
+            return sqlDb("artist")
                 .select()
                 .first()
                 .where("id", id)
-                .timeout(2000, {cancel: true});
-
-            resolve(result);
+                .timeout(2000, {cancel: true})
+                .then(artist => {
+                    if (artist) {
+                        resolve(artist);
+                    }
+                    else {
+                        reject({error: "Artist not found (unknown id)", code: 404});
+                    }
+                });
         }
         catch (e) {
             reject(e);
@@ -228,15 +233,20 @@ exports.companiesGET = function(size,page) {
  **/
 exports.companyIdGET = function(id) {
     return new Promise(function(resolve, reject) {
-        let result;
         try {
-            result = sqlDb("company")
+            return sqlDb("company")
                 .select()
                 .first()
                 .where("id", id)
-                .timeout(2000, {cancel: true});
-
-            resolve(result);
+                .timeout(2000, {cancel: true})
+                .then(company => {
+                    if (company) {
+                        resolve(company);
+                    }
+                    else {
+                        reject({error: "Company not found (unknown id)", code: 404});
+                    }
+                });
         }
         catch (e) {
             reject(e);

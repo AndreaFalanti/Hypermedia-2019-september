@@ -7,6 +7,13 @@ function createEventCards () {
                 append: true
             });
         }).then(setTypeIcons);
+    fetch('/v2/seminars').then(r => r.json())
+        .then(seminars => {
+            console.log(seminars);
+            $("#events-container").loadTemplate($("#seminarCardTemplate"), seminars, {
+                append: true
+            });
+        })
 }
 
 function setTypeIcons () {
