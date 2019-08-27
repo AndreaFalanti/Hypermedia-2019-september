@@ -28,11 +28,7 @@ paths:
       produces:
         - "application/json"
       parameters:
-        - name: "size"
-          in: "query"
-          description: "Number of items returned in a page, default is 10"
-          required: false
-          type: "integer"
+        - $ref: "#/parameters/size"
       responses:
         200:
           description: "Users list"
@@ -163,16 +159,11 @@ paths:
       produces:
         - "application/json"
       parameters:
-        - name: "size"
-          in: "query"
-          description: "Number of items returned in a page, default is 10"
-          required: false
-          type: "integer"
-        - name: "page"
-          in: "query"
-          description: "Selected page to return, default is 0"
-          required: false
-          type: "integer"
+        - $ref: "#/parameters/size"
+        - $ref: "#/parameters/page"
+        - $ref: "#/parameters/type"
+        - $ref: "#/parameters/date"
+        - $ref: "#/parameters/location"
       responses:
         200:
           description: "List of events"
@@ -713,3 +704,24 @@ parameters:
     description: "Selected page to return, default is 0"
     required: false
     type: "integer"
+
+  date:
+    name: "date"
+    in: "query"
+    description: "Date filter to apply"
+    required: false
+    type: "string"
+
+  location:
+    name: "location"
+    in: "query"
+    description: "Location filter to apply"
+    required: false
+    type: "string"
+
+  type:
+    name: "type"
+    in: "query"
+    description: "Type filter to apply"
+    required: false
+    type: "string"

@@ -72,3 +72,12 @@ function createCarouselIndicator(index) {
 
     return indicator;
 }
+
+// Add or update given query parameter in actual URL, reloading the page
+function addQueryParamToUrl(param, value) {
+    if ('URLSearchParams' in window) {
+        let searchParams = new URLSearchParams(window.location.search);
+        searchParams.set(param, value);
+        window.location.search = searchParams.toString();
+    }
+}

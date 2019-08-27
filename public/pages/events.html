@@ -38,11 +38,11 @@
                     <div class="dropdown mx-auto">
                         <div class="btn btn-circled btn-dark dropdown-toggle" id="eventTypeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose by type:</div>
                         <div class="dropdown-menu" aria-labelledby="eventTypeDropdown">
-                            <button class="dropdown-item" type="button">All</button>
-                            <button class="dropdown-item" type="button"><i class="fas fa-headphones"></i> Music</button>
-                            <button class="dropdown-item" type="button"><i class="fas fa-theater-masks"></i> Theatre</button>
-                            <button class="dropdown-item" type="button"><i class="fas fa-shoe-prints"></i> Dance</button>
-                            <button class="dropdown-item" type="button"><i class="fas fa-music"></i> Opera</button>
+                            <button class="dropdown-item" type="button" onclick="location.href='\\pages\\events.html'">All</button>
+                            <button class="dropdown-item" type="button" onclick="addQueryParamToUrl('type', 'music')"><i class="fas fa-headphones"></i> Music</button>
+                            <button class="dropdown-item" type="button" onclick="addQueryParamToUrl('type', 'theater')"><i class="fas fa-theater-masks"></i> Theatre</button>
+                            <button class="dropdown-item" type="button" onclick="addQueryParamToUrl('type', 'dance')"><i class="fas fa-shoe-prints"></i> Dance</button>
+                            <button class="dropdown-item" type="button" onclick="addQueryParamToUrl('type', 'opera')"><i class="fas fa-music"></i> Opera</button>
                             <button class="dropdown-item" type="button"><i class="fas fa-chalkboard-teacher"></i> Seminars</button>
                         </div>
                     </div>

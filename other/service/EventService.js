@@ -95,12 +95,23 @@ exports.eventsDateDateGET = function(date) {
  * page Integer Selected page to return, default is 0 (optional)
  * returns Events
  **/
-exports.eventsGET = function(size,page) {
+exports.eventsGET = function(size,page,type,date,location) {
   return new Promise(function(resolve, reject) {
     let result;
     try {
       result = sqlDb("event")
           .select()
+          .modify((query) => {
+              if (type) {
+                  query.where("type", type)
+              }
+              if (date) {
+                  query.where("date", date)
+              }
+              if (location) {
+                  query.where("location", location)
+              }
+          })
           .limit(size || 10)
           .timeout(2000, {cancel: true});
 

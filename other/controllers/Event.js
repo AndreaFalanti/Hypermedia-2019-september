@@ -17,7 +17,10 @@ module.exports.eventsDateDateGET = function eventsDateDateGET (req, res, next) {
 module.exports.eventsGET = function eventsGET (req, res, next) {
     var size = req.swagger.params['size'].value;
     var page = req.swagger.params['page'].value;
-    Event.eventsGET(size,page)
+    var type = req.swagger.params['type'].value;
+    var date = req.swagger.params['date'].value;
+    var location = req.swagger.params['location'].value;
+    Event.eventsGET(size,page,type,date,location)
         .then(function (response) {
             utils.writeJson(res, response);
         })
