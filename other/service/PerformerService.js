@@ -119,7 +119,7 @@ exports.performedByCompanyDbSetup = function(database) {
  * Get artists affiliated to a company
  * Returns all artists affiliated to company with given id
  *
- * company id Integer
+ * id Integer
  * returns Artists
  **/
 exports.companyIdArtistsGET = function(id) {

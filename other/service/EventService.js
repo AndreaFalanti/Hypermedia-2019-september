@@ -63,31 +63,6 @@ exports.reservationDbSetup = function(database) {
 
 
 /**
- * Get events performed on given date
- * Returns a list of events that are performed on selected date
- *
- * date String 
- * returns Events
- **/
-exports.eventsDateDateGET = function(date) {
-    return new Promise(function(resolve, reject) {
-        let result;
-        try {
-            result = sqlDb("event")
-                .select()
-                .where("date", date)
-                .timeout(2000, {cancel: true});
-
-            resolve(result);
-        }
-        catch (e) {
-            reject(e);
-        }
-    });
-};
-
-
-/**
  * Get events list
  * Returns list of events
  *
@@ -153,54 +128,3 @@ exports.eventsIdGET = function(id) {
         }
     });
 };
-
-
-/**
- * Get events in given location
- * Returns a list of events that are performed at selected location
- *
- * location String 
- * returns Events
- **/
-exports.eventsLocationLocationGET = function(location) {
-    return new Promise(function(resolve, reject) {
-        let result;
-        try {
-            result = sqlDb("event")
-                .select()
-                .where("location", location)
-                .timeout(2000, {cancel: true});
-
-            resolve(result);
-        }
-        catch (e) {
-            reject(e);
-        }
-    });
-};
-
-
-/**
- * Get events of given type
- * Returns a list of events that match selected performance type
- *
- * performance type String 
- * returns Events
- **/
-exports.eventsTypePerformanceTypeGET = function(performance_type) {
-    return new Promise(function(resolve, reject) {
-        let result;
-        try {
-            result = sqlDb("event")
-                .select()
-                .where("type", performance_type)
-                .timeout(2000, {cancel: true});
-
-            resolve(result);
-        }
-        catch (e) {
-            reject(e);
-        }
-    });
-};
-

@@ -31,30 +31,6 @@ exports.seminarDbSetup = function(database) {
     });
 };
 
-/**
- * Get a list of seminars on given date
- * Returns a list of seminars that will take place on a given date
- *
- * date String
- * returns Seminars
- **/
-exports.seminarsDateDateGET = function(date) {
-    return new Promise(function(resolve, reject) {
-        let result;
-        try {
-            result = sqlDb("seminar")
-                .select()
-                .where("date", date)
-                .timeout(2000, {cancel: true});
-
-            resolve(result);
-        }
-        catch (e) {
-            reject(e);
-        }
-    });
-};
-
 
 /**
  * Get seminars list
@@ -113,31 +89,6 @@ exports.seminarsIdGET = function(id) {
                         reject({error: "Seminar not found (unknown id)", code: 404});
                     }
                 });
-        }
-        catch (e) {
-            reject(e);
-        }
-    });
-};
-
-
-/**
- * Get a list of seminars in given location
- * Returns a list of seminars that will take place in a given location
- *
- * location String
- * returns Seminars
- **/
-exports.seminarsLocationLocationGET = function(location) {
-    return new Promise(function(resolve, reject) {
-        let result;
-        try {
-            result = sqlDb("seminar")
-                .select()
-                .where("location", location)
-                .timeout(2000, {cancel: true});
-
-            resolve(result);
         }
         catch (e) {
             reject(e);

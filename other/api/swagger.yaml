@@ -194,72 +194,6 @@ paths:
         404:
           description: "Event not found (unknown id)"
       x-swagger-router-controller: "Event"
-  /events/date/{date}:
-    get:
-      tags:
-        - "event"
-      summary: "Get events performed on given date"
-      description: "Returns a list of events that are performed on selected date"
-      operationId: "eventsDateDateGET"
-      produces:
-        - "application/json"
-      parameters:
-        - name: "date"
-          in: "path"
-          required: true
-          type: "string"
-      responses:
-        200:
-          description: "Event for date"
-          schema:
-            $ref: "#/definitions/Events"
-        404:
-          description: "No events in date"
-      x-swagger-router-controller: "Event"
-  /events/location/{location}:
-    get:
-      tags:
-        - "event"
-      summary: "Get events in given location"
-      description: "Returns a list of events that are performed at selected location"
-      operationId: "eventsLocationLocationGET"
-      produces:
-        - "application/json"
-      parameters:
-        - name: "location"
-          in: "path"
-          required: true
-          type: "string"
-      responses:
-        200:
-          description: "Event for location"
-          schema:
-            $ref: "#/definitions/Events"
-        404:
-          description: "No events in location"
-      x-swagger-router-controller: "Event"
-  /events/type/{performance_type}:
-    get:
-      tags:
-        - "event"
-      summary: "Get events of given type"
-      description: "Returns a list of events that match selected performance type"
-      operationId: "eventsTypePerformanceTypeGET"
-      produces:
-        - "application/json"
-      parameters:
-        - name: "performance_type"
-          in: "path"
-          required: true
-          type: "string"
-      responses:
-        200:
-          description: "Event for type"
-          schema:
-            $ref: "#/definitions/Events"
-        404:
-          description: "No events of this type found"
-      x-swagger-router-controller: "Event"
   /seminars:
     get:
       tags:
@@ -325,50 +259,6 @@ paths:
             $ref: "#/definitions/Events"
         404:
           description: "Invalid seminar id"
-      x-swagger-router-controller: "Seminar"
-  /seminars/date/{date}:
-    get:
-      tags:
-        - "seminar"
-      summary: "Get a list of seminars on given date"
-      description: "Returns a list of seminars that will take place on a given date"
-      operationId: "seminarsDateDateGET"
-      produces:
-        - "application/json"
-      parameters:
-        - name: "date"
-          in: "path"
-          required: true
-          type: "string"
-      responses:
-        200:
-          description: "Seminars for date"
-          schema:
-            $ref: "#/definitions/Seminars"
-        404:
-          description: "No seminars found in this date"
-      x-swagger-router-controller: "Seminar"
-  /seminars/location/{location}:
-    get:
-      tags:
-        - "seminar"
-      summary: "Get a list of seminars in given location"
-      description: "Returns a list of seminars that will take place in a given location"
-      operationId: "seminarsLocationLocationGET"
-      produces:
-        - "application/json"
-      parameters:
-        - name: "location"
-          in: "path"
-          required: true
-          type: "string"
-      responses:
-        200:
-          description: "Seminars for location"
-          schema:
-            $ref: "#/definitions/Seminars"
-        404:
-          description: "No seminars found in this location"
       x-swagger-router-controller: "Seminar"
   /artists:
     get:
