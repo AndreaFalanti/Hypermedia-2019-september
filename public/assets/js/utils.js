@@ -81,3 +81,10 @@ function addQueryParamToUrl(param, value) {
         window.location.search = searchParams.toString();
     }
 }
+
+// Remove given query parameter from URL, reloading the page
+function removeQueryParamFromUrl(param) {
+    let searchParams = new URLSearchParams(window.location.search);
+    searchParams.delete(param);
+    window.location = window.location.pathname + "?" + searchParams;
+}

@@ -270,16 +270,10 @@ paths:
       produces:
         - "application/json"
       parameters:
-        - name: "size"
-          in: "query"
-          description: "Number of items returned in a page, default is 10"
-          required: false
-          type: "integer"
-        - name: "page"
-          in: "query"
-          description: "Selected page to return, default is 0"
-          required: false
-          type: "integer"
+        - $ref: "#/parameters/size"
+        - $ref: "#/parameters/page"
+        - $ref: "#/parameters/date"
+        - $ref: "#/parameters/location"
       responses:
         200:
           description: "List of seminars"

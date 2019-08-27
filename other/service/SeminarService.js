@@ -64,12 +64,20 @@ exports.seminarsDateDateGET = function(date) {
  * page Integer Selected page to return, default is 0 (optional)
  * returns Seminars
  **/
-exports.seminarsGET = function(size,page) {
+exports.seminarsGET = function(size,page,date,location) {
     return new Promise(function(resolve, reject) {
         let result;
         try {
             result = sqlDb("seminar")
                 .select()
+                .modify((query) => {
+                    if (date) {
+                        query.where("date", date)
+                    }
+                    if (location) {
+                        query.where("location", location)
+                    }
+                })
                 .limit(size || 10)
                 .timeout(2000, {cancel: true});
 

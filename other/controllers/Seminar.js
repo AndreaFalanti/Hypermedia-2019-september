@@ -17,7 +17,9 @@ module.exports.seminarsDateDateGET = function seminarsDateDateGET (req, res, nex
 module.exports.seminarsGET = function seminarsGET (req, res, next) {
     var size = req.swagger.params['size'].value;
     var page = req.swagger.params['page'].value;
-    Seminar.seminarsGET(size,page)
+    var date = req.swagger.params['date'].value;
+    var location = req.swagger.params['location'].value;
+    Seminar.seminarsGET(size,page,date,location)
         .then(function (response) {
             utils.writeJson(res, response);
         })
