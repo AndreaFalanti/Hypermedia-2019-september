@@ -31,3 +31,7 @@
     top: 30%;
     transform: (-50%, -50%);
 }
+
+.container {
+    overflow: hidden;
+}

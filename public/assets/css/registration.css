@@ -3,13 +3,18 @@
     --input-padding-y: .75rem;
 }
 
-body {
-    background: #007bff;
-    background: linear-gradient(to right, #0062E6, #33AEFF);
+.bg {
+    background-image: url(../img/login-bg.jpg);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 100%;
 }
 
 .card-signin {
-    border: 0;
+    border: 2px solid #000000;
     border-radius: 1rem;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
     overflow: hidden;

@@ -91,6 +91,13 @@ html, body {
     flex: 1;
 }
 
+.site-content > *{
+    flex-grow: 0;
+}
+.site-content .container {
+    flex-grow: 1;
+}
+
 /* Capitalize first letter */
 .flm:first-letter {
     text-transform:capitalize;

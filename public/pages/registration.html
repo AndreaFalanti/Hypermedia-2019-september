@@ -15,58 +15,55 @@
     <title>Registration</title>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-10 col-xl-9 mx-auto">
-            <div class="card card-signin flex-row my-5">
-                <div class="card-img-left d-none d-md-flex">
-                    <!-- Background image for card set in CSS! -->
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center">Register</h5>
-                    <form class="form-signin" id="registrationForm" onsubmit="register()">
-                        <div class="form-label-group">
-                            <input type="text" id="inputFirstname" class="form-control" placeholder="Firstname" required autofocus>
-                            <label for="inputFirstname">Firstname</label>
+    <div class="bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-xl-9 mx-auto">
+                    <div class="card card-signin flex-row my-5">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Register</h5>
+                            <form class="form-signin" id="registrationForm" onsubmit="register()">
+                                <div class="form-label-group">
+                                    <input type="text" id="inputFirstname" class="form-control" placeholder="Firstname" required autofocus>
+                                    <label for="inputFirstname">Firstname</label>
+                                </div>
+                                <div class="form-label-group">
+                                    <input type="text" id="inputLastname" class="form-control" placeholder="Lastname" required autofocus>
+                                    <label for="inputLastname">Lastname</label>
+                                </div>
+
+                                <div class="form-label-group">
+                                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+                                    <label for="inputEmail">Email address</label>
+                                </div>
+
+                                <p class="d-block text-center mt-2 small error hidden" id="emailError">Email already registered</p>
+
+                                <hr>
+
+                                <div class="form-label-group">
+                                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                                    <label for="inputPassword">Password</label>
+                                </div>
+
+                                <div class="form-label-group">
+                                    <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
+                                    <label for="inputConfirmPassword">Confirm password</label>
+                                </div>
+
+                                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+                                <p class="d-block text-center mt-2 small">Already have an account? <a href="login.html">Sign In</a></p>
+                                <p class="d-block text-center mt-2 small"><a href="../index.html">Return to homepage</a></p>
+                                <!--<hr class="my-4">
+                                <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
+                                <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
+                            --></form>
                         </div>
-
-                        <div class="form-label-group">
-                            <input type="text" id="inputLastname" class="form-control" placeholder="Lastname" required autofocus>
-                            <label for="inputLastname">Lastname</label>
-                        </div>
-
-                        <div class="form-label-group">
-                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
-                            <label for="inputEmail">Email address</label>
-                        </div>
-
-                        <p class="d-block text-center mt-2 small error hidden" id="emailError">Email already registered</p>
-
-                        <hr>
-
-                        <div class="form-label-group">
-                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                            <label for="inputPassword">Password</label>
-                        </div>
-
-                        <div class="form-label-group">
-                            <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
-                            <label for="inputConfirmPassword">Confirm password</label>
-                        </div>
-
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
-                        <p class="d-block text-center mt-2 small">Already have an account? <a href="login.html">Sign In</a></p>
-                        <p class="d-block text-center mt-2 small"><a href="../index.html">Return to homepage</a></p>
-                        <!--<hr class="my-4">
-                        <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
-                        <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
-                    --></form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"

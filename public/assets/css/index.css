@@ -55,3 +55,16 @@ html, body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+@media screen and (max-width : 768px) {
+    .media-event {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+}
+
+.col-lg-6 img {
+    width: 100%;
+    height: 325px;
+}
