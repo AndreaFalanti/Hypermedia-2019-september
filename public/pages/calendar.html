@@ -33,7 +33,7 @@
             </div>
 
             <!--Calendar-->
-            <div class="calendar container">
+            <div class="calendar container" id="calendarContainer">
 
                 <!--Header-->
                 <h1 class="text-center">Festival - September 2019</h1>
@@ -49,8 +49,8 @@
                     <li><strong>Saturday</strong></li>
                 </ul>
         
-
-                <!--Days 1° row-->
+<!--
+                &lt;!&ndash;Days 1° row&ndash;&gt;
                 <ul class="days">
                     <li class="day-not-included">
                         <h5 class="text-muted">26</h5>
@@ -75,7 +75,7 @@
                     </li>
                 </ul>
 
-                <!--Days 2° row-->
+                &lt;!&ndash;Days 2° row&ndash;&gt;
                 <ul class="days">
                     <li>
                         <h5>2</h5>                       
@@ -91,7 +91,7 @@
                     </li>
                     <li>
                         <h5>6</h5>
-                        <a href="event.html"><i class="fas fa-headphones" aria-hidden="true"> Imagine Dragons's Tour</i></a>                   
+                        <a href="event.html"><i class="fas fa-headphones" aria-hidden="true"></i> Imagine Dragons's Tour</a>
                     </li>
                     <li>
                         <h5>7</h5>                      
@@ -101,7 +101,7 @@
                     </li>
                 </ul>
 
-                <!--Days 3° row-->
+                &lt;!&ndash;Days 3° row&ndash;&gt;
                 <ul class="days">
                     <li>
                         <h5>9</h5>                     
@@ -126,7 +126,7 @@
                     </li>
                 </ul>
 
-                <!--Days 4° row-->
+                &lt;!&ndash;Days 4° row&ndash;&gt;
                 <ul class="days">
                     <li>
                         <h5>16</h5>                     
@@ -142,7 +142,7 @@
                     </li>
                     <li>
                         <h5>20</h5>
-                        <a href="event.html"><i class="fas fa-headphones" aria-hidden="true"> Jova Beach Party</i></a>                        
+                        <a href="event.html"><i class="fas fa-headphones" aria-hidden="true"></i> Jova Beach Party</a>
                     </li>
                     <li>
                         <h5>21</h5>                   
@@ -152,11 +152,11 @@
                     </li>
                 </ul>
 
-                <!--Days 5° row-->
+                &lt;!&ndash;Days 5° row&ndash;&gt;
                 <ul class="days">
                     <li>
                         <h5>23</h5>
-                        <a href="event.html"><i class="fas fa-music" aria-hidden="true"></i> Luciano Pavarotti's Exhibition</i></a>                      
+                        <a href="event.html"><i class="fas fa-music" aria-hidden="true"></i> Luciano Pavarotti's Exhibition</a>
                     </li>
                     <li>
                         <h5>24</h5>                     
@@ -178,11 +178,11 @@
                     </li>
                 </ul>
 
-                <!--Days 6° row-->
+                &lt;!&ndash;Days 6° row&ndash;&gt;
                 <ul class="days">
                     <li>
                         <h5>30</h5>
-                        <a href="event.html"><i class="fas fa-music" aria-hidden="true"></i> Luciano Pavarotti's Exhibition</i></a>                      
+                        <a href="event.html"><i class="fas fa-music" aria-hidden="true"></i> Luciano Pavarotti's Exhibition</a>
                     </li>
                     <li class="day-not-included">
                         <h5 class="text-muted">1</h5>                     
@@ -202,7 +202,7 @@
                     <li class="day-not-included">
                         <h5 class="text-muted">6</h5>                    
                     </li>
-                </ul>
+                </ul>-->
 
             </div>
 
@@ -226,11 +226,17 @@
                 crossorigin="anonymous"></script>
 
         <!-- Optional JavaScript -->
+        <script src="../assets/js/calendar.js"></script>
+        <script src="../assets/js/utils.js"></script>
         <script>
             $(function(){
                 $("#header").load("header.html");
                 $("#footer").load("footer.html");
             });
+        </script>
+        <script>
+            $(document).ready(createCalendar({from: 26, to: 31, disable: true},
+                    {from: 1, to: 30, disable: false}, {from: 1, to: 6, disable: true}));
         </script>
     </body>
 </html>
