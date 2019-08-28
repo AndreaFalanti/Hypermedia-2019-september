@@ -31,3 +31,25 @@ module.exports.eventsIdGET = function eventsIdGET (req, res, next) {
             //utils.writeJson(res, response, response.code);
         });
 };
+
+module.exports.eventsIdArtistsGET = function eventsIdArtistsGET (req, res, next) {
+    var id = req.swagger.params['id'].value;
+    Event.eventsIdArtistsGET(id)
+        .then(function (response) {
+            utils.writeJson(res, response);
+        })
+        .catch(function (response) {
+            utils.writeJson(res, response);
+        });
+};
+
+module.exports.eventsIdCompaniesGET = function eventsIdCompaniesGET (req, res, next) {
+    var id = req.swagger.params['id'].value;
+    Event.eventsIdCompaniesGET(id)
+        .then(function (response) {
+            utils.writeJson(res, response);
+        })
+        .catch(function (response) {
+            utils.writeJson(res, response);
+        });
+};

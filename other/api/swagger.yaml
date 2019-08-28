@@ -194,6 +194,50 @@ paths:
         404:
           description: "Event not found (unknown id)"
       x-swagger-router-controller: "Event"
+  /events/{id}/artists:
+    get:
+      tags:
+        - "event"
+      summary: "Get event's artists"
+      description: "Returns all artists that participate to event"
+      operationId: "eventsIdArtistsGET"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Artists of event"
+          schema:
+            $ref: "#/definitions/Artists"
+        404:
+          description: "Event not found (unknown id)"
+      x-swagger-router-controller: "Event"
+  /events/{id}/companies:
+    get:
+      tags:
+        - "event"
+      summary: "Get event's companies"
+      description: "Returns all companies that participate to event"
+      operationId: "eventsIdCompaniesGET"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Companies of event"
+          schema:
+            $ref: "#/definitions/Companies"
+        404:
+          description: "Event not found (unknown id)"
+      x-swagger-router-controller: "Event"
   /seminars:
     get:
       tags:

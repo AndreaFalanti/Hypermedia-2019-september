@@ -128,3 +128,55 @@ exports.eventsIdGET = function(id) {
         }
     });
 };
+
+
+/**
+ * Get event's artists
+ * Returns all artists that participate to event
+ *
+ * id Integer
+ * returns Artists
+ **/
+exports.eventsIdArtistsGET = function(id) {
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("performed_by_artist")
+                .innerJoin("artist", "artist.id", "performed_by_artist.artist_id")
+                .select()
+                .where("event_id", id)
+                .timeout(2000, {cancel: true});
+
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
+};
+
+
+/**
+ * Get event's companies
+ * Returns all companies that participate to event
+ *
+ * id Integer
+ * returns Companies
+ **/
+exports.eventsIdCompaniesGET = function(id) {
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("performed_by_company")
+                .innerJoin("company", "company.id", "performed_by_company.company_id")
+                .select()
+                .where("event_id", id)
+                .timeout(2000, {cancel: true});
+
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
+};
