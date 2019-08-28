@@ -30,7 +30,7 @@ function setEventIcon(i, type) {
 }
 
 // Given an image paths array, carousel and its indicators, populate them with images dynamically
-function populateCarousel(imgArray, carousel, indicators) {
+function populatePhotoGalleryCarousel(imgArray, carousel, indicators) {
     imgArray.forEach((imgPath, index) => {
         let item = createCarouselImage(imgPath, index === 0);
         let indicator = createCarouselIndicator(index);

@@ -408,20 +408,18 @@
                             </a>
 
                             <!--Indicators-->
-                            <ol class="carousel-indicators">
+                            <ol class="carousel-indicators" id="performersCarouselIndicators">
                                 <li data-target="#eventPerformers" data-slide-to="0" class="active"></li>
-                                <li data-target="#eventPerformers" data-slide-to="1"></li>
-                                <li data-target="#eventPerformers" data-slide-to="2"></li>
                             </ol>
 
                             <!--Slides-->
-                            <div class="carousel-inner" role="listbox">
+                            <div class="carousel-inner" role="listbox" id="performersCarousel">
 
                                 <div class="carousel-item active">
                                     <div class="container">
-                                        <div class="row my-3">
+                                        <div class="row my-3" id="firstCardContainer">
 
-                                            <div class="col-sm-4">
+                                            <!--<div class="col-sm-4">
                                                 <div class="card mb-2">
                                                     <img class="card-img-top"
                                                          src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg" alt="...">
@@ -452,96 +450,36 @@
                                                         <a href="#" class="btn btn-lilac btn-circled text-light">Find out more</a>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>-->
 
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="carousel-item">
-                                    <div class="container">
-                                        <div class="row my-3">
-
-                                            <div class="col-sm-4">
-                                                <div class="card mb-2">
-                                                    <img class="card-img-top"
-                                                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="...">
-                                                    <div class="card-body text-center">
-                                                        <h4 class="card-title">Performer Name</h4>
-                                                        <a href="#" class="btn btn-lilac btn-circled text-light">Find out more</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-4">
-                                                <div class="card mb-2">
-                                                    <img class="card-img-top"
-                                                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="...">
-                                                    <div class="card-body text-center">
-                                                        <h4 class="card-title">Performer Name</h4>
-                                                        <a href="#" class="btn btn-lilac btn-circled text-light">Find out more</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-4">
-                                                <div class="card mb-2">
-                                                    <img class="card-img-top"
-                                                         src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg" alt="...">
-                                                    <div class="card-body text-center">
-                                                        <h4 class="card-title">Performer Name</h4>
-                                                        <a href="#" class="btn btn-lilac btn-circled text-light">Find out more</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--Third slide-->
-                                <div class="carousel-item">
-                                    <div class="container">
-                                        <div class="row my-3">
-
-                                            <div class="col-md-4">
-                                                <div class="card mb-2">
-                                                    <img class="card-img-top"
-                                                         src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg" alt="...">
-                                                    <div class="card-body text-center">
-                                                        <h4 class="card-title">Performer Name</h4>
-                                                        <a href="#" class="btn btn-lilac btn-circled text-light">Find out more</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <div class="card mb-2">
-                                                    <img class="card-img-top"
-                                                         src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg" alt="...">
-                                                    <div class="card-body text-center">
-                                                        <h4 class="card-title">Performer Name</h4>
-                                                        <a href="#" class="btn btn-lilac btn-circled text-light">Find out more</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <div class="card mb-2">
-                                                    <img class="card-img-top"
-                                                         src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg" alt="...">
-                                                    <div class="card-body text-center">
-                                                        <h4 class="card-title">Performer Name</h4>
-                                                        <a href="#" class="btn btn-lilac btn-circled text-light">Find out more</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="artistCardTemplate">
+            <div class="col-sm-4">
+                <div class="card mb-2">
+                    <img class="card-img-top" data-src="images" data-format="firstImageFormatter" data-format-target="src">
+                    <div class="card-body text-center">
+                        <h4 class="card-title" data-content="name" data-content-append="surname" data-format="spacedFormatter"></h4>
+                        <a class="btn btn-lilac btn-circled text-light" data-href="id" data-format="artistHrefFormatter" data-format-target="href">Find out more</a>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="companyCardTemplate">
+            <div class="col-sm-4">
+                <div class="card mb-2">
+                    <img class="card-img-top" data-alt="name" data-src="images" data-format="firstImageFormatter" data-format-target="src">
+                    <div class="card-body text-center">
+                        <h4 class="card-title" data-content="name"></h4>
+                        <a class="btn btn-lilac btn-circled text-light" data-href="id" data-format="companyHrefFormatter" data-format-target="href">Find out more</a>
                     </div>
                 </div>
             </div>

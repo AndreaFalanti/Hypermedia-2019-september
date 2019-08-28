@@ -7,7 +7,7 @@ function insertData () {
             .then(data => {
                 console.log(data);
                 $("#cont").loadTemplate($("#companyTemplate"), data, {async: false});
-                populateCarousel(data.images, $("#carousel"), $("#carouselIndicators"));
+                populatePhotoGalleryCarousel(data.images, $("#carousel"), $("#carouselIndicators"));
                 fetch('/v2/companies/' + data.id + '/artists').then(r => r.json())
                     .then(artists => artists.forEach(e => {
                         let artistEl = $("<li><p></p></li>");
