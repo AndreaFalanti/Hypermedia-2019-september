@@ -168,17 +168,6 @@ exports.usersLoginPOST = function(login) {
     });
 };
 
-/**
- * Logout
- * Logout user
- *
- * no response value expected for this operation
- **/
-exports.usersLogoutPOST = function() {
-    return new Promise(function(resolve, reject) {
-        resolve();
-    });
-};
 
 exports.usersReservePOST = function(body, userEmail) {
     return new Promise(function(resolve, reject) {

@@ -65,16 +65,18 @@ module.exports.usersLoginPOST = function usersLoginPOST (req, res, next) {
 };
 
 module.exports.usersLogoutPOST = function usersLoginPOST (req, res, next) {
-    User.usersLogoutPOST()
-        .then(function (response) {
-            if(req.session.loggedin) {
-                req.session.loggedin = false;
-            }
-            utils.writeJson(res, response);
-        })
-        .catch(function (response) {
-            utils.writeJson(res, response);
-        });
+    if(req.session.loggedin) {
+        req.session.loggedin = false;
+        req.session = null;
+
+        res.statusCode = 204;
+        res.end();
+    }
+    else {
+        res.statusCode = 400;
+        res.statusMessage = "Trying logout when not logged in";
+        res.end();
+    }
 };
 
 module.exports.usersReservePOST = function usersReservePOST (req, res, next) {

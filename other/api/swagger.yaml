@@ -121,10 +121,10 @@ paths:
       produces:
         - "application/json"
       responses:
-        200:
+        204:
           description: "Successful logout"
-        404:
-          description: "Trying logout when not logged"
+        400:
+          description: "Trying logout when not logged in"
       x-swagger-router-controller: "User"
   /users/register:
     post:
