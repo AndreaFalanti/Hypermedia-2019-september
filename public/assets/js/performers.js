@@ -1,16 +1,37 @@
 function insertData () {
     addFormatters();
-    let fetch1 = fetch('/v2/companies').then(r => r.json())
+    const urlParams = new URLSearchParams(window.location.search);
+    let typeValue = urlParams.get("type");
+    $("#performersTypeSelect").val(typeValue || "all");
+
+    switch (typeValue) {
+        case "artists":
+            fetchArtists().then(setTypeIcons);
+            break;
+        case "companies":
+            fetchCompanies().then(setTypeIcons);
+            break;
+        default:
+            Promise.all([fetchArtists(), fetchCompanies()]).then(() => setTypeIcons());
+            break;
+    }
+
+}
+
+function fetchCompanies() {
+    return fetch('/v2/companies').then(r => r.json())
         .then(companies => {
             console.log(companies);
             $("#cont").loadTemplate($("#companyCardTemplate"), companies, {append: true})
         });
-    let fetch2 = fetch('/v2/artists').then(r => r.json())
+}
+
+function fetchArtists() {
+    return fetch('/v2/artists').then(r => r.json())
         .then(artists => {
             console.log(artists);
             $("#cont").loadTemplate($("#artistCardTemplate"), artists, {append: true})
         });
-    Promise.all([fetch1, fetch2]).then(() => setTypeIcons());
 }
 
 function setTypeIcons () {
@@ -19,4 +40,14 @@ function setTypeIcons () {
         let type = i.nextElementSibling.innerHTML;
         setEventIcon(i, type);
     })
+}
+
+function handleTypeFilter () {
+    let type = $("#performersTypeSelect").val();
+    if (type === "all") {
+        removeQueryParamFromUrl("type");
+    }
+    else {
+        addQueryParamToUrl("type", type);
+    }
 }

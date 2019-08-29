@@ -28,48 +28,38 @@ function createEventCards () {
             fetchUrl = fetchUrl.concat("&date=" + dateValue);
         }
 
-        fetch(fetchUrl).then(r => r.json())
-            .then(events => {
-                console.log(events);
-                $("#events-container").loadTemplate($("#eventCardTemplate"), events, {
-                    append: true
-                });
-            }).then(setEventTypeIcons);
+        fetchEvents(fetchUrl);
     }
     else if (dateValue) {
         // Search events and seminars for date
-        fetch('/v2/events?date=' + dateValue).then(r => r.json())
-            .then(events => {
-                console.log(events);
-                $("#events-container").loadTemplate($("#eventCardTemplate"), events, {
-                    append: true
-                });
-            }).then(setEventTypeIcons);
-        fetch('/v2/seminars?date=' + dateValue).then(r => r.json())
-            .then(seminars => {
-                console.log(seminars);
-                $("#events-container").loadTemplate($("#seminarCardTemplate"), seminars, {
-                    append: true
-                });
-            });
+        fetchEvents('/v2/events?date=' + dateValue);
+        fetchSeminars('/v2/seminars?date=' + dateValue);
     }
     else {
         // default case, search any seminar and event
-        fetch('/v2/events').then(r => r.json())
-            .then(events => {
-                console.log(events);
-                $("#events-container").loadTemplate($("#eventCardTemplate"), events, {
-                    append: true
-                });
-            }).then(setEventTypeIcons);
-        fetch('/v2/seminars').then(r => r.json())
-            .then(seminars => {
-                console.log(seminars);
-                $("#events-container").loadTemplate($("#seminarCardTemplate"), seminars, {
-                    append: true
-                });
-            });
+        fetchEvents('/v2/events');
+        fetchSeminars('/v2/seminars');
     }
+}
+
+function fetchEvents(url) {
+    fetch(url).then(r => r.json())
+        .then(events => {
+            console.log(events);
+            $("#events-container").loadTemplate($("#eventCardTemplate"), events, {
+                append: true
+            });
+        }).then(setEventTypeIcons);
+}
+
+function fetchSeminars(url) {
+    fetch(url).then(r => r.json())
+        .then(seminars => {
+            console.log(seminars);
+            $("#events-container").loadTemplate($("#seminarCardTemplate"), seminars, {
+                append: true
+            });
+        });
 }
 
 function setEventTypeIcons () {
