@@ -3,9 +3,9 @@
 var utils = require('../utils/writer.js');
 var User = require('../service/UserService');
 
-module.exports.userRegisterPOST = function userRegisterPOST (req, res, next) {
+module.exports.usersRegisterPOST = function usersRegisterPOST (req, res, next) {
     var body = req.swagger.params['body'].value;
-    User.userRegisterPOST(body)
+    User.usersRegisterPOST(body)
         .then(function (response) {
             utils.writeJson(res, response);
         })
@@ -53,9 +53,9 @@ module.exports.usersLoginPOST = function usersLoginPOST (req, res, next) {
     var login = req.swagger.params['login'].value;
     User.usersLoginPOST(login)
         .then(function (response) {
-            console.log("It's actually resolved");
             if(!req.session.loggedin) {
                 req.session.loggedin = true;
+                req.session.email = login.email;
             }
             utils.writeJson(res, response);
         })
@@ -75,4 +75,21 @@ module.exports.usersLogoutPOST = function usersLoginPOST (req, res, next) {
         .catch(function (response) {
             utils.writeJson(res, response);
         });
+};
+
+module.exports.usersReservePOST = function usersReservePOST (req, res, next) {
+    var body = req.swagger.params['body'].value;
+    if (req.session.loggedin) {
+        User.usersReservePOST(body, req.session.email)
+            .then(function (response) {
+                utils.writeJson(res, response);
+            })
+            .catch(function (response) {
+                utils.writeJson(res, response);
+            });
+    }
+    else {
+        res.statusCode = 401;
+        res.end();
+    }
 };

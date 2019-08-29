@@ -1,18 +1,22 @@
 [
   {
     "event_id": 0,
-    "user_email": "fala@asd.com"
+    "user_email": "fala@asd.com",
+    "tickets": 3
   },
   {
     "event_id": 1,
-    "user_email": "smania@asd.com"
+    "user_email": "smania@asd.com",
+    "tickets": 2
   },
   {
     "event_id": 1,
-    "user_email": "fala@asd.com"
+    "user_email": "fala@asd.com",
+    "tickets": 2
   },
   {
     "event_id": 2,
-    "user_email": "admin@asd.com"
+    "user_email": "admin@asd.com",
+    "tickets": 4
   }
 ]

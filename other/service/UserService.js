@@ -37,7 +37,7 @@ exports.userDbSetup = function(database) {
  * body User
  * no response value expected for this operation
  **/
-exports.userRegisterPOST = function(body) {
+exports.usersRegisterPOST = function(body) {
     return new Promise(function(resolve, reject) {
         let result;
         try {
@@ -177,6 +177,34 @@ exports.usersLoginPOST = function(login) {
 exports.usersLogoutPOST = function() {
     return new Promise(function(resolve, reject) {
         resolve();
+    });
+};
+
+exports.usersReservePOST = function(body, userEmail) {
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            return sqlDb("reservation")
+                .first()
+                .where("user_email", userEmail)
+                .where("event_id", body.event_id)
+                .timeout(2000, {cancel: true})
+                .then(reservation => {
+                    if (reservation) {
+                        reject("Event already reserved");
+                    } else {
+                        let record = {event_id: body.event_id, user_email: userEmail, tickets: body.tickets};
+                        result = sqlDb("reservation")
+                            .insert(record)
+                            .timeout(2000, {cancel: true});
+
+                        resolve(result);
+                    }
+                });
+        }
+        catch (e) {
+            reject(e);
+        }
     });
 };
 

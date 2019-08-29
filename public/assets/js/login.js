@@ -14,7 +14,7 @@ function login() {
         dataType: "json",
         success: function(data){
             document.location.href = "../index.html";
-            sessionStorage.setItem("loginUsername", data.username);
+            sessionStorage.setItem("userData", data.firstname + " " + data.lastname);
             },
         error: function(errMsg) {
             $("#loginError").removeClass("hidden");

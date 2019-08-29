@@ -132,7 +132,7 @@ paths:
         - "user"
       summary: "Register"
       description: "Register into the store"
-      operationId: "userRegisterPOST"
+      operationId: "usersRegisterPOST"
       consumes:
         - "application/json"
       produces:
@@ -148,6 +148,29 @@ paths:
           description: "Successful registration"
         404:
           description: "Registration error"
+      x-swagger-router-controller: "User"
+  /users/reserve:
+    post:
+      tags:
+        - "user"
+      summary: "Reserve an event"
+      description: "Register to an event after proper authentication"
+      operationId: "usersReservePOST"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/ReserveData"
+      responses:
+        200:
+          description: "Successful reservation"
+        401:
+          description: "Not authenticated"
       x-swagger-router-controller: "User"
   /events:
     get:
@@ -441,10 +464,10 @@ definitions:
       password:
         type: "string"
     example:
-      email: "asd@gmail.com"
-      password: "admin123"
       firstName: "Johnny"
       lastName: "De Gennaro"
+      email: "asd@gmail.com"
+      password: "admin123"
 
   Users:
     type: "array"
@@ -617,6 +640,19 @@ definitions:
     example:
       email: "mail@asd.com"
       password: "admin"
+
+  ReserveData:
+    required:
+      - "event_id"
+      - "tickets"
+    properties:
+      event_id:
+        type: "integer"
+      tickets:
+        type: "integer"
+    example:
+      event_id: "0"
+      tickets: "3"
 
 parameters:
   size:

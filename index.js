@@ -11,8 +11,7 @@ var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
 var serverPort = process.env.PORT || 8080;
 
-let dirToOther = path.join(__dirname, 'other');     // points Other folder
-
+let dirToOther = path.join(__dirname, 'other');     // points "Other" folder
 
 let cookieSession = require("cookie-session");
 let cookieParser = require("cookie-parser");
@@ -37,7 +36,7 @@ var swaggerDoc = jsyaml.safeLoad(spec);
 
 // Add cookies to responses
 app.use(cookieParser());
-app.use(cookieSession({name: "session", keys: ["abc", "def"]}));
+app.use(cookieSession({name: "session", keys: ["email", "username"]}));
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {

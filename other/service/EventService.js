@@ -45,6 +45,7 @@ exports.reservationDbSetup = function(database) {
       return database.schema.createTable(tableName, table => {
         table.integer("event_id").index().references("id").inTable("event");
         table.text("user_email").index().references("email").inTable("usr");
+        table.integer("tickets");
         table.primary(["event_id", "user_email"]);
         console.log(`${tableName} database created`);
       }).then(() => {

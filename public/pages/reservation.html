@@ -22,7 +22,7 @@
                     <div class="card card-signin my-5">
                         <div class="card-body">
                             <h5 class="card-title text-center">Reservation form</h5>
-                            <form class="form-signin" onsubmit="login()">
+                            <form class="form-signin" onsubmit="reservation()">
                                 <div id="event-info" class="form-group">
                                     <label for="inputEventName">Event:</label>
                                     <input type="text" class="form-control-plaintext" id="inputEventName" readonly>
@@ -31,7 +31,7 @@
                                 </div>
 
                                 <label> Seats to reserve:
-                                    <select name="seats">
+                                    <select name="tickets" id="ticketSelector">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
