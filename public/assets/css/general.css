@@ -23,7 +23,6 @@ html, body {
 .centered {
     position: relative;
     top: 50%;
-    transform: (-50%, -50%);
 }
 
 .error {
