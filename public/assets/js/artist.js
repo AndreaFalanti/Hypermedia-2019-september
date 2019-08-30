@@ -9,8 +9,13 @@ function insertData () {
                 $("#cont").loadTemplate($("#artistTemplate"), data, {async: false});
                 $("#artistTitle").html(data.name + " " + data.surname);
                 populatePhotoGalleryCarousel(data.images, $("#carousel"), $("#carouselIndicators"));
-                fetch('/v2/companies/' + data.affiliation).then(r => r.json())
-                    .then(company => $("#companyLink").html(company.name));
+                if (data.affiliation) {
+                    fetch('/v2/companies/' + data.affiliation).then(r => r.json())
+                        .then(company => $("#companyLink").html(company.name));
+                }
+                else {
+                    $("#companyPara").append("none");
+                }
             });
     }
     else {
