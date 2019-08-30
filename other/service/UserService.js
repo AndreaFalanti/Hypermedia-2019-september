@@ -179,10 +179,16 @@ exports.usersReservePOST = function(body, userEmail) {
                 .where("event_id", body.event_id)
                 .timeout(2000, {cancel: true})
                 .then(reservation => {
+                    let record = {event_id: body.event_id, user_email: userEmail, tickets: body.tickets};
                     if (reservation) {
-                        reject("Event already reserved");
+                        result = sqlDb("reservation")
+                            .where("user_email", userEmail)
+                            .where("event_id", body.event_id)
+                            .update(record)
+                            .timeout(2000, {cancel: true});
+
+                        resolve(result);
                     } else {
-                        let record = {event_id: body.event_id, user_email: userEmail, tickets: body.tickets};
                         result = sqlDb("reservation")
                             .insert(record)
                             .timeout(2000, {cancel: true});
@@ -197,3 +203,30 @@ exports.usersReservePOST = function(body, userEmail) {
     });
 };
 
+exports.usersReservationsCancelIdPOST = function(id, userEmail) {
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            return sqlDb("reservation")
+                .first()
+                .where("user_email", userEmail)
+                .where("event_id", id)
+                .timeout(2000, {cancel: true})
+                .then(reservation => {
+                    if (reservation) {
+                        result = sqlDb("reservation")
+                            .where("user_email", userEmail)
+                            .where("event_id", id)
+                            .del()
+                            .timeout(2000, {cancel: true});
+                        resolve(result);
+                    } else {
+                        reject("Invalid reservation id");
+                    }
+                });
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
+};

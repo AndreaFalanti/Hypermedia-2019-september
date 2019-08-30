@@ -24,7 +24,7 @@
                             <h5 class="card-title text-center">Reservation form</h5>
                             <form class="form-signin" onsubmit="reservation()">
                                 <div id="event-info" class="form-group">
-                                    <label for="inputEventName">Event:</label>
+                                    <strong><label for="inputEventName">Event:</label></strong>
                                     <input type="text" class="form-control-plaintext" id="inputEventName" readonly>
                                     <input type="text" class="form-control-plaintext" id="inputEventDate" readonly>
                                     <input type="text" class="form-control-plaintext" id="inputEventLocation" readonly>
@@ -40,6 +40,7 @@
                                     </select>
                                 </label>
 
+                                <p class="d-block mt-2 error small hidden" id="reservationWarning">Warning: You already registered to this event, confirming will update the reservation.</p>
                                 <hr class="my-4">
                                 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Reserve tickets</button>
                             </form>
@@ -67,7 +68,10 @@
     document.addEventListener("submit", e => e.preventDefault())
 </script>
 <script>
-    addEventData();
+    $(document).ready(() => {
+        addEventData();
+        checkIfReservationIsAlreadyPresent();
+    });
 </script>
 </body>
 </html>

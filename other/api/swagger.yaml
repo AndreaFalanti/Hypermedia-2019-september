@@ -82,6 +82,27 @@ paths:
         401:
           description: "Not authenticated"
       x-swagger-router-controller: "User"
+  /users/reservations/cancel/{id}:
+    post:
+      tags:
+        - "user"
+      summary: "Cancel user reservation"
+      description: "Cancel user reservation with given event id"
+      operationId: "usersReservationsCancelIdPOST"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "Event id"
+          required: true
+          type: "integer"
+      responses:
+        204:
+          description: "Reservations canceled"
+        401:
+          description: "Not authenticated"
+      x-swagger-router-controller: "User"
   /users/login:
     post:
       tags:
@@ -100,7 +121,7 @@ paths:
           schema:
             $ref: "#/definitions/Login"
       responses:
-        200:
+        204:
           description: "Successful login"
         400:
           description: "Invalid login"
@@ -138,7 +159,7 @@ paths:
           schema:
             $ref: "#/definitions/User"
       responses:
-        200:
+        204:
           description: "Successful registration"
         404:
           description: "Registration error"
@@ -161,7 +182,7 @@ paths:
           schema:
             $ref: "#/definitions/ReserveData"
       responses:
-        200:
+        204:
           description: "Successful reservation"
         401:
           description: "Not authenticated"

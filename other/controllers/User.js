@@ -90,6 +90,25 @@ module.exports.usersReservePOST = function usersReservePOST (req, res, next) {
     if (req.session.loggedin) {
         User.usersReservePOST(body, req.session.email)
             .then(function (response) {
+                res.statusCode = 204;
+                res.end();
+            })
+            .catch(function (response) {
+                utils.writeJson(res, response);
+            });
+    }
+    else {
+        res.statusCode = 401;
+        res.statusMessage = "Not authenticated";
+        res.end();
+    }
+};
+
+module.exports.usersReservationsCancelIdPOST = function usersReservationsCancelIdPOST (req, res, next) {
+    var id = req.swagger.params['id'].value;
+    if (req.session.loggedin) {
+        User.usersReservationsCancelIdPOST(id, req.session.email)
+            .then(function (response) {
                 utils.writeJson(res, response);
             })
             .catch(function (response) {

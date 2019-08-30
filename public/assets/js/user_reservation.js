@@ -15,15 +15,30 @@ function insertData () {
             // This array have the same length, selectors are in document order
             let priceTags = Array.from(document.body.querySelectorAll(".res-cost"));
             let iconTags = Array.from(document.body.querySelectorAll(".event-icon"));
+            let cancelButtons = Array.from(document.body.querySelectorAll(".res-cancel"));
             for (let count = 0; count < priceTags.length; count++) {
                 priceTags[count].appendChild(document.createTextNode(5 * data[count].tickets + ".00"));
                 setEventIcon(iconTags[count], data[count].type);
+                cancelButtons[count].addEventListener("click", () => cancelReservation(data[count].event_id));
             }
         });
 }
 
-function createCardContainer() {
+function createCardContainer () {
     return $("<div></div>").addClass("row my-4");
 }
 
-//setEventIcon(document.body.querySelector("#eventIcon"), data.type);
+function cancelReservation (id) {
+    $.ajax({
+        type: "POST",
+        url: "/v2/users/reservations/cancel/" + id,
+        contentType: "application/json; charset=utf-8",
+        success: function(data){
+            location.reload();
+        },
+        error: function(errMsg) {
+            alert(JSON.stringify(errMsg, null, 4));
+            return false;
+        }
+    });
+}
