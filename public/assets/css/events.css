@@ -27,7 +27,12 @@ h3 {
 }
 
 .carousel-item img {
-    height: 350px;
+    height: 58vh;
+    object-fit: contain;
+}
+
+.b-grey {
+    background-color: #343a40;
 }
 
 .event-div {
