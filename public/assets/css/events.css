@@ -15,6 +15,14 @@ h3 {
     border-right: 1.5px solid #000000;
 }
 
+.card-seminar {
+    height: 250px;
+    border-top: 1.5px solid #000000;
+    border-bottom: 1.5px solid #000000;
+    border-left: 10px solid #691c3c;
+    border-right: 10px solid #691c3c;
+}
+
 .carousel-indicators li {
     width: 0.5em;
     height: 0.5em;
