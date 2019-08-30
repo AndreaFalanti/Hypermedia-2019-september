@@ -1,16 +1,23 @@
 [
   {
     "id": 0,
-    "title": "Jova seminar deluxe",
+    "title": "Jova Seminar Deluxe",
     "location": "Rimini",
     "date": "2019-08-14",
     "desc": "Seminar about latest Jova events"
   },
   {
     "id": 1,
-    "title": "Opera moments",
+    "title": "Opera Moments",
     "location": "Milano",
     "date": "2019-09-01",
     "desc": "Seminar about latest opera events"
+  },
+  {
+    "id": 2,
+    "title": "History of Aldo Giovanni e Giacomo",
+    "location": "Milano",
+    "date": "2019-09-20",
+    "desc": "The famous trio is here to tell you about their story: their childhood, their first theatre experiences, and how they met and grew up together."
   }
 ]
