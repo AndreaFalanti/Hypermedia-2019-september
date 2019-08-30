@@ -42,10 +42,12 @@ html, body {
 }
 
 .div-dark {
+    border-width: 3px;
     border-color: #000000;
 }
 
 .div-light {
+    border-width: 3px;
     border-color: #ffffff;
 }
 

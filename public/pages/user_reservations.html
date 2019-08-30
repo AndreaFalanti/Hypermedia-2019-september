@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!--Personal CSS-->
+        <link href="../assets/css/general.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/all.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/user_reservations.css" rel="stylesheet" type="text/css">
+
+        <title>Festival - User Reservation</title>
+    </head>
+    <body class="site">
+        <div id="header"></div>
+
+        <div class="start"></div>
+
+        <main class="site-content">
+            
+            <div class="container my-2 text-center">
+                <!--Title-->
+                <h1>Your reservations</h1>
+                <p class="my-3">Here you'll see all the reservation you have taken. Remember that, in order to buy the tickets, you have to come to our ticket office!</p>
+                <p class="my-3">Make sure to come at least half an hour before the start, or you'll lose your reservation!</p>
+                <hr class="div-dark my-4">
+            </div>
+
+            <div class="container my-4">
+
+                <!--Contains max 3 cards-->
+                <div class="row">
+
+                    <!--Card example-->
+                    <div class="col-lg-4">
+                        <div class="card reservation-card shadow-gray">
+                            <div class="card-body px-4 py-4">
+                                <h5 class="card-title">Imagine Dragons's Tour</h5>
+                                <hr class="div-dark my-4">
+                                <h5 class="card-title"><i class="fas fa-headphones"></i> - Music event</h5>
+                                <h5 class="card-title"><i class="fas fa-tree"></i> - FakeLocation St.</h5>
+                                <h5 class="card-title"><i class="fas fa-clock"></i> - 22 August 2019</h5>
+                                <a href="#" class="btn btn-primary btn-circled btn-block text-light">Check the event</a>
+                                <hr class="div-dark my-4">
+                                <h5 class="card-title">Tickets reserved: 5</h5>
+                                <h5 class="card-title">Total price: <i class="fas fa-euro-sign"></i> 25.00</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card reservation-card shadow-gray">
+                            <div class="card-body px-4 py-4">
+                                <h5 class="card-title">History of Aldo Giovanni e Giacomo</h5>
+                                <hr class="div-dark my-4">
+                                <h5 class="card-title"><i class="fas fa-chalkboard-teacher"></i> - Seminar</h5>
+                                <h5 class="card-title"><i class="fas fa-tree"></i> - FakeLocation St.</h5>
+                                <h5 class="card-title"><i class="fas fa-clock"></i> - 22 August 2019</h5>
+                                <a href="#" class="btn btn-primary btn-circled btn-block text-light">Check the event</a>
+                                <hr class="div-dark my-4">
+                                <h5 class="card-title">Tickets reserved: 1</h5>
+                                <h5 class="card-title">Total price: <i class="fas fa-euro-sign"></i> 5.00</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card reservation-card shadow-gray">
+                            <div class="card-body px-4 py-4">
+                                <h5 class="card-title">Tel chi el telun</h5>
+                                <hr class="div-dark my-4">
+                                <h5 class="card-title"><i class="fas fa-theater-masks"></i> - Theater event</h5>
+                                <h5 class="card-title"><i class="fas fa-tree"></i> - FakeLocation St.</h5>
+                                <h5 class="card-title"><i class="fas fa-clock"></i> - 22 August 2019</h5>
+                                <a href="#" class="btn btn-primary btn-circled btn-block text-light">Check the event</a>
+                                <hr class="div-dark my-4">
+                                <h5 class="card-title">Tickets reserved: 3</h5>
+                                <h5 class="card-title">Total price: <i class="fas fa-euro-sign"></i> 15.00</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+        <div id="footer"></div>
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+                crossorigin="anonymous"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+
+        <!-- Optional JavaScript -->
+        <script>
+            $(function(){
+                $("#header").load("header.html");
+                $("#footer").load("footer.html");
+            });
+        </script>
+    </body>
+</html>
