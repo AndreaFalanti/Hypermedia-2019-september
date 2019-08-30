@@ -60,21 +60,15 @@ paths:
         404:
           description: "User not found (unknown email)"
       x-swagger-router-controller: "User"
-  /users/{email}/reservations:
+  /users/reservations:
     get:
       tags:
         - "user"
       summary: "Gets a single user reservations"
       description: "Returns reservations of a single user, identified by its email"
-      operationId: "usersEmailReservationsGET"
+      operationId: "usersReservationsGET"
       produces:
         - "application/json"
-      parameters:
-        - name: "email"
-          in: "path"
-          description: "The user's email"
-          required: true
-          type: "string"
       responses:
         200:
           description: "User reservations"
@@ -85,8 +79,8 @@ paths:
               reserved_seats:
                 description: "Number of seats reserved"
                 type: "integer"
-        404:
-          description: "Invalid user email"
+        401:
+          description: "Not authenticated"
       x-swagger-router-controller: "User"
   /users/login:
     post:

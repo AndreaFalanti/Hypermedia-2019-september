@@ -94,7 +94,7 @@ exports.usersEmailGET = function(email) {
     });
 };
 
-exports.usersEmailReservationsGET = function(email) {
+exports.usersReservationsGET = function(email) {
     return new Promise(function(resolve, reject) {
         let result;
         try {

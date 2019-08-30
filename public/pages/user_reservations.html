@@ -31,12 +31,12 @@
                 <hr class="div-dark my-4">
             </div>
 
-            <div class="container my-4">
+            <div class="container my-4" id="cont">
 
-                <!--Contains max 3 cards-->
+                <!--&lt;!&ndash;Contains max 3 cards&ndash;&gt;
                 <div class="row my-4">
 
-                    <!--Card example-->
+                    &lt;!&ndash;Card example&ndash;&gt;
                     <div class="col-lg-4">
                         <div class="card reservation-card shadow-gray mx-2">
                             <div class="card-body px-4 py-4 my-2">
@@ -69,22 +69,8 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
-                        <div class="card reservation-card shadow-gray mx-2">
-                            <div class="card-body px-4 py-4 my-2">
-                                <h5 class="card-title">Tel chi el telun</h5>
-                                <hr class="div-dark my-4">
-                                <h5 class="card-title"><i class="fas fa-theater-masks"></i> - Theater event</h5>
-                                <h5 class="card-title"><i class="fas fa-tree"></i> - FakeLocation St.</h5>
-                                <h5 class="card-title"><i class="fas fa-clock"></i> - 22 August 2019</h5>
-                                <a href="#" class="btn btn-primary btn-circled btn-block text-light">Check the event</a>
-                                <hr class="div-dark my-4">
-                                <h5 class="card-title">Tickets reserved: 3</h5>
-                                <h5 class="card-title">Total price: <i class="fas fa-euro-sign"></i> 15.00</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                </div>-->
 
             </div>
 
@@ -106,12 +92,38 @@
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
                 crossorigin="anonymous"></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.loadtemplate/1.5.10/jquery.loadTemplate.min.js"
+                crossorigin="anonymous"></script>
+
         <!-- Optional JavaScript -->
+        <script src="../assets/js/utils.js"></script>
+        <script src="../assets/js/templateFormatters.js"></script>
+        <script src="../assets/js/user_reservation.js"></script>
         <script>
             $(function(){
                 $("#header").load("header.html");
                 $("#footer").load("footer.html");
             });
+        </script>
+        <script type="text/html" id="reservationCardTemplate">
+            <div class="col-lg-4">
+                <div class="card reservation-card shadow-gray mx-2">
+                    <div class="card-body px-4 py-4 my-2">
+                        <h5 class="card-title" data-content="name"></h5>
+                        <hr class="div-dark my-4">
+                        <h5 class="card-title" data-content-append="type" data-format="capitalizeFormatter"><i class="event-icon fas"></i> - </h5>
+                        <h5 class="card-title" data-content-append="location"><i class="fas fa-tree"></i> - </h5>
+                        <h5 class="card-title" data-content-append="date" data-format="dateFormatter"><i class="fas fa-clock"></i> - </h5>
+                        <a class="btn btn-primary btn-circled btn-block text-light" data-href="id" data-format="eventHrefFormatter" data-format-target="href">Check the event</a>
+                        <hr class="div-dark my-4">
+                        <h5 class="card-title" data-content-append="tickets">Tickets reserved: </h5>
+                        <h5 class="card-title res-cost">Total price: <i class="fas fa-euro-sign"></i> </h5>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <script>
+            $(document).ready(insertData());
         </script>
     </body>
 </html>

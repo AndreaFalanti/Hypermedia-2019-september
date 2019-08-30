@@ -1,5 +1,3 @@
-// get tags with attribute: $("[myAttribute=value]"))
-
 function insertData () {
     const urlParams = new URLSearchParams(window.location.search);
     let idValue = urlParams.get("id");

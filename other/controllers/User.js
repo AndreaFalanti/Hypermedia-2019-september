@@ -27,15 +27,21 @@ module.exports.usersEmailGET = function usersEmailGET (req, res, next) {
         });
 };
 
-module.exports.usersEmailReservationsGET = function usersEmailReservationsGET (req, res, next) {
-    var email = req.swagger.params['email'].value;
-    User.usersEmailReservationsGET(email)
-        .then(function (response) {
-            utils.writeJson(res, response);
-        })
-        .catch(function (response) {
-            utils.writeJson(res, response);
-        });
+module.exports.usersReservationsGET = function usersReservationsGET (req, res, next) {
+    if (req.session.loggedin) {
+        User.usersReservationsGET(req.session.email)
+            .then(function (response) {
+                utils.writeJson(res, response);
+            })
+            .catch(function (response) {
+                utils.writeJson(res, response);
+            });
+    }
+    else {
+        res.statusCode = 401;
+        res.statusMessage = "Not authenticated";
+        res.end();
+    }
 };
 
 module.exports.usersGET = function usersGET (req, res, next) {
@@ -92,6 +98,7 @@ module.exports.usersReservePOST = function usersReservePOST (req, res, next) {
     }
     else {
         res.statusCode = 401;
+        res.statusMessage = "Not authenticated";
         res.end();
     }
 };
