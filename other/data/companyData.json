@@ -30,5 +30,13 @@
     "foundation_year": "1993",
     "desc": "Since 1993, Gens d’Ys has been synonymous with Irish dance in Italy.\n\nBorn from a group of friends, it soon became the first Italian academy dedicated to traditional dances of the Emerald Isle.\n\nThanks to the contribution of new elements, participation in lectures by Irish teachers and above all those of Sinead Venables, vice world champion, Gens d’Ys is now a branched reality throughout Italy. For the year 2018-2109 it will be present with 28 offices in 21 cities. Not to mention the dozens of occasional locations where we are called every year for internships and workshops. For 25 years Gens d’Ys has been working incessantly with so many sacrifices for the dissemination of Irish dances, but remembering always where and with whom we started.\n\nThere are also numerous collaborations with public and private institutions, associations and commercial companies.\n\nThe Academy has been sponsored for many years by the Irish Embassy in Italy, by several Ministries that have succeeded each other over the years and, since 2011, by the Irish Tourist Board, of which it is the Official Testimonial.\n\nThe link between tradition and innovation in teaching and in the shows offered is only made possible by the true passion for Irish dance of teachers and dancers, fundamental for the existence of the same Association.",
     "images": ["../assets/img/companies/3/gens_d'ys_0.jpg", "../assets/img/companies/3/gens_d'ys_1.jpg", "../assets/img/companies/3/gens_d'ys_2.jpg"]
+  },
+  {
+    "id": 4,
+    "name": "Metallica",
+    "type": "music ensemble",
+    "foundation_year": "1981",
+    "desc": "Metallica is an American heavy metal band. The band was formed in 1981 in Los Angeles by vocalist/guitarist James Hetfield and drummer Lars Ulrich, and has been based in San Francisco for most of its career. The group's fast tempos, instrumentals and aggressive musicianship made them one of the founding 'big four' bands of thrash metal, alongside Megadeth, Anthrax and Slayer. Metallica's current lineup comprises founding members and primary songwriters Hetfield and Ulrich, longtime lead guitarist Kirk Hammett and bassist Robert Trujillo. Guitarist Dave Mustaine (who went on to form Megadeth after being fired from the band) and bassists Ron McGovney, Cliff Burton (who died in a bus accident in Sweden in 1986) and Jason Newsted are former members of the band.",
+    "images": ["../assets/img/companies/4/metallica_1.jpg", "../assets/img/companies/4/metallica_2.jpg", "../assets/img/companies/4/metallica_3.jpg"]
   }
 ]

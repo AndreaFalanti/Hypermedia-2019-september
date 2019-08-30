@@ -1,25 +1,25 @@
 [
   {
     "id": 0,
-    "name": "Jova beach party",
+    "name": "Jova Beach Party",
     "location": "Rimini",
     "date": "2019-09-4",
-    "desc": "Description",
-    "fact_sheet": "• 14:00-17:00 open bar\n• 17:00-19:00 Sing with Jova\n• 19:00-20:00 Mojito extreme fiesta",
+    "desc": "More than a stadium, more than a sports hall, more than a festival, much more than a concert. Jova Beach Party is a temporary city, a beach village, a new concert format, a happening for the new time. Jova Beach Party is on the beach. There is the sea, music, people, life.",
+    "fact_sheet": "• 14:00-17:00 Open Bar\n• 17:00-19:00 Sing with Jova\n• 19:00-20:00 Mojito Extreme Fiesta",
     "type": "music",
     "images": ["../assets/img/events/0/jova_beach_party_0.png", "../assets/img/events/0/jova_beach_party_1.jpg", "../assets/img/events/0/jova_beach_party_2.jpg"],
-    "seminar_id": 0
+    "seminar_id": null
   },
   {
     "id": 1,
-    "name": "Tel chi el telùn",
+    "name": "Tel Chi El Telùn",
     "location": "Milano",
     "date": "2019-09-7",
-    "desc": "Tel chi el telùn (which in Milanese means \" Eccolo qui il telone \") is a theatrical performance by the comic trio Aldo, Giovanni and Giacomo of 1999, directed by Arturo Brachetti.\n\nThe representation, also marketed in DVD version, has seen protagonists in addition to the trio members (Aldo Baglio, Giovanni Storti and Giacomo Poretti) also Marina Massironi, the Italian-American swing band \" The Good Fellas \" the Fichi d'India , Corrado Guzzanti, Antonio Cornacchione, Paolo Hendel, Raul Cremona and some foreign actors / magicians / acrobats.\n\nThe title (in Milanese \" eccolo qui il telone \") is a play on words with the phrase \" tel chi el terùn \" (\" eccolo qui il terrone \"), which ironizes on the characterization of the characters (the trio it is in fact composed of two northern and one southern actors, and their comedy often relies on their different accents).",
-    "fact_sheet": "• 21:00 performance start",
+    "desc": "Tel Chi El Telùn (which in Milanese means \" Eccolo qui il telone \") is a theatrical performance by the comic trio Aldo, Giovanni and Giacomo of 1999, directed by Arturo Brachetti.\n\nThe representation, also marketed in DVD version, has seen protagonists in addition to the trio members (Aldo Baglio, Giovanni Storti and Giacomo Poretti) also Marina Massironi, the Italian-American swing band \" The Good Fellas \" the Fichi d'India , Corrado Guzzanti, Antonio Cornacchione, Paolo Hendel, Raul Cremona and some foreign actors / magicians / acrobats.\n\nThe title (in Milanese \" eccolo qui il telone \") is a play on words with the phrase \" tel chi el terùn \" (\" eccolo qui il terrone \"), which ironizes on the characterization of the characters (the trio it is in fact composed of two northern and one southern actors, and their comedy often relies on their different accents).",
+    "fact_sheet": "• 21:00 - Performance Start",
     "type": "theater",
     "images": ["../assets/img/events/1/tel_chi_el_telun_0.jpg", "../assets/img/events/1/tel_chi_el_telun_1.jpg", "../assets/img/events/1/tel_chi_el_telun_2.jpg", "../assets/img/events/1/tel_chi_el_telun_3.jpg"],
-    "seminar_id": null
+    "seminar_id": 2
   },
   {
     "id": 2,
@@ -27,7 +27,7 @@
     "location": "Milano",
     "date": "2019-09-9",
     "desc": "Othello (The Tragedy of Othello, the Moor of Venice) is a tragedy by William Shakespeare, believed to have been written in 1603. It is based on the story Un Capitano Moro (\"A Moorish Captain\") by Cinthio, a disciple of Boccaccio, first published in 1565. The story revolves around its two central characters: Othello, a Moorish general in the Venetian army and his treacherous ensign, Iago. Given its varied and enduring themes of racism, love, jealousy, betrayal, revenge and repentance, Othello is still often performed in professional and community theatre alike, and has been the source for numerous operatic, film, and literary adaptations.",
-    "fact_sheet": "• 18:00 performance start",
+    "fact_sheet": "• 18:00 - Performance Start",
     "type": "opera",
     "images": ["../assets/img/events/2/othello_0.jpg", "../assets/img/events/2/othello_1.jpg", "../assets/img/events/2/othello_2.jpg"],
     "seminar_id": 1
@@ -38,7 +38,7 @@
     "location": "Roma",
     "date": "2019-09-7",
     "desc": "Don Quixote is a ballet in four acts and eight scenes, based on episodes taken from the famous novel Don Quixote de la Mancha by Miguel de Cervantes. It was originally choreographed by Marius Petipa to the music of Ludwig Minkus and first presented by the Ballet of the Imperial Bolshoi Theatre of Moscow, Russia on 26 December [O.S. 14 December] 1869. Petipa and Minkus revised the ballet into a far more expanded and elaborated edition in five acts and eleven scenes for the Imperial Ballet, first presented on 21 November [O.S. 9 November] 1871 at the Imperial Bolshoi Kamenny Theatre of St. Petersburg.\n\nAll modern productions of the Petipa/Minkus ballet are derived from the version staged by Alexander Gorsky for the Bolshoi Theatre of Moscow in 1900, a production the ballet master staged for the Imperial Ballet of St. Petersburg in 1902.",
-    "fact_sheet": "• 16:00 performance start",
+    "fact_sheet": "• 16:00 - Performance Start",
     "type": "dance",
     "images": ["../assets/img/events/3/don_quixote_0.jpg", "../assets/img/events/3/don_quixote_1.png", "../assets/img/events/3/don_quixote_2.jpg"],
     "seminar_id": null
@@ -49,9 +49,42 @@
     "location": "Venezia",
     "date": "2019-09-12",
     "desc": "Rigoletto (pronounced [riɡoˈletto]) is an opera in three acts by Giuseppe Verdi. The Italian libretto was written by Francesco Maria Piave based on the play Le roi s'amuse by Victor Hugo. Despite serious initial problems with the Austrian censors who had control over northern Italian theatres at the time, the opera had a triumphant premiere at La Fenice in Venice on 11 March 1851.\n\nIt is widely considered to be the first of the operatic masterpieces of Verdi's middle-to-late career. Its tragic story revolves around the licentious Duke of Mantua, his hunch-backed court jester Rigoletto, and Rigoletto's beautiful daughter Gilda. The opera's original title, La maledizione (The Curse), refers to a curse placed on both the Duke and Rigoletto by a courtier whose daughter the Duke has seduced with Rigoletto's encouragement. The curse comes to fruition when Gilda falls in love with the Duke and sacrifices her life to save him from the assassin hired by her father.",
-    "fact_sheet": "• 19:00 performance start",
+    "fact_sheet": "• 19:00 - Performance Start",
     "type": "opera",
     "images": ["../assets/img/events/4/rigoletto_0.jpg", "../assets/img/events/4/rigoletto_1.jpg", "../assets/img/events/4/rigoletto_2.jpg"],
     "seminar_id": 1
+  },
+  {
+    "id": 5,
+    "name": "Night Visions",
+    "location": "Milano",
+    "date": "2019-09-21",
+    "desc": "Night Visions is the debut studio album by American pop rock band Imagine Dragons. The extended version was released on February 12, 2013, adding three more songs and the UK release of the album was on March 26, 2013. Recorded between 2010 and 2012, the album was primarily produced by the band themselves, as well as English hip-hop producer Alex da Kid and Brandon Darner from the American indie rock group The Envy Corps. According to frontman Dan Reynolds, the album took three years to finish. Musically, Night Visions exhibits influences of folk, hip hop and pop.\nImagine Dragons bring their first album to make you live an unforgettable experience!",
+    "fact_sheet": "• 21:00 - Performance Start",
+    "type": "music",
+    "images": ["../assets/img/events/5/night_visions_1.jpg", "../assets/img/events/5/night_visions_2.jpg", "../assets/img/events/5/night_visions_3.jpg"],
+    "seminar_id": 3
+  },
+  {
+    "id": 6,
+    "name": "Cavalli di Battaglia",
+    "location": "Milano",
+    "date": "2019-09-18",
+    "desc": "Gigi Proietti, after three years of absence from the theaters, returns with part of his repertoire, the famous 'Battle Horses', the best pieces, the timeless ones, those that usually the public 'expects' to see and that are part of the baggage artistic of anyone who makes a show (whether an actor or a singer), with the style that has always distinguished him: contamination of genres, parts recited, sung, accompanied by a musical group directed by Maestro Mario Vicari. A show that will always thrill spectators giving them moments of great theater. It is also an opportunity to celebrate Gigi's 50-year career together, which flew between success.",
+    "fact_sheet": "• 19:00 - Performance Start",
+    "type": "theatre",
+    "images": ["../assets/img/events/6/cavalli_di_battaglia_1.jpg", "../assets/img/events/6/cavalli_di_battaglia_2.jpg"],
+    "seminar_id": 4
+  },
+  {
+    "id": 7,
+    "name": "Master of Puppets",
+    "location": "Milano",
+    "date": "2019-09-30",
+    "desc": "Master of Puppets is the third studio album by American heavy metal band Metallica. It was released on March 3, 1986 by Elektra Records. Recorded at the Sweet Silence Studios with producer Flemming Rasmussen, it was the first Metallica album released on a major record label. Master of Puppets was the band's last album to feature bassist Cliff Burton, who died in a bus accident in Sweden during the album's promotional tour. The album peaked at number 29 on the Billboard 200 and became the first thrash metal album to be certified platinum. Enjoy one of the most known albums of Metallica live!",
+    "fact_sheet": "• 21:00 - Performance Start",
+    "type": "music",
+    "images": ["../assets/img/events/7/master_of_puppets_1.jpg", "../assets/img/events/7/master_of_puppets_2.jpg"],
+    "seminar_id": 0
   }
 ]

@@ -1,23 +1,37 @@
 [
   {
     "id": 0,
-    "title": "Jova Seminar Deluxe",
-    "location": "Rimini",
-    "date": "2019-08-14",
-    "desc": "Seminar about latest Jova events"
+    "title": "Life of Metal",
+    "location": "Milano",
+    "date": "2019-09-9",
+    "desc": "One of the most known and appreciated type of music is metal, with not less than 40 years of story and well-known music ensembles. Explore metal origins and its evolution in this years!"
   },
   {
     "id": 1,
     "title": "Opera Moments",
     "location": "Milano",
-    "date": "2019-09-01",
-    "desc": "Seminar about latest opera events"
+    "date": "2019-09-1",
+    "desc": "Interested in opera? This seminar is an introduction for those of you that have never been to an opera performance. Learn more about the opera world, the most famous artists and their life!"
   },
   {
     "id": 2,
     "title": "History of Aldo Giovanni e Giacomo",
     "location": "Milano",
     "date": "2019-09-20",
-    "desc": "The famous trio is here to tell you about their story: their childhood, their first theatre experiences, and how they met and grew up together."
+    "desc": "The famous trio is here to tell you about their story: their childhood, their first theatre experiences, and how they met and grew up together. You'll have a great time and learn something about this world!"
+  },
+  {
+    "id": 3,
+    "title": "Alternative Rock History",
+    "location": "Milano",
+    "date": "2019-09-28",
+    "desc": "Alternative rock is a style of rock music that emerged from the independent music underground of the 1970s and became widely popular in the 1980s. It establish itself as one of the most listened type of music ever. If you haven't listened to alternative rock music, this seminar is for you."
+  },
+  {
+    "id": 4,
+    "title": "Living Behind the Curtains",
+    "location": "Milano",
+    "date": "2019-09-30",
+    "desc": "Being an actor is not easy, especially if you're a theater actor. But it's a life full of joy and satisfaction. The great Italian actor Gigi Proietti is here to tell you more about theater life, to introduce you to this world."
   }
 ]

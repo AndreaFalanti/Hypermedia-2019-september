@@ -3,15 +3,13 @@
     --input-padding-y: .75rem;
 }
 
-.bg {
+body {
     background: url(../img/login-bg.jpg) no-repeat center center fixed;
 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
-    height: 100%;
 }
 
 .card-signin {
