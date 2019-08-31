@@ -1,4 +1,4 @@
-function createEventCards () {
+function insertData () {
     addFormatters();
     const urlParams = new URLSearchParams(window.location.search);
     let typeValue = urlParams.get("type");
@@ -13,7 +13,7 @@ function createEventCards () {
             fetchUrl = fetchUrl.concat("?date=" + dateValue);
         }
 
-        fetchSeminars(fetchUrl);
+        createSeminarCards(fetchUrl);
     }
     else if (typeValue) {
         // Search only events for type (and date if present too)
@@ -22,38 +22,47 @@ function createEventCards () {
             fetchUrl = fetchUrl.concat("&date=" + dateValue);
         }
 
-        fetchEvents(fetchUrl);
+        createEventCards(fetchUrl);
     }
     else if (dateValue) {
         // Search events and seminars for date
-        fetchEvents('/v2/events?date=' + dateValue);
-        fetchSeminars('/v2/seminars?date=' + dateValue);
+        createEventCards('/v2/events?date=' + dateValue);
+        createSeminarCards('/v2/seminars?date=' + dateValue);
     }
     else {
         // default case, search any seminar and event
-        fetchEvents('/v2/events');
-        fetchSeminars('/v2/seminars');
+        createEventCards('/v2/events');
+        createSeminarCards('/v2/seminars');
     }
+
+    setTimeout(() => {
+        $("#noEventsWarning").removeClass("hidden");
+    }, 1000);
 }
 
-function fetchEvents(url) {
+function createEventCards(url) {
     fetch(url).then(r => r.json())
         .then(events => {
             console.log(events);
-            $("#events-container").loadTemplate($("#eventCardTemplate"), events, {
-                append: true
-            });
+            createCards($("#eventCardTemplate"), events);
         }).then(setEventTypeIcons);
 }
 
-function fetchSeminars(url) {
+function createSeminarCards(url) {
     fetch(url).then(r => r.json())
         .then(seminars => {
             console.log(seminars);
-            $("#events-container").loadTemplate($("#seminarCardTemplate"), seminars, {
-                append: true
-            });
+            createCards($("#seminarCardTemplate"), seminars);
         });
+}
+
+function createCards(template, data) {
+    if (data.length > 0) {
+        $("#noEventsWarning").remove();
+    }
+    $("#events-container").loadTemplate(template, data, {
+        append: true
+    });
 }
 
 function setEventTypeIcons () {

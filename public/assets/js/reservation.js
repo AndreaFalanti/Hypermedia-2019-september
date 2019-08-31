@@ -5,6 +5,7 @@ function addEventData() {
     const urlParams = new URLSearchParams(window.location.search);
     idValue = urlParams.get("id");
     if (idValue) {
+        $("#eventLink").attr("href", "/pages/event.html?id=" + idValue);
         fetch('/v2/events/' + idValue).then(r => r.json())
             .then(event => {
                 $("#inputEventName").val(event.name);

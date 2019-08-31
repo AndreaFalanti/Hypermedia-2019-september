@@ -65,83 +65,9 @@
                     </div>
                 </div>
 
-                <!--<div class="d-flex container justify-content-center mb-4">
-                    <div class="dropdown mx-auto">
-                        <div class="btn btn-circled btn-dark dropdown-toggle" id="eventTypeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose by type:</div>
-                        <div class="dropdown-menu" aria-labelledby="eventTypeDropdown">
-                            <button class="dropdown-item" type="button" onclick="location.href='\\pages\\events.html'">All</button>
-                            <button class="dropdown-item" type="button" onclick="addQueryParamToUrl('type', 'music')"><i class="fas fa-headphones"></i> Music</button>
-                            <button class="dropdown-item" type="button" onclick="addQueryParamToUrl('type', 'theater')"><i class="fas fa-theater-masks"></i> Theatre</button>
-                            <button class="dropdown-item" type="button" onclick="addQueryParamToUrl('type', 'dance')"><i class="fas fa-shoe-prints"></i> Dance</button>
-                            <button class="dropdown-item" type="button" onclick="addQueryParamToUrl('type', 'opera')"><i class="fas fa-music"></i> Opera</button>
-                            <button class="dropdown-item" type="button"><i class="fas fa-chalkboard-teacher"></i> Seminars</button>
-                        </div>
-                    </div>
-                    <div class="dropdown mx-auto">
-                        <div class="btn btn-circled btn-dark dropdown-toggle" id="eventDateDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose by date:</div>
-                        <div class="dropdown-menu" aria-labelledby="eventDateDropdown">
-                            <button class="dropdown-item" type="button">1</button>
-                            <button class="dropdown-item" type="button">2</button>
-                            <button class="dropdown-item" type="button">3</button>
-                            <button class="dropdown-item" type="button">4</button>
-                            <button class="dropdown-item" type="button">5</button>
-                            <button class="dropdown-item" type="button">6</button>
-                        </div>
-                    </div>
-                </div>-->
-
-                <!--&lt;!&ndash;Example of event card&ndash;&gt;
-                <div class="d-flex container justify-content-center mb-4">
-                    <div class="info-card card shadow-gray rounded-0">
-                        <div class="row h-100 mx-3">
-                            <div class="col-md-4">
-                                <img src="../assets/img/imagine_dragons.jpg" alt="..." class="img-fluid my-4 mx-auto">
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card-body">
-                                    <h5 class="card-title">Imagine Dragons's Tour</h5>
-                                    <hr class="div-dark my-3">
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card-body">
-                                    <p class="card-text"><strong><i class="fas fa-headphones"></i> Music</strong></p>
-                                    <p class="card-text"><strong>22 August 2019</strong></p>
-                                    <p class="card-text"><strong>FakeLocation St.</strong></p>
-                                    <a href="event.html" class="btn btn-primary btn-circled">Find out more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="mt-4 hidden" id="noEventsWarning">
+                    <h4 class="text-center">No events found</h4>
                 </div>
-
-                &lt;!&ndash;Example of seminar card&ndash;&gt;
-                <div class="d-flex container justify-content-center mb-4">
-                    <div class="info-card card shadow-gray rounded-0">
-                        <div class="row h-100 mx-3">
-                            <div class="col-md-4">
-                                <img src="../assets/img/imagine_dragons.jpg" alt="..." class="img-fluid my-4 mx-auto">
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card-body">
-                                    <h5 class="card-title">Imagine Dragons's Seminar</h5>
-                                    <hr class="div-dark my-3">
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card-body">
-                                    <p class="card-text"><strong><i class="fas fa-chalkboard-teacher"></i> Seminar</strong></p>
-                                    <p class="card-text"><strong>22 August 2019</strong></p>
-                                    <p class="card-text"><strong>FakeLocation St.</strong></p>
-                                    <a href="seminar.html" class="btn btn-primary btn-circled">Find out more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-
             </div>
         </main>
 
@@ -230,7 +156,7 @@
     <script>
         $(document).ready(() => {
             populateDateFilterOptions();
-            createEventCards();
+            insertData();
         });
     </script>
     </body>
