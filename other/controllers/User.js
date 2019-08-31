@@ -17,17 +17,21 @@ module.exports.usersRegisterPOST = function usersRegisterPOST (req, res, next) {
         });
 };
 
-module.exports.usersEmailGET = function usersEmailGET (req, res, next) {
-    var email = req.swagger.params['email'].value;
-    User.usersEmailGET(email)
-        .then(function (response) {
-            utils.writeJson(res, response);
-        })
-        .catch(function (response) {
-            res.statusCode = response.code;
-            res.statusMessage = response.error;
-            res.end();
-        });
+module.exports.usersDataGET = function usersDataGET (req, res, next) {
+    if (req.session.loggedin) {
+        User.usersDataGET(req.session.email)
+            .then(function (response) {
+                utils.writeJson(res, response);
+            })
+            .catch(function (response) {
+                utils.writeJson(res, response);
+            });
+    }
+    else {
+        res.statusCode = 401;
+        res.statusMessage = "Not authenticated";
+        res.end();
+    }
 };
 
 module.exports.usersReservationsGET = function usersReservationsGET (req, res, next) {
@@ -47,17 +51,6 @@ module.exports.usersReservationsGET = function usersReservationsGET (req, res, n
     }
 };
 
-module.exports.usersGET = function usersGET (req, res, next) {
-    var size = req.swagger.params['size'].value;
-    User.usersGET(size)
-        .then(function (response) {
-            utils.writeJson(res, response);
-        })
-        .catch(function (response) {
-            utils.writeJson(res, response);
-        });
-};
-
 module.exports.usersLoginPOST = function usersLoginPOST (req, res, next) {
     var login = req.swagger.params['login'].value;
     User.usersLoginPOST(login)
@@ -66,7 +59,9 @@ module.exports.usersLoginPOST = function usersLoginPOST (req, res, next) {
                 req.session.loggedin = true;
                 req.session.email = login.email;
             }
-            utils.writeJson(res, response);
+
+            res.statusCode = 204;
+            res.end();
         })
         .catch(function (response) {
             res.statusCode = 400;
@@ -109,10 +104,10 @@ module.exports.usersReservePOST = function usersReservePOST (req, res, next) {
     }
 };
 
-module.exports.usersReservationsCancelIdPOST = function usersReservationsCancelIdPOST (req, res, next) {
+module.exports.usersReservationsIdCancelPOST = function usersReservationsIdCancelPOST (req, res, next) {
     var id = req.swagger.params['id'].value;
     if (req.session.loggedin) {
-        User.usersReservationsCancelIdPOST(id, req.session.email)
+        User.usersReservationsIdCancelPOST(id, req.session.email)
             .then(function (response) {
                 utils.writeJson(res, response);
             })

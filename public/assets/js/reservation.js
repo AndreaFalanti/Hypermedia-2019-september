@@ -11,10 +11,12 @@ function addEventData() {
                 $("#inputEventName").val(event.name);
                 $("#inputEventLocation").val(event.location);
                 $("#inputEventDate").val(new Date(event.date).toDateString());
-            });
+            })
+            .catch(err => handleInvalidId("/index.html"));
     }
     else {
-        // redirect to another page?
+        // Redirect to home page if no id is defined
+        handleAbsentId("/index.html")
     }
 }
 
@@ -24,8 +26,8 @@ function checkIfReservationIsAlreadyPresent() {
             if (reservations.some(e => e.event_id === parseInt(idValue))) {
                 $("#reservationWarning").removeClass("hidden");
             }
-        }).catch(error => {
-        // Redirect to login page
+        }).catch(() => {
+        // Redirect to login page if not authorized is returned
         document.location.href = "/pages/login.html";
     });
 }

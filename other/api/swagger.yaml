@@ -18,47 +18,22 @@ tags:
 schemes:
   - "http"
 paths:
-  /users:
-    get:
-      tags:
-        - "user"
-      summary: "Gets some users"
-      description: "Returns a list containing all users."
-      operationId: "usersGET"
-      produces:
-        - "application/json"
-      parameters:
-        - $ref: "#/parameters/size"
-      responses:
-        200:
-          description: "Users list"
-          schema:
-            $ref: "#/definitions/Users"
-        404:
-          description: "Unexpected error."
-      x-swagger-router-controller: "User"
-  /users/{email}:
+  /users/data:
     get:
       tags:
         - "user"
       summary: "Gets a single user"
-      description: "Returns a single user for its email"
-      operationId: "usersEmailGET"
+      description: "Returns logged user not sensitive data"
+      operationId: "usersDataGET"
       produces:
         - "application/json"
-      parameters:
-        - name: "email"
-          in: "path"
-          description: "The user's email"
-          required: true
-          type: "string"
       responses:
         200:
-          description: "A user"
+          description: "User data"
           schema:
-            $ref: "#/definitions/User"
-        404:
-          description: "User not found (unknown email)"
+            $ref: "#/definitions/Not_sensitive_data_user"
+        401:
+          description: "Not authenticated"
       x-swagger-router-controller: "User"
   /users/reservations:
     get:
@@ -76,19 +51,19 @@ paths:
             properties:
               event:
                 $ref: "#/definitions/Event"
-              reserved_seats:
-                description: "Number of seats reserved"
+              tickets:
+                description: "Number of tickets reserved"
                 type: "integer"
         401:
           description: "Not authenticated"
       x-swagger-router-controller: "User"
-  /users/reservations/cancel/{id}:
+  /users/reservations/{id}/cancel:
     post:
       tags:
         - "user"
       summary: "Cancel user reservation"
       description: "Cancel user reservation with given event id"
-      operationId: "usersReservationsCancelIdPOST"
+      operationId: "usersReservationsIdCancelPOST"
       produces:
         - "application/json"
       parameters:
@@ -207,8 +182,6 @@ paths:
           description: "List of events"
           schema:
             $ref: "#/definitions/Events"
-        404:
-          description: "Can't find events"
       x-swagger-router-controller: "Event"
   /events/{id}:
     get:
@@ -295,8 +268,6 @@ paths:
           description: "List of seminars"
           schema:
             $ref: "#/definitions/Seminars"
-        404:
-          description: "Can't find seminars"
       x-swagger-router-controller: "Seminar"
   /seminars/{id}:
     get:
@@ -340,7 +311,7 @@ paths:
           schema:
             $ref: "#/definitions/Events"
         404:
-          description: "Invalid seminar id"
+          description: "Seminar not found (unknown id)"
       x-swagger-router-controller: "Seminar"
   /artists:
     get:
@@ -367,8 +338,6 @@ paths:
           description: "List of artists"
           schema:
             $ref: "#/definitions/Artists"
-        404:
-          description: "Can't find artists"
       x-swagger-router-controller: "Performer"
   /artists/{id}:
     get:
@@ -439,8 +408,6 @@ paths:
           description: "List of companies"
           schema:
             $ref: "#/definitions/Companies"
-        404:
-          description: "Can't find companies"
       x-swagger-router-controller: "Performer"
   /companies/{id}:
     get:
@@ -484,7 +451,7 @@ paths:
           schema:
             $ref: "#/definitions/Artists"
         404:
-          description: "Invalid company id"
+          description: "Company not found (unknown id)"
       x-swagger-router-controller: "Performer"
   /companies/{id}/events:
     get:
@@ -532,6 +499,21 @@ definitions:
     type: "array"
     items:
       $ref: "#/definitions/User"
+
+  Not_sensitive_data_user:
+    required:
+      - "email"
+    properties:
+      firstname:
+        type: "string"
+      lastname:
+        type: "string"
+      email:
+        type: "string"
+    example:
+      firstname: "Johnny"
+      lastname: "De Gennaro"
+      email: "asd@gmail.com"
 
   Event:
     required:
@@ -697,8 +679,8 @@ definitions:
       password:
         type: "string"
     example:
-      email: "mail@asd.com"
-      password: "admin"
+      email: "fala@asd.com"
+      password: "qwerty123"
 
   ReserveData:
     required:

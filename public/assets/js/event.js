@@ -19,11 +19,12 @@ function insertData () {
                     $("#seminarName").html("No seminar for this event");
                     $("#seminarButton").remove();
                 }
-            });
+            })
+            .catch(err => handleInvalidId("/pages/events.html"));
     }
     else {
         // Redirect to events page
-        document.location.href = "/pages/events.html";
+        handleAbsentId("/pages/events.html");
     }
 }
 

@@ -97,3 +97,15 @@ function createListLink (href, inner) {
 
     return li;
 }
+
+// Handle redirects and error messages when object id is invalid
+function handleInvalidId (redirectUrl) {
+    alert("Unknown id, object not found!");
+    document.location.href = redirectUrl;
+}
+
+// Handle redirects and error messages when object id is absent
+function handleAbsentId (redirectUrl) {
+    alert("Id not provided, can't find object!");
+    document.location.href = redirectUrl;
+}

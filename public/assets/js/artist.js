@@ -28,10 +28,11 @@ function insertData () {
                 else {
                     $("#companyPara").append("none");
                 }
-            });
+            })
+            .catch(err => handleInvalidId("/pages/performers.html"));
     }
     else {
         // Redirect to performers page
-        document.location.href = "/pages/performers.html";
+        handleAbsentId("/pages/performers.html");
     }
 }

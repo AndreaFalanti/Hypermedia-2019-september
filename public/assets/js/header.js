@@ -21,20 +21,24 @@ function setActiveItem () {
 </ul>
  */
 function setUserActions () {
-    let user = sessionStorage.getItem("userData");
-    if (user) {
-        let actionsContainer = $("#userActions");
-        actionsContainer.empty();
+    //let user = sessionStorage.getItem("userData");
+    fetch('/v2/users/data').then(r => r.json())
+        .then(user => {
+            if (user) {
+                let actionsContainer = $("#userActions");
+                actionsContainer.empty();
 
-        let welcome = createNavLink("Welcome " + user);
-        welcome.attr("href", "/pages/user_reservations.html");
+                let welcome = createNavLink("Welcome " + user.firstname + " " + user.lastname);
+                welcome.attr("href", "/pages/user_reservations.html");
 
-        let logout = createNavLink("Logout");
-        logout.click(() => logOut());
+                let logout = createNavLink("Logout");
+                logout.click(() => logOut());
 
-        actionsContainer.append(createNavItem().append(welcome));
-        actionsContainer.append(createNavItem().append(logout));
-    }
+                actionsContainer.append(createNavItem().append(welcome));
+                actionsContainer.append(createNavItem().append(logout));
+            }
+        }).catch(err => console.log("401 error is expected because header checks if user is" +
+            " logged in"));
 }
 
 function logOut() {
@@ -45,9 +49,6 @@ function logOut() {
         success: function(data){
             sessionStorage.removeItem("userData");
             location.reload();
-        },
-        error: function(errMsg) {
-            return false;
         }
     });
 }

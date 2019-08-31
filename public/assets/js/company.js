@@ -24,10 +24,11 @@ function insertData () {
                     .then(artists => artists.forEach(e => {
                         $("#artistsList").append(createListLink("artist.html?id=" + e.id, e.name + " " + e.surname));
                     }))
-            });
+            })
+            .catch(err => handleInvalidId("/pages/performers.html"));
     }
     else {
         // Redirect to performers page
-        document.location.href = "/pages/performers.html";
+        handleAbsentId("/pages/performers.html");
     }
 }

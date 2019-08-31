@@ -12,7 +12,6 @@ function login() {
         contentType: "application/json; charset=utf-8",
         success: function(data){
             document.location.href = "/index.html";
-            sessionStorage.setItem("userData", data.firstname + " " + data.lastname);
             },
         error: function(errMsg) {
             $("#loginError").removeClass("hidden");

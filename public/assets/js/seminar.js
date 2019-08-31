@@ -12,11 +12,12 @@ function insertData () {
                             $("#eventsList").append(createEventLi(e));
                         });
                     });
-            });
+            })
+            .catch(err => handleInvalidId("/pages/events.html"));
     }
     else {
         // Redirect to events page
-        document.location.href = "/pages/events.html";
+        handleAbsentId("/pages/events.html");
     }
 }
 

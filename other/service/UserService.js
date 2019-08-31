@@ -71,7 +71,7 @@ exports.usersRegisterPOST = function(body) {
  * email String The user's email
  * returns User
  **/
-exports.usersEmailGET = function(email) {
+exports.usersDataGET = function(email) {
     return new Promise(function(resolve, reject) {
         try {
             return sqlDb("usr")
@@ -81,6 +81,7 @@ exports.usersEmailGET = function(email) {
                 .timeout(2000, {cancel: true})
                 .then(user => {
                     if (user) {
+                        delete user.password;
                         resolve(user);
                     }
                     else {
@@ -203,7 +204,7 @@ exports.usersReservePOST = function(body, userEmail) {
     });
 };
 
-exports.usersReservationsCancelIdPOST = function(id, userEmail) {
+exports.usersReservationsIdCancelPOST = function(id, userEmail) {
     return new Promise(function(resolve, reject) {
         let result;
         try {

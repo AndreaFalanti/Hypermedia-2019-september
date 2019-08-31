@@ -30,13 +30,10 @@ function createCardContainer () {
 function cancelReservation (id) {
     $.ajax({
         type: "POST",
-        url: "/v2/users/reservations/cancel/" + id,
+        url: "/v2/users/reservations/" + id + "/cancel",
         contentType: "application/json; charset=utf-8",
         success: function(data){
             location.reload();
-        },
-        error: function(errMsg) {
-            return false;
         }
     });
 }
