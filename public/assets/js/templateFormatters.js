@@ -3,6 +3,10 @@ function addFormatters() {
         function(value, template) {
             return "/pages/event.html?id=" + value;
         });
+    $.addTemplateFormatter("eventsDateHrefFormatter",
+        function(value, template) {
+            return "/pages/events.html?date=" + fixDate(value);
+        });
     $.addTemplateFormatter("seminarHrefFormatter",
         function(value, template) {
             return "/pages/seminar.html?id=" + value;
@@ -43,4 +47,14 @@ function addFormatters() {
         function(value, template) {
             return " " + value;
         });
+}
+
+/* Date is registered in postgres as (actual date - 1 day)T22:00:00Z for unknown reason,
+   this function fix the format */
+function fixDate(date) {
+    let dateOnly = date.split("T")[0];
+    let split = dateOnly.split("-");
+    split[2] = (parseInt(split[2]) + 1).toString();
+
+    return split.join("-");
 }

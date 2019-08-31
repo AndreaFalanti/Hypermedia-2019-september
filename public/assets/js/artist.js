@@ -8,7 +8,20 @@ function insertData () {
                 console.log(data);
                 $("#cont").loadTemplate($("#artistTemplate"), data, {async: false});
                 $("#artistTitle").html(data.name + " " + data.surname);
+
                 populatePhotoGalleryCarousel(data.images, $("#carousel"), $("#carouselIndicators"));
+                fetch('/v2/artists/' + idValue + "/events").then(r => r.json())
+                    .then(events => {
+                        let eventsList = $("#eventsList");
+                        if (events.length > 0) {
+                            events.forEach(e =>
+                                eventsList.append(createListLink("/pages/event.html?id=" + e.id, e.name)) );
+                        }
+                        else {
+                            eventsList.append("none");
+                        }
+                    });
+
                 if (data.affiliation !== null) {
                     fetch('/v2/companies/' + data.affiliation).then(r => r.json())
                         .then(company => $("#companyLink").html(company.name));

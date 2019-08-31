@@ -392,6 +392,28 @@ paths:
         404:
           description: "Artist not found (unknown id)"
       x-swagger-router-controller: "Performer"
+  /artists/{id}/events:
+    get:
+      tags:
+        - "performer"
+      summary: "Get events of given artist"
+      description: "Returns all events in which the artist participate"
+      operationId: "artistIdEventsGET"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Events of the artist"
+          schema:
+            $ref: "#/definitions/Events"
+        404:
+          description: "Artist not found (unknown id)"
+      x-swagger-router-controller: "Performer"
   /companies:
     get:
       tags:
@@ -463,6 +485,28 @@ paths:
             $ref: "#/definitions/Artists"
         404:
           description: "Invalid company id"
+      x-swagger-router-controller: "Performer"
+  /companies/{id}/events:
+    get:
+      tags:
+        - "performer"
+      summary: "Get events of given company"
+      description: "Returns all events in which the company participate"
+      operationId: "companyIdEventsGET"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Events of the artist"
+          schema:
+            $ref: "#/definitions/Events"
+        404:
+          description: "Company not found (unknown id)"
       x-swagger-router-controller: "Performer"
 
 definitions:

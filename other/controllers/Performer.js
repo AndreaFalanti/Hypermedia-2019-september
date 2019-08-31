@@ -63,3 +63,25 @@ module.exports.companyIdGET = function companyIdGET (req, res, next) {
             res.end();
         });
 };
+
+module.exports.companyIdEventsGET = function companyIdEventsGET (req, res, next) {
+    var id = req.swagger.params['id'].value;
+    Performer.companyIdEventsGET(id)
+        .then(function (response) {
+            utils.writeJson(res, response);
+        })
+        .catch(function (response) {
+            utils.writeJson(res, response);
+        });
+};
+
+module.exports.artistIdEventsGET = function artistIdEventsGET (req, res, next) {
+    var id = req.swagger.params['id'].value;
+    Performer.artistIdEventsGET(id)
+        .then(function (response) {
+            utils.writeJson(res, response);
+        })
+        .catch(function (response) {
+            utils.writeJson(res, response);
+        });
+};

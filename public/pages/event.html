@@ -134,7 +134,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Check out events in the same date!</h4>
                                 <hr class="div-dark my-4">
-                                <a href="#" class="btn btn-lilac btn-circled btn-block text-light">Find out</a>
+                                <a class="btn btn-lilac btn-circled btn-block text-light" data-href="date" data-format="eventsDateHrefFormatter" data-format-target="href">Find out</a>
                             </div>
                         </div>
                     </div>
@@ -152,7 +152,8 @@
 
             </div>
         </script>
-        <script type="text/html" id="artistCardTemplate">
+        <!-- Performers carousel is no more in use (DEPRECATED) -->
+        <!--<script type="text/html" id="artistCardTemplate">
             <div class="col-sm-4">
                 <div class="card mb-2">
                     <img class="card-img-top b-grey" data-src="images" data-format="firstImageFormatter" data-format-target="src">
@@ -173,7 +174,7 @@
                     </div>
                 </div>
             </div>
-        </script>
+        </script>-->
         <script>
             $(document).ready(insertData());
         </script>

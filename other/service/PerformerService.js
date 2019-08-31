@@ -254,3 +254,54 @@ exports.companyIdGET = function(id) {
     });
 };
 
+
+/**
+ * Get events of given company
+ * Returns all events in which the company participate
+ *
+ * id Integer
+ * returns Events
+ **/
+exports.companyIdEventsGET = function(id) {
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("performed_by_company")
+                .innerJoin("event", "event.id", "performed_by_company.event_id")
+                .select()
+                .where("company_id", id)
+                .timeout(2000, {cancel: true});
+
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
+};
+
+
+/**
+ * Get events of given artist
+ * Returns all events in which the artist participate
+ *
+ * id Integer
+ * returns Events
+ **/
+exports.artistIdEventsGET = function(id) {
+    return new Promise(function(resolve, reject) {
+        let result;
+        try {
+            result = sqlDb("performed_by_artist")
+                .innerJoin("event", "event.id", "performed_by_artist.event_id")
+                .select()
+                .where("artist_id", id)
+                .timeout(2000, {cancel: true});
+
+            resolve(result);
+        }
+        catch (e) {
+            reject(e);
+        }
+    });
+};
