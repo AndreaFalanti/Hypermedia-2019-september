@@ -33,6 +33,10 @@ var uiOptions = {
 // The Swagger document (require it, build it programmatically, fetch it from a URL, ...)
 var spec = fs.readFileSync(path.join(dirToOther, 'api/swagger.yaml'), 'utf8');
 var swaggerDoc = jsyaml.safeLoad(spec);
+// if running locally, override host value in swagger yaml file
+if (process.env.NODE_ENV === 'development') {
+    swaggerDoc.host="localhost:" + process.env.PORT
+}
 
 // Add cookies to responses
 app.use(cookieParser());

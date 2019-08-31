@@ -4,7 +4,7 @@ info:
   description: "Simple api for polimi hypermedia project for september 2019"
   version: "1.0.0"
   title: "Summer festival API"
-host: "localhost:8080"
+host: "polimi-hyp-2019-team-10568850.herokuapp.com"
 basePath: "/v2"
 tags:
   - name: "event"
@@ -16,7 +16,7 @@ tags:
   - name: "user"
     description: "Information about users"
 schemes:
-  - "http"
+  - "https"
 paths:
   /users/data:
     get:
