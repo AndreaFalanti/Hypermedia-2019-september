@@ -47,7 +47,7 @@ exports.usersRegisterPOST = function(body) {
                 .timeout(2000, {cancel: true})
                 .then(user => {
                     if (user) {
-                        reject("Email already taken");
+                        reject();
                     } else {
                         result = sqlDb("usr")
                             .insert(body)

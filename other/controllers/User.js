@@ -7,10 +7,13 @@ module.exports.usersRegisterPOST = function usersRegisterPOST (req, res, next) {
     var body = req.swagger.params['body'].value;
     User.usersRegisterPOST(body)
         .then(function (response) {
-            utils.writeJson(res, response);
+            res.statusCode = 204;
+            res.end();
         })
         .catch(function (response) {
-            utils.writeJson(res, response);
+            res.statusCode = 400;
+            res.statusMessage = "Email already taken";
+            res.end();
         });
 };
 
@@ -66,7 +69,9 @@ module.exports.usersLoginPOST = function usersLoginPOST (req, res, next) {
             utils.writeJson(res, response);
         })
         .catch(function (response) {
-            utils.writeJson(res, response, 400);
+            res.statusCode = 400;
+            res.statusMessage = "Invalid login";
+            res.end();
         });
 };
 

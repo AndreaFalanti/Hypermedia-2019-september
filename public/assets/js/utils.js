@@ -24,7 +24,7 @@ function setEventIcon(i, type) {
             i.classList.add("fa-microphone");
             break;
         default:
-            console.log("Error while setting icon");
+            console.log("Unknown type");
             break;
     }
 }
@@ -91,7 +91,7 @@ function removeQueryParamFromUrl(param) {
 
 // Create a LI element with a link with given parameters
 function createListLink (href, inner) {
-    let li = $("<li><p></p></li>");
+    let li = $("<li></li>");
     let a = $("<a></a>").attr("href", href).html(inner);
     li.append(a);
 

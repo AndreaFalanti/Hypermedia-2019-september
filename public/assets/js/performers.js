@@ -21,7 +21,6 @@ function insertData () {
 function fetchCompanies() {
     return fetch('/v2/companies').then(r => r.json())
         .then(companies => {
-            console.log(companies);
             $("#cont").loadTemplate($("#companyCardTemplate"), companies, {append: true})
         });
 }
@@ -29,7 +28,6 @@ function fetchCompanies() {
 function fetchArtists() {
     return fetch('/v2/artists').then(r => r.json())
         .then(artists => {
-            console.log(artists);
             $("#cont").loadTemplate($("#artistCardTemplate"), artists, {append: true})
         });
 }

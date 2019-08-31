@@ -5,13 +5,11 @@ function insertData () {
         addFormatters();
         fetch('/v2/companies/' + idValue).then(r => r.json())
             .then(data => {
-                console.log(data);
                 $("#cont").loadTemplate($("#companyTemplate"), data, {async: false});
                 populatePhotoGalleryCarousel(data.images, $("#carousel"), $("#carouselIndicators"));
 
                 fetch('/v2/companies/' + idValue + "/events").then(r => r.json())
                     .then(events => {
-                        console.log(events);
                         let eventsList = $("#eventsList");
                         if (events.length > 0) {
                             events.forEach(e =>
@@ -29,7 +27,7 @@ function insertData () {
             });
     }
     else {
-        console.log("Prototype page, delete this in the future");
-        // Maybe redirect to perfomers page? If id is not set no info can be fetched
+        // Redirect to performers page
+        document.location.href = "/pages/performers.html";
     }
 }

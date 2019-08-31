@@ -14,7 +14,6 @@ function addEventData() {
             });
     }
     else {
-        console.log("id not present");
         // redirect to another page?
     }
 }
@@ -25,14 +24,15 @@ function checkIfReservationIsAlreadyPresent() {
             if (reservations.some(e => e.event_id === parseInt(idValue))) {
                 $("#reservationWarning").removeClass("hidden");
             }
-        });
+        }).catch(error => {
+        // Redirect to login page
+        document.location.href = "/pages/login.html";
+    });
 }
 
 function reservation() {
     let tickets = $("#ticketSelector").val();
-
     let json = JSON.stringify({event_id: parseInt(idValue) , tickets: parseInt(tickets)});
-    console.log(json);
 
     $.ajax({
         type: "POST",

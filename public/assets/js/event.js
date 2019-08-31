@@ -5,7 +5,6 @@ function insertData () {
         addFormatters();
         fetch('/v2/events/' + idValue).then(r => r.json())
             .then(data => {
-                console.log(data);
                 $("#container").loadTemplate($("#eventTemplate"), data, {async: false});
                 setEventIcon(document.body.querySelector("#eventIcon"), data.type);
 
@@ -23,8 +22,8 @@ function insertData () {
             });
     }
     else {
-        console.log("Prototype page, delete this in the future");
-        // Maybe redirect to events page? If id is not set no info can be fetched
+        // Redirect to events page
+        document.location.href = "/pages/events.html";
     }
 }
 
@@ -52,13 +51,13 @@ DEPRECATED: carousel is no more used because of layout problems and bad
     let artistFetch = fetch('/v2/events/' + id + '/artists').then(r => r.json());
     let companyFetch = fetch('/v2/events/' + id + '/companies').then(r => r.json());
     Promise.all([artistFetch, companyFetch]).then(values => {
-        console.log(values);
+
         let artists = values[0];
         let companies = values[1];
         let performersCount = artists.length + companies.length;
-        console.log(artists);
-        console.log(companies);
-        console.log(performersCount);
+
+
+
 
         let row = $("#firstCardContainer");
         for (let i = 0; i < performersCount; i++) {

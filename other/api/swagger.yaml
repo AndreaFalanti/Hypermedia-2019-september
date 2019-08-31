@@ -161,8 +161,8 @@ paths:
       responses:
         204:
           description: "Successful registration"
-        404:
-          description: "Registration error"
+        400:
+          description: "Email already registered"
       x-swagger-router-controller: "User"
   /users/reserve:
     post:
@@ -514,17 +514,17 @@ definitions:
     required:
       - "email"
     properties:
-      firstName:
+      firstname:
         type: "string"
-      lastName:
+      lastname:
         type: "string"
       email:
         type: "string"
       password:
         type: "string"
     example:
-      firstName: "Johnny"
-      lastName: "De Gennaro"
+      firstname: "Johnny"
+      lastname: "De Gennaro"
       email: "asd@gmail.com"
       password: "admin123"
 

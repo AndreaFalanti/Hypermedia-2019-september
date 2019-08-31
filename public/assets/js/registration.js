@@ -7,23 +7,21 @@ function register() {
     let confirmPassword = $("#inputConfirmPassword").val();
 
     if (password !== confirmPassword) {
-        alert("Passwords don't match");
+        $("#passwordsError").removeClass("hidden");
+        $("#emailError").addClass("hidden");
     }
     else {
+        $("#passwordsError").addClass("hidden");
         let json = JSON.stringify({firstname, lastname, email, password});
-        console.log(json);
 
         $.ajax({
             type: "POST",
             url: "/v2/users/register",
             data: json,
             contentType: "application/json; charset=utf-8",
-            dataType: "json",
             success: function(data){document.location.href = "../index.html";},
             error: function(errMsg) {
                 $("#emailError").removeClass("hidden");
-                alert(JSON.stringify(errMsg, null, 4));
-                return false;
             }
         });
     }

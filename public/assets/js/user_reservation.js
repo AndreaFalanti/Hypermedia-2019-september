@@ -2,7 +2,6 @@ function insertData () {
     addFormatters();
     fetch('/v2/users/reservations').then(r => r.json())
         .then(data => {
-            console.log(data);
             let cardContainer;
             for (let count = 0; count < data.length; count++) {
                 if (count % 3 === 0) {
@@ -12,7 +11,7 @@ function insertData () {
                 cardContainer.loadTemplate($("#reservationCardTemplate"), data[count], {async: false, append: true});
             }
 
-            // This array have the same length, selectors are in document order
+            // These arrays have the same length, selectors are in document order
             let priceTags = Array.from(document.body.querySelectorAll(".res-cost"));
             let iconTags = Array.from(document.body.querySelectorAll(".event-icon"));
             let cancelButtons = Array.from(document.body.querySelectorAll(".res-cancel"));
@@ -37,7 +36,6 @@ function cancelReservation (id) {
             location.reload();
         },
         error: function(errMsg) {
-            alert(JSON.stringify(errMsg, null, 4));
             return false;
         }
     });

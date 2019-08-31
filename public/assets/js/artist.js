@@ -5,7 +5,6 @@ function insertData () {
         addFormatters();
         fetch('/v2/artists/' + idValue).then(r => r.json())
             .then(data => {
-                console.log(data);
                 $("#cont").loadTemplate($("#artistTemplate"), data, {async: false});
                 $("#artistTitle").html(data.name + " " + data.surname);
 
@@ -32,7 +31,7 @@ function insertData () {
             });
     }
     else {
-        console.log("Prototype page, delete this in the future");
-        // Maybe redirect to performers page? If id is not set no info can be fetched
+        // Redirect to performers page
+        document.location.href = "/pages/performers.html";
     }
 }

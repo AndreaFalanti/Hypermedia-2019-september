@@ -43,7 +43,6 @@ function insertData () {
 function createEventCards(url) {
     fetch(url).then(r => r.json())
         .then(events => {
-            console.log(events);
             createCards($("#eventCardTemplate"), events);
         }).then(setEventTypeIcons);
 }
@@ -51,7 +50,6 @@ function createEventCards(url) {
 function createSeminarCards(url) {
     fetch(url).then(r => r.json())
         .then(seminars => {
-            console.log(seminars);
             createCards($("#seminarCardTemplate"), seminars);
         });
 }

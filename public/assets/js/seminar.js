@@ -5,7 +5,6 @@ function insertData () {
         addFormatters();
         fetch('/v2/seminars/' + idValue).then(r => r.json())
             .then(data => {
-                console.log(data);
                 $("#cont").loadTemplate($("#seminarTemplate"), data, {async: false});
                 fetch('/v2/seminars/' + idValue + '/events').then(r => r.json())
                     .then(events => {
@@ -16,8 +15,8 @@ function insertData () {
             });
     }
     else {
-        console.log("Prototype page, delete this in the future");
-        // Maybe redirect to events page? If id is not set no info can be fetched
+        // Redirect to events page
+        document.location.href = "/pages/events.html";
     }
 }
 
