@@ -88,3 +88,12 @@ function removeQueryParamFromUrl(param) {
     searchParams.delete(param);
     window.location = window.location.pathname + "?" + searchParams;
 }
+
+// Create a LI element with a link with given parameters
+function createListLink (href, inner) {
+    let li = $("<li><p></p></li>");
+    let a = $("<a></a>").attr("href", href).html(inner);
+    li.append(a);
+
+    return li;
+}

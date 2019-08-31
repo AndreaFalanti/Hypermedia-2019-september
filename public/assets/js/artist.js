@@ -9,7 +9,7 @@ function insertData () {
                 $("#cont").loadTemplate($("#artistTemplate"), data, {async: false});
                 $("#artistTitle").html(data.name + " " + data.surname);
                 populatePhotoGalleryCarousel(data.images, $("#carousel"), $("#carouselIndicators"));
-                if (data.affiliation) {
+                if (data.affiliation !== null) {
                     fetch('/v2/companies/' + data.affiliation).then(r => r.json())
                         .then(company => $("#companyLink").html(company.name));
                 }

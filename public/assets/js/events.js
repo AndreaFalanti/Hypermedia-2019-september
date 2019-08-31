@@ -13,13 +13,7 @@ function createEventCards () {
             fetchUrl = fetchUrl.concat("?date=" + dateValue);
         }
 
-        fetch(fetchUrl).then(r => r.json())
-            .then(seminars => {
-                console.log(seminars);
-                $("#events-container").loadTemplate($("#seminarCardTemplate"), seminars, {
-                    append: true
-                });
-            });
+        fetchSeminars(fetchUrl);
     }
     else if (typeValue) {
         // Search only events for type (and date if present too)

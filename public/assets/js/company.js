@@ -10,12 +10,7 @@ function insertData () {
                 populatePhotoGalleryCarousel(data.images, $("#carousel"), $("#carouselIndicators"));
                 fetch('/v2/companies/' + data.id + '/artists').then(r => r.json())
                     .then(artists => artists.forEach(e => {
-                        let artistEl = $("<li><p></p></li>");
-                        let a = document.createElement("a");
-                        a.innerHTML = e.name + " " + e.surname;
-                        a.setAttribute("href", "artist.html?id=" + e.id);
-                        artistEl.append(a);
-                        $("#artistsList").append(artistEl);
+                        $("#artistsList").append(createListLink("artist.html?id=" + e.id, e.name + " " + e.surname));
                     }))
             });
     }

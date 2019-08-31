@@ -180,7 +180,7 @@
 
     <script type="text/html" id="eventCardTemplate">
         <div class=" d-flex container justify-content-center mb-4">
-            <div class="info-card card shadow-gray rounded-0" style="border: 2px solid #000000;">
+            <div class="info-card card shadow-gray rounded-0">
                 <div class="row h-100 mx-3">
                     <div class="col-md-4">
                         <img class="img-fluid my-4 mx-auto" data-alt="name" data-src="images" data-format="firstImageFormatter" data-format-target="src">
@@ -207,16 +207,16 @@
     <script type="text/html" id="seminarCardTemplate">
         <div class="d-flex container justify-content-center mb-4">
             <div class="card card-seminar shadow-gray rounded-0">
-                <div class="row h-100 mx-3">
-                    <div class="col-md-6">
+                <div class="row h-100 mx-3 justify-content-between">
+                    <div class="col-md-7">
                         <div class="card-body">
                             <h5 class="card-title" data-content="title"></h5>
                             <hr class="div-dark my-3">
-                            <p class="card-text" data-content="desc" data-format="firstWordsFormatter" data-format-options="25"></p>
+                            <p class="card-text" data-content="desc" data-format="firstWordsFormatter" data-format-options="35"></p>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card-body text-center">
+                    <div class="col-md-4">
+                        <div class="card-body">
                             <p class="card-text"><strong><i class="fas fa-chalkboard-teacher"></i> Seminar</strong></p>
                             <p class="card-text"><strong data-content="date" data-format="dateFormatter"></strong></p>
                             <p class="card-text"><strong data-content="location"></strong></p>
