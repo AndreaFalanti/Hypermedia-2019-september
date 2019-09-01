@@ -36,11 +36,11 @@ exports.seminarDbSetup = function(database) {
  * Get seminars list
  * Returns list of seminars
  *
- * size Integer Number of items returned in a page, default is 10 (optional)
- * page Integer Selected page to return, default is 0 (optional)
+ * date (String) Date filter to apply (optional)
+ * location (String) Location filter to apply (optional)
  * returns Seminars
  **/
-exports.seminarsGET = function(size,page,date,location) {
+exports.seminarsGET = function(date,location) {
     return new Promise(function(resolve, reject) {
         let result;
         try {
@@ -54,7 +54,6 @@ exports.seminarsGET = function(size,page,date,location) {
                         query.where("location", location)
                     }
                 })
-                .limit(size || 10)
                 .timeout(2000, {cancel: true});
 
             resolve(result);

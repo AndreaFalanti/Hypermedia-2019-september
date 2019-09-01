@@ -28,9 +28,7 @@ module.exports.artistIdGET = function artistIdGET (req, res, next) {
 };
 
 module.exports.artistsGET = function artistsGET (req, res, next) {
-    var size = req.swagger.params['size'].value;
-    var page = req.swagger.params['page'].value;
-    Performer.artistsGET(size,page)
+    Performer.artistsGET()
         .then(function (response) {
             utils.writeJson(res, response);
         })
@@ -40,9 +38,7 @@ module.exports.artistsGET = function artistsGET (req, res, next) {
 };
 
 module.exports.companiesGET = function companiesGET (req, res, next) {
-    var size = req.swagger.params['size'].value;
-    var page = req.swagger.params['page'].value;
-    Performer.companiesGET(size,page)
+    Performer.companiesGET()
         .then(function (response) {
             utils.writeJson(res, response);
         })

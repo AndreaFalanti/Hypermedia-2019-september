@@ -48,12 +48,7 @@ paths:
         200:
           description: "User reservations"
           schema:
-            properties:
-              event:
-                $ref: "#/definitions/Event"
-              tickets:
-                description: "Number of tickets reserved"
-                type: "integer"
+            $ref: "#/definitions/EventReservation"
         401:
           description: "Not authenticated"
       x-swagger-router-controller: "User"
@@ -172,8 +167,6 @@ paths:
       produces:
         - "application/json"
       parameters:
-        - $ref: "#/parameters/size"
-        - $ref: "#/parameters/page"
         - $ref: "#/parameters/type"
         - $ref: "#/parameters/date"
         - $ref: "#/parameters/location"
@@ -259,8 +252,6 @@ paths:
       produces:
         - "application/json"
       parameters:
-        - $ref: "#/parameters/size"
-        - $ref: "#/parameters/page"
         - $ref: "#/parameters/date"
         - $ref: "#/parameters/location"
       responses:
@@ -322,17 +313,6 @@ paths:
       operationId: "artistsGET"
       produces:
         - "application/json"
-      parameters:
-        - name: "size"
-          in: "query"
-          description: "Number of items returned in a page, default is 10"
-          required: false
-          type: "integer"
-        - name: "page"
-          in: "query"
-          description: "Selected page to return, default is 0"
-          required: false
-          type: "integer"
       responses:
         200:
           description: "List of artists"
@@ -392,17 +372,6 @@ paths:
       operationId: "companiesGET"
       produces:
         - "application/json"
-      parameters:
-        - name: "size"
-          in: "query"
-          description: "Number of items returned in a page, default is 10"
-          required: false
-          type: "integer"
-        - name: "page"
-          in: "query"
-          description: "Selected page to return, default is 0"
-          required: false
-          type: "integer"
       responses:
         200:
           description: "List of companies"
@@ -695,21 +664,20 @@ definitions:
       event_id: "0"
       tickets: "3"
 
+  EventReservation:
+    allOf:
+      - type: "object"
+        properties:
+          event_id:
+            type: "integer"
+          user_email:
+            type: "string"
+            format: "email"
+          tickets:
+            type: "integer"
+      - $ref: "#/definitions/Event"
+
 parameters:
-  size:
-    name: "size"
-    in: "query"
-    description: "Number of items returned in a page, default is 10"
-    required: false
-    type: "integer"
-
-  page:
-    name: "page"
-    in: "query"
-    description: "Selected page to return, default is 0"
-    required: false
-    type: "integer"
-
   date:
     name: "date"
     in: "query"

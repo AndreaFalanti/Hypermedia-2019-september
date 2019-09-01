@@ -175,18 +175,14 @@ exports.artistIdGET = function(id) {
  * Get artists list
  * Returns list of artists
  *
- * size Integer Number of items returned in a page, default is 10 (optional)
- * page Integer Selected page to return, default is 0 (optional)
  * returns Artists
  **/
-exports.artistsGET = function(size,page) {
+exports.artistsGET = function() {
     return new Promise(function(resolve, reject) {
         let result;
         try {
             result = sqlDb("artist")
-            //.innerJoin("company", "artist.affiliation", "company.id")
                 .select()
-                .limit(size || 10)
                 .timeout(2000, {cancel: true});
 
             resolve(result);
@@ -202,17 +198,14 @@ exports.artistsGET = function(size,page) {
  * Get companies list
  * Returns list of companies
  *
- * size Integer Number of items returned in a page, default is 10 (optional)
- * page Integer Selected page to return, default is 0 (optional)
  * returns Companies
  **/
-exports.companiesGET = function(size,page) {
+exports.companiesGET = function() {
     return new Promise(function(resolve, reject) {
         let result;
         try {
             result = sqlDb("company")
                 .select()
-                .limit(size || 10)
                 .timeout(2000, {cancel: true});
 
             resolve(result);

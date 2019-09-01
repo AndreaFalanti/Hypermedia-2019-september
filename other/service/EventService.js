@@ -67,11 +67,12 @@ exports.reservationDbSetup = function(database) {
  * Get events list
  * Returns list of events
  *
- * size Integer Number of items returned in a page, default is 10 (optional)
- * page Integer Selected page to return, default is 0 (optional)
+ * type (String) Type filter to apply (optional)
+ * date (String) Date filter to apply (optional)
+ * location (String) Location filter to apply (optional)
  * returns Events
  **/
-exports.eventsGET = function(size,page,type,date,location) {
+exports.eventsGET = function(type,date,location) {
   return new Promise(function(resolve, reject) {
     let result;
     try {
@@ -88,7 +89,6 @@ exports.eventsGET = function(size,page,type,date,location) {
                   query.where("location", location)
               }
           })
-          .limit(size || 10)
           .timeout(2000, {cancel: true});
 
       resolve(result);

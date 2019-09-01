@@ -42,7 +42,7 @@ function reservation() {
         data: json,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function(data){document.location.href = "../index.html";},
+        success: function(data){document.location.href = "/pages/user_reservations.html";},
         error: function(errMsg) {
             $("#emailError").removeClass("hidden");
             alert(JSON.stringify(errMsg, null, 4));

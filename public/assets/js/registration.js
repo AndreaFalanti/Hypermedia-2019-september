@@ -19,7 +19,7 @@ function register() {
             url: "/v2/users/register",
             data: json,
             contentType: "application/json; charset=utf-8",
-            success: function(data){document.location.href = "../index.html";},
+            success: function(data){document.location.href = "/index.html";},
             error: function(errMsg) {
                 $("#emailError").removeClass("hidden");
             }
