@@ -190,4 +190,10 @@ knowledge on web applications, and how to deploy it on a cloud platform. He thin
 good work of this competences in his actual part time job, that already required a REST approach in
 some app development. He wants to know more about web frameworks like Angular.js, that seems really
 common in this topic, and automatic testing and deployment, that could be useful in more complex
-applications to improve quality and proficiency. 
+applications to improve quality and proficiency.
+
+- Andrea Smania learned HTML, CSS, the CSS framework Bootstrap and most of its components, database
+management and writing of SQL queries. He wants to extend his knowledge about front end frameworks
+by learning new CSS frameworks like Foundation and learning web frameworks like Angular.js, considering
+their common application in jobs, in order to create a good starting skill baggage needed for work.
+ 
