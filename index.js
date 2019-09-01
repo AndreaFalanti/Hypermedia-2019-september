@@ -69,6 +69,11 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
         fs.createReadStream(path.resolve(__dirname, 'app.zip')).pipe(res);
     });
 
+    app.use("/backend/main.html", function (req, res) {
+        res.setHeader('Content-Type', 'text/html');
+        fs.createReadStream(path.resolve(__dirname, 'documentation', 'documentation.html')).pipe(res);
+    });
+
     // Start the server
     setupDataLayer().then(
         http.createServer(app).listen(serverPort, function () {

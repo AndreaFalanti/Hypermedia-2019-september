@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Backend documentation</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h2 id="general-group-information">General group information</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Member n.</th>
+<th>Role</th>
+<th>First name</th>
+<th>Last Name</th>
+<th>Matricola</th>
+<th>Email address</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>administrator</td>
+<td>Andrea</td>
+<td>Falanti</td>
+<td>869429</td>
+<td>10568850@polimi.it</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>member</td>
+<td>Andrea</td>
+<td>Smania</td>
+<td>869573</td>
+<td>10568809@polimi.it</td>
+</tr>
+</tbody>
+</table>
+<h2 id="links-to-other-deliverables">Links to other deliverables</h2>
+<ul>
+<li>Deliverable D0: the web application is accessible at <a href="https://polimi-hyp-2019-team-10568850.herokuapp.com">this address</a>.</li>
+<li>Deliverable D2: the YAML or JSON file containing the specification of the app API can be found at <a href="https://polimi-hyp-2019-team-10568850.herokuapp.com/backend/spec.yaml">this address</a>.</li>
+<li>Deliverable D3: the SwaggerUI page of the same API is available at <a href="https://polimi-hyp-2019-team-10568850.herokuapp.com/backend/swaggerui">this address</a>.</li>
+<li>Deliverable D4: the source code of D0 is available as a zip file at <a href="https://polimi-hyp-2019-team-10568850.herokuapp.com/backend/app.zip">this address</a>.</li>
+<li>Deliverable D5: the address of the online source control repository is available at <a href="https://github.com/AndreaFalanti/Hypermedia-2019-september.git">this address</a>. We hereby declare that this is a private repository and, upon request, we will give access to the instructors.</li>
+</ul>
+<h2 id="specification">Specification</h2>
+<h3 id="web-architecture">Web Architecture</h3>
+<p>Describe here, with a diagram, the components of your web application and how they interact. Highlight which parts belong to the application layer, data layer or presentation layer. How did you ensure that HTML is not rendered server side?</p>
+<figure>
+<img src="images/web_architecture.png" alt="" />
+</figure>
+<p>–The principal components of our web application are an application server and a database, that can be interrogated by clients with any browser application. The application layer is composed by the application server, that use Node.js to serve static files and provide API interface to client devices. The data layer is composed by the database, running PostgreSQL, it’s main role is providing data requested by clients with API calls. Data layer and Application layer are hosted on heroku, while presentation layer runs on client devices, displaying assets with a browser. We ensure that HTML is rendered client side because html, css and javascript files are served to client browser from the application server, so that browser can interpret these files to render the pages and also fetch data from script.</p>
+<h3 id="api">API</h3>
+<h4 id="rest-compliance">REST compliance</h4>
+<p>Describe here to what extent did you follow REST principles and what are the reasons for which you might have decided to diverge. Note, you must not describe the whole API here, just the design decisions.</p>
+<p>– Our API follow 4 of the 5 guiding principles of a REST interface: 1) Contract first approach: it provides lot of URLs to get every information stored in our database, filtering them by their discriminating values, efficiently making a point of contact between server and frontend. It also provides URLs used for important user interactions like registering and logging, covering all principal website functionality. 2) Statelessness: every API call provide complete information about object data transferred. If any object related to fetched object is needed it could easily be fetched with other API calls, with this method there is less message overhead when this additional info are not required (example: events/{id} provide only info about event, but you could easily call events/{id}/artists to get all artists that perform in that event). 3) Client-Server model: API are largely documented and provide a clear schema of data provided, so that data can be easily retrieved by client side. Data format is not very granular because our website data is pretty simple (objects are returned as a whole), but there is a lot of API calls granularity to provide optimized calls for every situation. 4) Caching: caching is not supported by our API since it’s not a requirement of the course and because our data is quite simple, so response time is small enough even without it. 5) Layered architecture: our website use a standard 3-tier architecture. Client communicate with server hosting the backend code that handles API calls, API code instead is used to interrogate the data layer to fetch the data that clients require to display the pages.</p>
+<h4 id="openapi-resource-models">OpenAPI Resource models</h4>
+<p>Describe here synthetically, which models you have introduced for resources.</p>
+<p>– The main resources of our web application are images, used as a thumbnail or in photo galleries of some detail pages. We decided to use an array of image paths in our database for each object that use a photo gallery, so that API calls can return it and from script we could easily set image sources in html tags. Other data is only textual, so we used standard JSON format to return it (along with the images array mentioned before).</p>
+<h3 id="data-model">Data model</h3>
+<p>Describe with an ER diagram the model used in the data layer of your web application. How these map to the OpenAPI data model?</p>
+<figure>
+<img src="images/database-ER.png" alt="" />
+</figure>
+<p>–The model used in the data layer map the openAPI data model because the data is fetched as it is from database and API specification file has a clear definition of each object type in its “definitions” tag. Every object have listed all attributes with corresponding types and examples.</p>
+<h2 id="implementation">Implementation</h2>
+<h3 id="tools-used">Tools used</h3>
+<p>Describe here which tools, languages and frameworks did you use for the backend of the application.</p>
+<p>– For backend server we used javascript in a node.js environment, developed upon a stub server generated by swagger editor. Swagger is a core component of our server, as a framework for handling API calls and provide proper API documentation in an easy way. Other important npm packages used in the project’s backend are serve-static for handling static assets and cookie-parser and cookie-session for handling login with cookies.</p>
+<h3 id="discussion">Discussion</h3>
+<p>Describe here: - How did you make sure your web application adheres to the provided OpenAPI specification? Which method did you use to test all APIs endpoints against the expected response?</p>
+<p>– We adapted the backend controllers to return the exact objects and response codes defined in yaml specification file we wrote. To test our API we used the swaggerUI page “try it out” functions, comparing data returned with our database data and response codes with the yaml file.</p>
+<ul>
+<li>Why do you think your web application adheres to common practices to partition a REST-based web application (static assets vs. application data)</li>
+</ul>
+<p>– We think that our web application adheres to common practises because most of our pages are dynamically generated from data fetched from API calls, so that all objects of the same class can be displayed using a single page layout and also if data changes in future there will be no problems with page updates (except if new data attributes are necessary). Some pages use static data because are descriptive and don’t actually need to store data because they are the single topic pages and data would not be used in other pages or layouts.</p>
+<ul>
+<li>Describe synthetically why and how did you manage session state, what are the state change triggering actions (e.g., POST to login etc..).</li>
+</ul>
+<p>– We defined some API calls specialized in handling user session state. Starting not logged in, a user can register himself to the website with a POST to users/register, than login with a POST to users/login. When user has finished navigation, it can logout with a POST to users/logout. Cookie session expire after a set amount of time if logout is not performed.</p>
+<ul>
+<li>Which technology did you use (relational or a no-SQL database) for managing the data model?</li>
+</ul>
+<p>– We used a relational database (postgreSQL) for the data model, because we are more experienced with a traditional SQL database explained in our faculty courses.</p>
+<h2 id="other-information">Other information</h2>
+<h3 id="task-assignment">Task assignment</h3>
+<p>Describe here how development tasks have been subdivided among members of the group.</p>
+<ul>
+<li>Andrea Falanti worked on back end (40%), database (10%), front end scripting (30%) and openAPI spec (10%).</li>
+<li>Andrea Smania worked on front end presentation (90%) and database (10%).</li>
+</ul>
+<h3 id="analysis-of-existing-api">Analysis of existing API</h3>
+<p>Describe here the research of (full or part of) existing APIs that are similar in objectives and scope to the one implemented, that have possibly guided implementation choices (these should not be necessarily OpenAPI implementations). Toy APIs (such as the Swagger’s Pet Store) or the example shown during lectures are not a valid response. Use TWO or more items of the form: &gt; We took (full/partial) inspiration from API (XYZ)(link) for the part of the &gt; API that manages (ABC) because of (REASON). Or &gt; For the part of the API that manages (ABC) we considered/studied (XYZ)(link) &gt; because of (REASON) but wasn’t completely fitting to our purpose because of &gt; (REASON).</p>
+<p>– We took full inspiration from Spotify API (<a href="https://api.apis.guru/v2/specs/spotify.com/v1/swagger.yaml">link</a>) for API general structure and API URL endpoints, as we thought it was more clear and easier to maintain and read then other API we search online. Using parameters in path and defining clear object definition schemas we achieved a similar result even if a lot more simplistic because we don’t have in our API specification OAuth authorization nor lot of query parameters like Spotify ones.</p>
+<p>We considered Gettyimages API (<a href="https://api.apis.guru/v2/specs/gettyimages.com/3/swagger.yaml">link</a>) for the part that manages photos and we had confirm that using URI for accessing images was a good practice, so that they could also point to an external site if, in a common professional case, we would have used a storage service for images. We didn’t analyze to much the API because was far too complex for our data model, opting for a more simplistic approach.</p>
+<h3 id="learning-outcome">Learning outcome</h3>
+<p>What was the most important thing all the members have learned while developing this part of the project, what questions remained unanswered, how you will use what you’ve learned in your everyday life?</p>
+<p>– - Andrea Falanti learned Javascript language and node.js environment from scratch, improving his knowledge on web applications and how to deploy it on a cloud platform. He thinks he could make good work of this competences in his actual part time job, that already required a REST approach in some app development. He wants to know more about web frameworks like Angular.js, that seems really common in this topic, and automatic testing and deployment, that could be useful in more complex applications to improve quality and proficiency.</p>
+<ul>
+<li>Andrea Smania learned HTML, CSS, the CSS framework Bootstrap and most of its components, database management and writing of SQL queries. He wants to extend his knowledge about front end frameworks by learning new CSS frameworks like Foundation and learning web frameworks like Angular.js, considering their common application in jobs, in order to create a good starting skill baggage needed for work.</li>
+</ul>
+</body>
+</html>

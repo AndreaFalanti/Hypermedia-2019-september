@@ -28,6 +28,7 @@ layer, data layer or presentation layer. How did you ensure that HTML is
 not rendered server side?
 
 ![Web diagram](images/web_architecture.png)
+
 --The principal components of our web application are an application server and
 a database, that can be interrogated by clients with any browser application.
 The application layer is composed by the application server, that use
@@ -80,6 +81,7 @@ Describe with an ER diagram the model used in the data layer of your web
 application. How these map to the OpenAPI data model?
 
 ![Web diagram](images/database-ER.png)
+
 --The model used in the data layer map the openAPI data model because the data is
 fetched as it is from database and API specification file has a clear definition of each object type in
 its "definitions" tag. Every object have listed all attributes with
@@ -102,12 +104,15 @@ Describe here:
 - How did you make sure your web application adheres to the provided
 OpenAPI specification? Which method did you use to test all APIs
 endpoints against the expected response?
+
 -- We adapted the backend controllers to return the exact objects and response codes defined in
 yaml specification file we wrote. To test our API we used the swaggerUI page "try it out" functions,
 comparing data returned with our database data and response codes with the yaml file.
+
 - Why do you think your web application adheres to common practices to
 partition a REST-based web application (static assets vs.
 application data)
+
 -- We think that our web application adheres to common practises
 because most of our pages are dynamically generated from data fetched from
 API calls, so that all objects of the same class can be displayed
@@ -116,15 +121,19 @@ will be no problems with page updates (except if new data attributes
 are necessary). Some pages use static data because are descriptive and
 don't actually need to store data because they are the single topic pages
 and data would not be used in other pages or layouts.
+
 - Describe synthetically why and how did you manage session state,
 what are the state change triggering actions (e.g., POST to login
 etc..).
+
 -- We defined some API calls specialized in handling user session state. Starting not logged in,
 a user can register himself to the website with a POST to users/register, than login with a POST
 to users/login. When user has finished navigation, it can logout with a POST to users/logout. Cookie
 session expire after a set amount of time if logout is not performed.
+
 - Which technology did you use (relational or a no-SQL database) for
 managing the data model?
+
 -- We used a relational database (postgreSQL) for the data model,
 because we are more experienced with a traditional SQL database
 explained in our faculty courses.
@@ -133,14 +142,11 @@ explained in our faculty courses.
 
 ### Task assignment
 Describe here how development tasks have been subdivided among members
-of the group, e.g.:
-> - Foo worked on front end (80%) and OpenAPI Spec (20% of the time)
-> - Bar worked on ....
+of the group.
 
---
-> - Andrea Falanti worked on back end (40%), database (10%), front end scripting (30%)
+- Andrea Falanti worked on back end (40%), database (10%), front end scripting (30%)
 and openAPI spec (10%).
-> - Andrea Smania worked on front end presentation (90%) and database (10%).
+- Andrea Smania worked on front end presentation (90%) and database (10%).
 
 ### Analysis of existing API
 Describe here the research of (full or part of) existing APIs that are similar
@@ -177,16 +183,9 @@ What was the most important thing all the members have learned while
 developing this part of the project, what questions remained unanswered,
 how you will use what you've learned in your everyday life?
 
-Examples:
-- Foo learned to write SQL queries and Javascript but wanted to know
-more about caching, he's probably going to create his own startup
-with what she has learned
-- Bar learned how to deploy on a cloud platform, he would have liked
-to know more about promises for asynchronous code..
-
 --
-- Andrea Falanti learned Javascript and node.js environment from scratch, improving his
-knowledge on web applications, and how to deploy it on a cloud platform. He thinks he could make
+- Andrea Falanti learned Javascript language and node.js environment from scratch, improving his
+knowledge on web applications and how to deploy it on a cloud platform. He thinks he could make
 good work of this competences in his actual part time job, that already required a REST approach in
 some app development. He wants to know more about web frameworks like Angular.js, that seems really
 common in this topic, and automatic testing and deployment, that could be useful in more complex
