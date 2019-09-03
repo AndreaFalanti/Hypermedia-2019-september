@@ -40,9 +40,11 @@
                 <div class="d-flex container justify-content-center mb-4">
                     <div class="dropdown mx-auto">
                         <select data-size="5" id="performersTypeSelect" class="selectpicker" data-style="btn-dark btn-circled" onchange="handleTypeFilter()">
-                            <option data-icon="fas fa-star" value="all">All types</option>
-                            <option data-icon="fas fa-user" value="artists">Artists only</option>
-                            <option data-icon="fas fa-users" value="companies">Companies only</option>
+                            <optgroup label="All artists types">
+                                <option data-icon="fas fa-star" value="all">All types</option>
+                                <option data-icon="fas fa-user" value="artists">Artists only</option>
+                                <option data-icon="fas fa-users" value="companies">Companies only</option>
+                            </optgroup>
                         </select>
                     </div>
                 </div>
