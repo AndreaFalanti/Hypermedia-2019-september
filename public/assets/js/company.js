@@ -21,9 +21,15 @@ function insertData () {
                     });
 
                 fetch('/v2/companies/' + data.id + '/artists').then(r => r.json())
-                    .then(artists => artists.forEach(e => {
-                        $("#artistsList").append(createListLink("artist.html?id=" + e.id, e.name + " " + e.surname));
-                    }))
+                    .then(artists => {
+                        let artistsList = $("#artistsList");
+                        if (artists.length > 0) {
+                            artists.forEach(e => artistsList.append(createListLink("artist.html?id=" + e.id, e.name + " " + e.surname)));
+                        }
+                        else {
+                            artistsList.append("no individual artist found");
+                        }
+                    });
             })
             .catch(err => handleInvalidId("/pages/performers.html"));
     }
