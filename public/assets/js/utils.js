@@ -53,7 +53,11 @@ function createCarouselImage(imgPath, active) {
     let img = $("<img>");
     img.attr("src", imgPath);
     img.addClass("w-100", "img-fluid");
-    img.attr("alt", "TODO");
+
+    let splitPath = imgPath.split("/");
+    // cut file extension
+    let imageName = splitPath[splitPath.length - 1].split(".")[0];
+    img.attr("alt", imageName);
     item.append(img);
 
     return item;
