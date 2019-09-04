@@ -69,7 +69,9 @@ paths:
           type: "integer"
       responses:
         204:
-          description: "Reservations canceled"
+          description: "Reservation canceled"
+        400:
+          description: "No reservation with that event id found"
         401:
           description: "Not authenticated"
       x-swagger-router-controller: "User"
@@ -661,8 +663,8 @@ definitions:
       tickets:
         type: "integer"
     example:
-      event_id: "0"
-      tickets: "3"
+      event_id: 0
+      tickets: 3
 
   EventReservation:
     allOf:

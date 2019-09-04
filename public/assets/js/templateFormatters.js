@@ -50,11 +50,13 @@ function addFormatters() {
 }
 
 /* Date is registered in postgres as (actual date - 1 day)T22:00:00Z for unknown reason,
-   this function fix the format */
+   this function fix the format
+   WARNING: this don't happen on heroku, so now only cut the time part*/
 function fixDate(date) {
     let dateOnly = date.split("T")[0];
-    let split = dateOnly.split("-");
+    /*let split = dateOnly.split("-");
     split[2] = (parseInt(split[2]) + 1).toString();
 
-    return split.join("-");
+    return split.join("-");*/
+    return dateOnly;
 }

@@ -8,6 +8,7 @@ module.exports.usersRegisterPOST = function usersRegisterPOST (req, res, next) {
     User.usersRegisterPOST(body)
         .then(function (response) {
             res.statusCode = 204;
+            res.statusMessage = "Successful registration";
             res.end();
         })
         .catch(function (response) {
@@ -61,6 +62,7 @@ module.exports.usersLoginPOST = function usersLoginPOST (req, res, next) {
             }
 
             res.statusCode = 204;
+            res.statusMessage = "Successful login";
             res.end();
         })
         .catch(function (response) {
@@ -76,6 +78,7 @@ module.exports.usersLogoutPOST = function usersLoginPOST (req, res, next) {
         req.session = null;
 
         res.statusCode = 204;
+        res.statusMessage = "Successful logout";
         res.end();
     }
     else {
@@ -91,6 +94,7 @@ module.exports.usersReservePOST = function usersReservePOST (req, res, next) {
         User.usersReservePOST(body, req.session.email)
             .then(function (response) {
                 res.statusCode = 204;
+                res.statusMessage = "Successful reservation";
                 res.end();
             })
             .catch(function (response) {
@@ -109,10 +113,14 @@ module.exports.usersReservationsIdCancelPOST = function usersReservationsIdCance
     if (req.session.loggedin) {
         User.usersReservationsIdCancelPOST(id, req.session.email)
             .then(function (response) {
-                utils.writeJson(res, response);
+                res.statusCode = 204;
+                res.statusMessage = "Reservation canceled";
+                res.end();
             })
             .catch(function (response) {
-                utils.writeJson(res, response);
+                res.statusCode = 400;
+                res.statusMessage = "No reservation with that event id found";
+                res.end();
             });
     }
     else {
