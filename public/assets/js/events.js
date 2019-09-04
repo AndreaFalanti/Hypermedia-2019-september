@@ -75,7 +75,12 @@ function populateDateFilterOptions () {
     for (let day = 1; day < 31; day++) {
         let option = $("<option></option>");
         option.html(day + " Sep 2019");
-        option.val("2019-09-" + day);
+        if (day < 10) {
+            option.val("2019-09-0" + day);
+        }
+        else {
+            option.val("2019-09-" + day);
+        }
         $("#septemberDateFilter").append(option);
     }
 }
